@@ -30,9 +30,11 @@ class GroupUserController extends Controller
         $request->validate([
             'check' => 'required',
             'group_id' => 'required',
+            'category_id' => 'required'
         ],[
             'check.required' => 'Please Select Some Users',
             'group_id.required' => 'Please Select  a Group',
+            'category_id.required' => 'Please Select a Category',
         ]);
 
         foreach($request->check as $user_id){
@@ -45,7 +47,8 @@ class GroupUserController extends Controller
         foreach ($request->check as $user_id) {
             AssignGroup::insert([
                 'user_id' => $user_id,
-                'group_id' => $request->group_id
+                'group_id' => $request->group_id,
+                'category_id' => $request->category_id,
             ]);
         }
         

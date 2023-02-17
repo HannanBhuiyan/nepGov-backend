@@ -80,14 +80,26 @@
                     <div class="modal-dialog modal-dialog-centered text-center" role="document">
                         <div class="modal-content modal-content-demo">
                             <div class="card-body text-center">
-                                <h4 class="h4 mb-0 m-3">Assign</h4>
-                                <select name="group_id" class="form-control">
-                                    <option disabled selected value>--Select Group--</option>
-                                    @foreach ($user_groups as $group)
-                                        <option value="{{ $group->id }}">{{ $group->group_name }}</option>
-                                    @endforeach    
-                                </select>
+                               <div class="assign">
+                                    <h4 class="h4 mb-0 m-3">Assign Group</h4>
+                                    <select name="group_id" class="form-control">
+                                        <option disabled selected value>--Select Group--</option>
+                                        @foreach ($user_groups as $group)
+                                            <option value="{{ $group->id }}">{{ $group->group_name }}</option>
+                                        @endforeach    
+                                    </select>
+                               </div>
+                               <div class="category">
+                                    <h4 class="h4 mb-0 m-3">Select Category</h4>
+                                    <select name="category_id" class="form-control">
+                                        <option disabled selected value>--Select Group--</option>
+                                        @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                                        @endforeach    
+                                    </select>
+                               </div>
                             </div>
+                            
                             <div class="card-footer text-center border-0 pt-0">
                                 <div class="row">
                                     <div class="text-center">

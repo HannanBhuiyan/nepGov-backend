@@ -73,7 +73,8 @@ class HomeController extends Controller
     {
         $user_groups = UserGroup::all();
         $users = User::all();
-        return view('layouts.backend.user_list',compact('users','user_groups'));
+        $categories = PollingCategory::latest()->get();
+        return view('layouts.backend.user_list',compact('users','user_groups', 'categories'));
     }
 
     public function delete($id)
