@@ -29,6 +29,7 @@ Route::group(['middleware'=>['auth']],function(){
 
     // Users Lists 
     Route::get('/users/list', [HomeController::class, 'users_list'])->name('user.index');
+    
     Route::get('user/delete/{id}', [HomeController::class, 'delete'])->name('user.delete');
     Route::post('assign/user/group', [GroupUserController::class, 'assign_users_group'])->name('assign_users_group');
     Route::get('group/users', [GroupUserController::class, 'group_users'])->name('user.group');

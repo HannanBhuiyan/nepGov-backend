@@ -73,7 +73,7 @@ class HomeController extends Controller
     {
         $user_groups = UserGroup::all();
         $users = User::all();
-        $categories = PollingCategory::latest()->get();
+        $categories = PollingCategory::all();
         return view('layouts.backend.user_list',compact('users','user_groups', 'categories'));
     }
 
