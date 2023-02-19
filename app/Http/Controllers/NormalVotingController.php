@@ -38,14 +38,21 @@ class NormalVotingController extends Controller
             'slug' => 'required',
             'option_one' => 'required',
             'option_two' => 'required'
-        ]);
+        ]); 
 
+        $months = Carbon::today()->month;
+        $count = [];
+        for($i=1; $i<=$months; $i++){
+            array_push($count,0);
+        }
         $cat = new NormalVoting();
         $cat->category_id = $request->category_id;
         $cat->topic = $request->topic;
         $cat->slug = $request->slug;
         $cat->option_one = $request->option_one;
+        $cat->option_one_count = json_encode($count);
         $cat->option_two = $request->option_two;
+        $cat->option_two_count = json_encode($count);
         $cat->option_three = $request->option_three;
         $cat->save();
 
@@ -127,51 +134,13 @@ class NormalVotingController extends Controller
 
     public function month_wise_voting_count()
     {
-        
-        // $result = DB::table('normal_voting_counts') 
-        // ->groupby('topic_id')
-        // ->get();
 
-        // $user_info = DB::table('normal_voting_counts', true) 
-        // ->selectRaw("SUM(status) as total_debit")
-        // ->selectRaw("SUM(CASE WHEN status=0) as total_credit")
-        // ->groupBy('topic_id')
-        // ->get();
-
-        // echo $user_info;
-
-        // ->sum('th_bill_amt')
-        // ->groupBy('th_exp_cat_id')
-
-        // 
+   
+        // return Carbon::today()->month;
     //    return NormalVoting::whereMonth('created_at',Carbon::today()->month)->get();
 
         $ss = DB::table('normal_voting_counts')->get();
-        $asd =   collect($ss)->groupBy("topic_id");
-
-        // $datas = [] ;
-        // for ($i=1; $i <=12 ; $i++) {
-        //     $datas  = NormalVotingCount::whereYear('created_at',date('Y'))->whereMonth('created_at',$i)->count();
-        //     echo $datas.'<br>';
-        // }
-        // die();
-
-        //   $result = DB::table('normal_voting_counts') 
-        //   ->select(DB::raw('count(*) as count, status'))
-        //   ->where('topic_id',2)
-        //   ->whereMonth('created_at',Carbon::today()->month)
-        //   ->groupBy('status')
-        //   ->get();
-        //   return $result;
-        // $result = DB::table('normal_voting_counts') 
-        // ->select(DB::raw('count(*) as count, status'))
-        // ->where('topic_id',2)
-        // ->whereMonth('created_at',Carbon::today()->month)
-        // ->groupBy('status')
-        // ->get();
-
-
-     
+        $asd = collect($ss)->groupBy("topic_id");
 
         foreach($asd as $key=>$bsd){
             $result = DB::table('normal_voting_counts') 
@@ -180,34 +149,52 @@ class NormalVotingController extends Controller
             ->whereMonth('created_at',Carbon::today()->month)
             ->groupBy('status')
             ->get(); 
-
-            // for($i =1; $i <= 12; i++){
-
-            // }
-
-
             foreach($result as $res){
-                if($res->status == 0)
-                {
-                    $cs = [$result[1]->count ?? 0];
-                    $asdss = [0, ...$cs];
-                    NormalVoting::where('id',$key)->update([
-                        "option_one_count"=> $asdss
-                        ]);
-                    }
-                    else if($res->status == 1)
-                {
-                    $css = [$result[0]->count ?? 0];
-                    $asdsss = [0, ...$css];
-                    NormalVoting::where('id',$key)->update([ 
-                        "option_two_count"=>$asdsss
-                    ]);
+                if($res->status == 0) {
+                    $normalVote = NormalVoting::where('id',$key)->first('option_one_count');
+                    $option_one = json_decode($normalVote->option_one_count);
+                    $k =[...$option_one];
+                        if(isset($k[Carbon::today()->month-1])){
+                            $k[Carbon::today()->month-1]=$result[1]->count ?? 0;
+                            NormalVoting::where('id',$key)->update([ 
+                                "option_one_count"=>json_encode($k)
+                            ]);
+                        }else{
+                            $value = [$result[1]->count ?? 0];
+                            $option_one_append =[...$option_one,...$value];
+                            NormalVoting::where('id',$key)->update([ 
+                                "option_one_count"=>json_encode($option_one_append)
+                            ]);
+                        }
+                } 
+
+                else if($res->status == 1) {
+                    $normalVote = NormalVoting::where('id',$key)->first('option_two_count');
+                    $option_two = json_decode($normalVote->option_two_count);
+                    $k =[...$option_two];
+                        if(isset($k[Carbon::today()->month-1])){
+                            $k[Carbon::today()->month-1]=$result[0]->count ?? 0;
+                            NormalVoting::where('id',$key)->update([ 
+                                "option_two_count"=>json_encode($k)
+                            ]);
+                        }else{
+                            $value = [$result[0]->count ?? 0];
+                            $option_two_append =[...$option_two,...$value];
+                            NormalVoting::where('id',$key)->update([ 
+                                "option_two_count"=>json_encode($option_two_append)
+                            ]);
+                        }
                 }
             }
+
+           
+
+            // print_r($res);
         }
 
+        
 
-        // return $result;
+        // return $asd;
 
           
         
