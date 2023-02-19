@@ -231,6 +231,11 @@
         </div>
     @endforeach
 
+    
+
+@endsection
+
+@section('scripts')
     <script type="text/javascript"> 
 
         const title = document.querySelector("#addTopic")
@@ -241,11 +246,6 @@
         }) 
     
     </script>
-
-@endsection
-
-@section('scripts')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
-    
 
 @endsection

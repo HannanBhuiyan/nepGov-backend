@@ -83,12 +83,12 @@ class HomeController extends Controller
         return redirect()->route('user.index')->with('fail', 'User delete success');
     }
 
-    public function multi_email_offer(Request $request)
-    {
-        // return $request->check;
-        foreach ($request->check as $id) {
-            Mail::to(User::find($id)->email)->send(new EmailOffer());
-        }
-        return back()->with('success','mail send success');
-    }
+    // public function multi_email_offer(Request $request)
+    // {
+       
+    //     foreach ($request->check as $id) {
+    //         Mail::to(User::find($id)->email)->send(new EmailOffer());
+    //     }
+    //     return back()->with('success','mail send success');
+    // }
 }

@@ -13,14 +13,16 @@ class EmailOffer extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $slug;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($slug)
     {
-        //
+        $this->slug = $slug;
     }
 
     /**
@@ -43,7 +45,11 @@ class EmailOffer extends Mailable
     public function content()
     {
         return new Content(
+
             view: 'email.offer',
+            with: [
+                'slug' => $this->slug
+            ],
         );
     }
 

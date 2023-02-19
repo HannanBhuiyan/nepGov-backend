@@ -61,10 +61,12 @@ class PollingReviewApiController extends Controller
             ->where('question_id','=', $poll_que_id)
             ->groupBy('polling_option_id')
             ->get();
+
             $data= $options->map(function ($item, $key) use($result) {
                 $single_agent = $result->where('polling_option_id',$item->id);
                 return collect($item)->merge($single_agent);
             });
+            
         return response()->json(["total_count" => $count, "question_id" => $poll_que_id, "data" => $data ]);
     }
 

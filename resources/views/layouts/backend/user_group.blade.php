@@ -24,10 +24,14 @@
             </div>
 
             <div class="col-9">
-                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist"> 
                     <div>
                         @foreach ($groups as $group)
                             <a type="radio" class="btn btn-outline-warning groupwise text-dark" data-id="{{$group->id}}">{{ $group->group_name }}</a>
+                            {{-- @php 
+                                $category_id =  App\Models\AssignGroup::where('group_id', $group->id)->first()->category_id;
+                                $category = App\Models\PollingCategory::find($category_id); 
+                            @endphp --}}
                         @endforeach
                     </div>
                    

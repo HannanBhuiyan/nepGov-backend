@@ -29,7 +29,7 @@ Route::group(['middleware'=>['auth']],function(){
 
     // Users Lists 
     Route::get('/users/list', [HomeController::class, 'users_list'])->name('user.index');
-    
+
     Route::get('user/delete/{id}', [HomeController::class, 'delete'])->name('user.delete');
     Route::post('assign/user/group', [GroupUserController::class, 'assign_users_group'])->name('assign_users_group');
     Route::get('group/users', [GroupUserController::class, 'group_users'])->name('user.group');
@@ -75,8 +75,7 @@ Route::get('/register',function(){
     return redirect("/adminLogin");
 });
 
-// Route::get('/download', function(){
-//     return response()->download(resource_path(view('layouts.backend.news.news-index',[
-//         'news' => \App\Models\News::all()
-//     ])));
-// })->name('download');
+
+Route::get('test/normal/voting/{slug}',[NormalVotingController::class, 'normalVotingByTest'])->name('normal_voting');
+Route::post('test/normal/voting/post',[NormalVotingController::class, 'normar_poling_post'])->name('normar_poling_post');
+Route::get('month/wise/vote/count',[NormalVotingController::class, 'month_wise_voting_count'])->name('month_wise_voting_count');

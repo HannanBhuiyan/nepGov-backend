@@ -3,19 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\NormalVoting;
+use App\Models\NormalVotingCount;
 use Illuminate\Http\Request;
 use App\Models\PollingNormal;
 use App\Models\PollingCategory;
 use App\Models\User;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
 class NormalVotingController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function index()
     {
         $normals  = NormalVoting::all();
@@ -30,12 +29,7 @@ class NormalVotingController extends Controller
         return view('layouts.backend.normal_voting.normal_voting-index');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(Request $request)
     {
         $request->validate([
@@ -68,35 +62,13 @@ class NormalVotingController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\NormalVoting  $normalVoting
-     * @return \Illuminate\Http\Response
-     */
-    public function show(NormalVoting $normalVoting)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\NormalVoting  $normalVoting
-     * @return \Illuminate\Http\Response
-     */
+   
     public function edit(NormalVoting $normalVoting)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\NormalVoting  $normalVoting
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request,  $id)
     {
         // return $request;
@@ -120,15 +92,151 @@ class NormalVotingController extends Controller
         return back()->with('success', 'Normal Topic Update success');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\NormalVoting  $normalVoting
-     * @return \Illuminate\Http\Response
-     */
+    
     public function destroy($id)
     {
         NormalVoting::findOrFail($id)->delete();
         return back()->with('success', 'Normal Topic delete success');
     }
+
+      
+    public function normalVotingByTest(Request $request, $slug)
+    {
+        $polling =   PollingCategory::where('slug',$slug)->first();
+       
+        $single_normal_topic = NormalVoting::where('category_id', $polling->id)->get();
+        
+        return view('normalVotingTest', compact('polling','single_normal_topic'));
+    }
+
+    public function normar_poling_post(Request $req)
+    {   
+
+        $datas = $req->except('_token');
+
+        foreach($datas as $key=>$value){ 
+            NormalVotingCount::insert([
+              'topic_id' => $key,
+              'status' => $value, 
+              'created_at' => Carbon::now(),
+            ]);
+        }
+        
+        return back();
+    }
+
+    public function month_wise_voting_count()
+    {
+        
+        // $result = DB::table('normal_voting_counts') 
+        // ->groupby('topic_id')
+        // ->get();
+
+        // $user_info = DB::table('normal_voting_counts', true) 
+        // ->selectRaw("SUM(status) as total_debit")
+        // ->selectRaw("SUM(CASE WHEN status=0) as total_credit")
+        // ->groupBy('topic_id')
+        // ->get();
+
+        // echo $user_info;
+
+        // ->sum('th_bill_amt')
+        // ->groupBy('th_exp_cat_id')
+
+        // 
+    //    return NormalVoting::whereMonth('created_at',Carbon::today()->month)->get();
+
+        $ss = DB::table('normal_voting_counts')->get();
+        $asd =   collect($ss)->groupBy("topic_id");
+
+        // $datas = [] ;
+        // for ($i=1; $i <=12 ; $i++) {
+        //     $datas  = NormalVotingCount::whereYear('created_at',date('Y'))->whereMonth('created_at',$i)->count();
+        //     echo $datas.'<br>';
+        // }
+        // die();
+
+        //   $result = DB::table('normal_voting_counts') 
+        //   ->select(DB::raw('count(*) as count, status'))
+        //   ->where('topic_id',2)
+        //   ->whereMonth('created_at',Carbon::today()->month)
+        //   ->groupBy('status')
+        //   ->get();
+        //   return $result;
+        // $result = DB::table('normal_voting_counts') 
+        // ->select(DB::raw('count(*) as count, status'))
+        // ->where('topic_id',2)
+        // ->whereMonth('created_at',Carbon::today()->month)
+        // ->groupBy('status')
+        // ->get();
+
+
+     
+
+        foreach($asd as $key=>$bsd){
+            $result = DB::table('normal_voting_counts') 
+            ->select(DB::raw('count(*) as count, status'))
+            ->where('topic_id',$key)
+            ->whereMonth('created_at',Carbon::today()->month)
+            ->groupBy('status')
+            ->get(); 
+
+            // for($i =1; $i <= 12; i++){
+
+            // }
+
+
+            foreach($result as $res){
+                if($res->status == 0)
+                {
+                    $cs = [$result[1]->count ?? 0];
+                    $asdss = [0, ...$cs];
+                    NormalVoting::where('id',$key)->update([
+                        "option_one_count"=> $asdss
+                        ]);
+                    }
+                    else if($res->status == 1)
+                {
+                    $css = [$result[0]->count ?? 0];
+                    $asdsss = [0, ...$css];
+                    NormalVoting::where('id',$key)->update([ 
+                        "option_two_count"=>$asdsss
+                    ]);
+                }
+            }
+        }
+
+
+        // return $result;
+
+          
+        
+
+
+//         SELECT cate_id, SUM(total_cost)
+// FROM purchase            
+// GROUP BY cate_id;
+
+
+        // $user_info = DB::table('normal_voting_counts')
+        //         ->select('topic_id', DB::raw('count(status) as Approve' ) )   
+        //         ->Sum(Case When Upgraded = 1 Then 1 Else 0 End) As CountUpgraded
+        //         ->get();
+
+        // echo $user_info;
+
+
+        // $data ->select(DB::raw('count(id) as `data`'),DB::raw('YEAR(created_at) year, MONTH(created_at) month'))
+        //    ->groupby('year','month')
+        //    ->get();
+
+ 
+
+        // foreach($user_info as $value){
+        //     $disappcount = NormalVotingCount::where('topic_id', $value->topic_id)->where('status', 0)->count();
+        //     echo $disappcount . "<br>";
+        // }
+ 
+    }
+
 }

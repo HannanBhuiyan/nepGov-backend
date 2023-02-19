@@ -14,4 +14,8 @@ class AssignGroup extends Model
     public function users(){
         return $this->belongsTo(User::class, 'user_id'); 
     }
+
+    public function polling_category(){
+        return $this->belongsTo(PollingCategory::class, 'category_id', 'id'); 
+    }
 }

@@ -158,4 +158,8 @@ class PollingNormalController extends Controller
         return redirect()->route('polling_normal.index')->with('success', 'Normal Topic delete success');
         
     }
+
+
+   
+
 }

@@ -6,6 +6,7 @@ use App\Mail\EmailOffer;
 use App\Models\GroupUser;
 use App\Models\UserGroup;
 use App\Models\AssignGroup;
+use App\Models\PollingCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -66,8 +67,9 @@ class GroupUserController extends Controller
 
 
     public function groupwiseuser(Request $request){
+
         $assign_user = AssignGroup::where('group_id', $request->data_id)->get();
-        
+ 
         $view = view('layouts.backend.group_users',compact('assign_user'))->render();
 
         return response()->json(['data'=>$view ]);
@@ -77,11 +79,13 @@ class GroupUserController extends Controller
    
     public function sendMailToUsers(Request $request)
     {
-        // return $request->allEmails;
+ 
+        // return $request;
         foreach($request->allEmails as $email){
             
-            Mail::to($email)->send(new EmailOffer());
+            Mail::to($email)->send(new EmailOffer($request->slug));
         }
+        return back()->with('mail sent');
         return response()->json(['success'=>'Mail Sent']);
     }
 

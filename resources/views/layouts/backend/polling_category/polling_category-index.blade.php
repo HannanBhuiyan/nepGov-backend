@@ -585,34 +585,29 @@
 @section('scripts')
     <script type="text/javascript"> 
 
-        
-        //
         const category_name = document.querySelector("#category_name")
         const cat_slug = document.querySelector("#cat_slug")
         
         category_name.addEventListener('keyup', function() {
-            $('#cat_slug').val($(this).val().toLowerCase().split(',').join('').replace(/\s/g,"-"));
+            $('#cat_slug').val($(this).val().toLowerCase().split(',').join('').replace(/\s/g,"-").replace(/\?/g, '-'));
         }) 
     
-
-        //
         const name = document.querySelector("#name")
         const name_slug = document.querySelector("#name_slug")
         name.addEventListener('keyup', function() {
-            $('#name_slug').val($(this).val().toLowerCase().split(',').join('').replace(/\s/g,"-"));
+            $('#name_slug').val($(this).val().toLowerCase().split(',').join('').replace(/\s/g,"-").replace(/\?/g, '-'));
         }) 
 
 
-        //
         const question = document.querySelector("#question")
         const question_slug = document.querySelector("#question_slug")
         
         question.addEventListener('keyup', function() {
-            $('#question_slug').val($(this).val().toLowerCase().split(',').join('').replace(/\s/g,"-"));
+            $('#question_slug').val($(this).val().toLowerCase().split(',').join('').replace(/\s/g,"-").replace(/\?/g, '-'));
         }) 
 
-   
-        //
+
+        // country dropdown
         $(document).ready(function(){ 
 
             $('.country_dropdown').select2({

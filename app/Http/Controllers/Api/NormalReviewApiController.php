@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use App\Models\NormalOption;
 use App\Models\NormalVoting;
+use App\Models\PollingCategory;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -84,22 +85,12 @@ class NormalReviewApiController extends Controller
         return response()->json($single_normal_voting);
     }
 
-    public function normal_topic($slug){
-        $single_normal_topic = NormalVoting::where('slug',$slug)->first();
-        // $results = NormalOption::where('topic_id', $single_normal_topic->id)->get();
-
-        // return $sss = $results->map(function($result,$index){
-        //     $options = DB::table('normal_options')
-        //     ->groupBy('option_id')
-        //     ->get();
-
-        //     $arr = array(
-        //         "optionsData"=> $options,
-        //         'totalCount' =>$result->count 
-        //     );
- 
-        //     return $arr;
-        // });
+    public function normal_topic($categorySlug){
+      
+        $polling =   PollingCategory::where('slug',$categorySlug)->first();
+       
+        $single_normal_topic = NormalVoting::where('category_id', $polling->id)->get();
+      
         return response()->json($single_normal_topic);
     }
 
