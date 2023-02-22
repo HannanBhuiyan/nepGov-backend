@@ -203,8 +203,8 @@
                         <td style="width: 40px"></td>
                         <td style="text-align: center; font-size: 20px; font-weight: 500;">
                             Please visit this site to share your opinion <br>
-                            {{-- <a href="https://nepgov.vercel.app/nomal-vote/">Click Here to Vote</a>  --}}
-                            <a href="{{route('normal_voting', $slug)}}">Click Here to Vote</a> <br><br>
+                            <a href="https://nepgov.vercel.app/nomal-vote/{{ $slug }}">Click Here to Vote</a> <br><br>
+                            {{-- <a href="{{route('normal_voting', $slug)}}">Click Here to Vote</a> <br><br> --}}
                             <span style="text-align: center; font-size: 15px; font-weight: 300;"> If you are not interested, please ignore this email. </span>
                         </td>
                         <td style="width: 40px"></td>

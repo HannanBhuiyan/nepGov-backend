@@ -54,7 +54,7 @@ class GroupUserController extends Controller
         }
         
 
-        return back();
+        return back()->with('success', 'Group Assigned');
     }
 
     public function group_users()
@@ -86,13 +86,13 @@ class GroupUserController extends Controller
         ],[
             'allEmails.required' => 'Please Select a Group with Users First'
         ]);
-        $poll_cat = PollingCategory::where('slug',$request->slug)->first();
-        $category_name = $poll_cat->category_name;
+        // $poll_cat = PollingCategory::where('slug',$request->slug)->first();
+        // $category_name = $poll_cat->category_name;
 
         foreach($request->allEmails as $email){
             Mail::to($email)->send(new EmailOffer($request->slug));
         }
-        return back()->with('mail sent');
+        return back()->with('success','mail sent');
         return response()->json(['success'=>'Mail Sent']);
     }
 
