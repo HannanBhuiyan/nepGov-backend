@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Crime;
 use App\Mail\EmailOffer;
 use App\Models\NormalReview;
+use App\Models\NormalVoting;
 use Illuminate\Http\Request;
 use App\Models\PollingCategory;
 use App\Models\PollingQuestion;
@@ -49,7 +50,7 @@ class HomeController extends Controller
         
         for ($i=1; $i <=12 ; $i++) {
             $normal_reviews []  = PollingReview::whereYear('created_at',date('Y'))->whereMonth('created_at',$i)->count();
-            $polling_reviews []   = NormalReview::whereYear('created_at',date('Y'))->whereMonth('created_at',$i)->count();
+            $polling_reviews []   = NormalVoting::whereYear('created_at',date('Y'))->whereMonth('created_at',$i)->count();
         }
         
         $last_30_days_users = User::where('created_at','>=',Carbon::now()->subdays(30))->get();
@@ -92,3 +93,5 @@ class HomeController extends Controller
     //     return back()->with('success','mail send success');
     // }
 }
+
+
