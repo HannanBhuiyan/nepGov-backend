@@ -63,7 +63,7 @@
                             </div>
                         </div> --}}
                         <div class="properties-container"></div>
-                        <div class="btn btn-info mt-1" id="add_more">Add More</div>
+                        <div class="btn btn-info mt-1" id="add_more">Add Option</div>
                     </div>
     
                     <div class="form-group">
@@ -117,12 +117,14 @@
                             </td>
                             <td>
                                 <ul>
-                                    {{-- @php
-                                        $ans = json_decode($survay->survay_options->options)
-                                    @endphp --}}
-                                    @foreach ($survay->survay_options as $item)
-                                        <li>{{$item->options ?? ''}}</li>
-                                    @endforeach
+                                    @php
+                                    $sur_ans = App\Models\SurvayOption::where('survay_question_id', $survay->id)->first();
+                                    @endphp
+                                    @if ($sur_ans->options)
+                                        @foreach (json_decode($sur_ans->options) as $item)
+                                            <li>{{$item ?? ''}}</li>
+                                        @endforeach
+                                    @endif
                                 </ul>
                             </td>
                             <td>
@@ -140,7 +142,7 @@
                                             @csrf
                                             @method("PUT")
                                             <div class="form-group">
-                                                <label> Survay Question <span class="text-danger">*</span></label>
+                                                <label> <h5>Survay Question <span class="text-danger">*</span></h5> </label>
                                                 <input type="text" value="{{$survay->survay_question}}" class="form-control" id="survay_question" name="survay_question" placeholder="Survay Questionn">
                                                 @error('category_name')
                                                     <span class="text-danger">{{ $message }}</span>

@@ -48,10 +48,10 @@
                                 <label for="userCheck" style="cursor: pointer">{{ $user->username ?? 'N/A' }}</label>
                             </td>
                             {{-- <td>{{ $user->email ?? '' }}</td> --}}
-                            <td>{{ Str::headline($user_infos->which_political_party_do_you_support ?? '') }}</td>
-                            <td>{{ Str::headline($user_infos->what_is_your_ethnicity ?? '') }}</td>
-                            <td>{{ Str::headline($user_infos->highest_educational_qualification_you_have ?? '') }}</td>
-                            <td>{{ $years = Carbon\Carbon::parse($user->date_of_birth)->age ?? '' }}</td>
+                            <td>{{ Str::headline($user_infos->which_political_party_do_you_support ?? 'N/A') }}</td>
+                            <td>{{ Str::headline($user_infos->what_is_your_ethnicity ?? 'N/A') }}</td>
+                            <td>{{ Str::headline($user_infos->highest_educational_qualification_you_have ?? 'N/A') }}</td>
+                            <td>{{ Carbon\Carbon::parse($user->date_of_birth)->age ?? 'N/A' }}</td>
                             
                             <td>
                                 {{-- <a href="{{ route('user.details', $user->id) }}" class="btn btn-info">View</a> --}}
