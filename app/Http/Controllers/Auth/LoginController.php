@@ -99,7 +99,7 @@ class LoginController extends Controller
                     "token_verify"=>1,
                     'password' => Hash::make($request->password),
                     'country' => $request->country,
-                    'city' => $request->city,
+                    // 'city' => $request->city,
                     'date_of_birth' => $request->date_of_birth,
                     'postcode' => $request->postcode,
                 ]);
@@ -109,7 +109,7 @@ class LoginController extends Controller
                     'email' => $request->email,
                     'password' => Hash::make($request->password),
                     'country' => $request->country,
-                    'city' => $request->city,
+                    // 'city' => $request->city,
                     'date_of_birth' => $request->date_of_birth,
                     'postcode' => $request->postcode,
                     "token_verify"=>0,
