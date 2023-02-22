@@ -9,13 +9,14 @@ use App\Http\Controllers\backend\{
     PageController,
     ProfileController,
     CategoryController,
-    NewsController
+    NewsController,
+    SurvayController
 };
 use App\Http\Controllers\GroupUserController;
 use App\Http\Controllers\NormalVotingController;
-use App\Models\GroupUser;
-use GuzzleHttp\Middleware;
+use App\Http\Controllers\SurvayQuestionController;
 use Illuminate\Support\Facades\Auth;
+
 
 Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
 Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post'); 
@@ -79,3 +80,10 @@ Route::get('/register',function(){
 Route::get('test/normal/voting/{slug}',[NormalVotingController::class, 'normalVotingByTest'])->name('normal_voting');
 Route::post('test/normal/voting/post',[NormalVotingController::class, 'normar_poling_post'])->name('normar_poling_post');
 Route::get('month/wise/vote/count',[NormalVotingController::class, 'month_wise_voting_count'])->name('month_wise_voting_count');
+
+
+// survay route 
+Route::get('survay', [SurvayController::class, 'index'])->name('survay.index');
+Route::post('survay/question/store', [SurvayController::class, 'store'])->name('survay_question.store');
+Route::put('survay/question/update/{id}', [SurvayController::class, 'update'])->name('survay_question.update');
+Route::get('survay/question/delete/{id}', [SurvayController::class, 'delete'])->name('survay_question.delete');

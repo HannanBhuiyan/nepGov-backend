@@ -25,20 +25,33 @@
                     <thead>
                       <tr>
                         <th scope="col">SL NO</th>
-                        <th scope="col">Group</th>
+                        {{-- <th scope="col">Group</th> --}}
                         <th scope="col">Name</th>
-                        <th scope="col">Email</th>
+                        {{-- <th scope="col">Email</th> --}}
+                        <th scope="col">Political Support</th>
+                        <th scope="col">Ethnicity</th>
+                        <th scope="col">Qualification</th>
+                        <th scope="col">Age</th>
                         <th scope="col">Action</th>
                       </tr>
                     </thead>
                     <tbody>
                         @foreach ($users as $user)
-    
+                        @php
+                            $user_infos = App\Models\SurvayAnswer::where('user_id', $user->id)->first();
+                        @endphp
                         <tr>
                             <td>{{ $loop->index + 1 }}</td>
-                            <td><input type="checkbox" name="check[]" value="{{ $user->id }}"></td>
-                            <td>{{ $user->username ?? 'N/A' }}</td>
-                            <td>{{ $user->email ?? '' }}</td>
+                            {{-- <td><input type="checkbox" name="check[]" value="{{ $user->id }}"></td> --}}
+                            <td>
+                                <input id="userCheck" type="checkbox" name="check[]" value="{{ $user->id }}">
+                                <label for="userCheck" style="cursor: pointer">{{ $user->username ?? 'N/A' }}</label>
+                            </td>
+                            {{-- <td>{{ $user->email ?? '' }}</td> --}}
+                            <td>{{ Str::headline($user_infos->which_political_party_do_you_support ?? '') }}</td>
+                            <td>{{ Str::headline($user_infos->what_is_your_ethnicity ?? '') }}</td>
+                            <td>{{ Str::headline($user_infos->highest_educational_qualification_you_have ?? '') }}</td>
+                            <td>{{ $years = Carbon\Carbon::parse($user->date_of_birth)->age ?? '' }}</td>
                             
                             <td>
                                 {{-- <a href="{{ route('user.details', $user->id) }}" class="btn btn-info">View</a> --}}
