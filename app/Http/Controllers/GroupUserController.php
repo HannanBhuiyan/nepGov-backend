@@ -84,7 +84,7 @@ class GroupUserController extends Controller
         $request->validate([
             'allEmails' => 'required'
         ],[
-            'allEmails.required' => 'Please Select a Group First'
+            'allEmails.required' => 'Please Select a Group with Users First'
         ]);
         foreach($request->allEmails as $email){
             Mail::to($email)->send(new EmailOffer($request->slug));
