@@ -136,7 +136,7 @@
                 <table style="width: 100%; max-width: 650px; margin: auto; background: #fff;">
                     <tr>
                         <td style="width: 40px;"></td>
-                        <td style="text-align: center; font-size: 20px; font-weight: 700;">Are Yoy Interested to share your opinion :</td>
+                        <td style="text-align: center; font-size: 20px; font-weight: 700;">Are you interested to share your opinion on this Topics:</td>
                         <td style="width: 40px;"></td>
                     </tr>
                 </table>
@@ -160,14 +160,17 @@
     </table>
     <!-- padding -->
 
-
+    @php
+        $poll_cat = App\Models\PollingCategory::where('slug',$slug)->first();
+        $category_name = $poll_cat->category_name;
+    @endphp
     <!-- verification code -->
     <table style="width: 100%;">
         <tr>
             <td>
                 <table style="width: 100%; max-width: 650px; margin: auto; background: #fff;">
                     <tr>
-                        {{-- <td style="text-align: center; font-size: 34px; font-weight: bold;">{{$slug}}</td> --}}
+                        <td style="text-align: center; font-size: 30px; font-weight: bold;">Category/Topic : {{ $category_name }}</td>
                     </tr>
                 </table>
             </td>
