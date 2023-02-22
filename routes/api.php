@@ -18,6 +18,7 @@ use App\Http\Controllers\Api\PollingReviewApiController;
 use App\Http\Controllers\Api\PollingCategoryApiController;
 use App\Http\Controllers\Api\PollingQuestionApiController;
 use App\Http\Controllers\Api\ProfileApiController;
+use App\Http\Controllers\Api\SurvayApiController;
 use App\Models\User;
 
 // localhost/post
@@ -245,6 +246,11 @@ Route::get('all/topics', [PollingCategoryApiController::class, 'all_topics']);
 // normal voting api
 Route::get('normal/topic/{slug}', [NormalReviewApiController::class, 'normal_topic']);
 Route::post('normal/topic/', [NormalReviewApiController::class, 'normalTopicPost']);
+
+// servay questions api
+Route::get('survay/questions/', [SurvayApiController::class, 'survay_question_api']);
+Route::get('survay/answers/', [SurvayApiController::class, 'survay_answer_api']);
+Route::post('survay/answers/store', [SurvayApiController::class, 'survay_answer_store']);
 
 
  

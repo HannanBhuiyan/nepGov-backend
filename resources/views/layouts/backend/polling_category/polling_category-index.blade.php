@@ -382,7 +382,7 @@
             </div>
         </div>
     </div>
-    <
+    </div>
     @push('modals')
    
     @endpush

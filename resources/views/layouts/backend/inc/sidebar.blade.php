@@ -15,37 +15,16 @@
         </li>
         <li class="sub-category">
             <h3>UI Kit</h3>
-        </li>
-        {{-- <li class="slide">
-            <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)"><i
-                    class="side-menu__icon fe fe-slack"></i><span
-                    class="side-menu__label">Apps</span><i
-                    class="angle fe fe-chevron-right"></i></a>
-            <ul class="slide-menu">
-                <li class="side-menu-label1"><a href="javascript:void(0)">Apps</a></li>
-                <li><a href="#" class="slide-item"> Cards design</a></li>
-            </ul>
-        </li> --}}
-        
-
-        {{-- <li class="slide {{ request()->routeIs('category*') ? 'is-expanded' : '' }}">
-            <a class="side-menu__item {{ request()->routeIs('category*') ? 'is-expanded active' : '' }}" data-bs-toggle="slide" href="javascript:void(0)"><i
-                    class="side-menu__icon fe fe-slack"></i><span
-                    class="side-menu__label">Category</span><i
-                    class="angle fe fe-chevron-right"></i></a>
-            <ul class="slide-menu">
-                <li><a href="{{ route('category.index') }}" class="slide-item {{ request()->routeIs('category.index') ? 'active' : '' }}">List Category</a></li>
-                <li><a href="{{ route('category.create') }}" class="slide-item {{ request()->routeIs('category.create') ? 'active' : '' }}">Create Category</a></li>
-            </ul>
-        </li> --}}
-        <li class="slide {{ request()->routeIs('user*') ? 'is-expanded active' : '' }}">
-            <a class="side-menu__item {{ request()->routeIs('user*') ? 'is-expanded active' : '' }}" data-bs-toggle="slide" href="javascript:void(0)"><i
+        </li> 
+        <li class="slide {{ request()->routeIs(['user*','survay.index']) ? 'is-expanded active' : '' }}">
+            <a class="side-menu__item {{ request()->routeIs(['user*','survay.index']) ? 'is-expanded active' : '' }}" data-bs-toggle="slide" href="javascript:void(0)"><i
                     class="side-menu__icon fe fe-users"></i><span
                     class="side-menu__label">Users</span><i
                     class="angle fe fe-chevron-right"></i></a>
             <ul class="slide-menu">
                 <li><a href="{{ route('user.index') }}" class="slide-item {{ request()->routeIs('user.index') ? 'active' : '' }}"> Users List</a></li>
                 <li><a href="{{ route('user.group') }}" class="slide-item {{ request()->routeIs('user.group') ? 'active' : '' }}">Group User</a></li>
+                <li><a href="{{ route('survay.index') }}" class="slide-item {{ request()->routeIs('survay.index') ? 'active' : '' }}">User Survay Question</a></li> 
             </ul>
         </li>
 
@@ -139,16 +118,17 @@
                 <li class=""><a href="{{ route('social_links.index') }}" class="slide-item {{ request()->routeIs('social_links.index') ? 'active' : '' }}">SocialLink Settings</a></li>
             </ul>
         </li>
-        {{-- <li class="slide {{ request()->routeIs('social_links*') ? 'is-expanded' : '' }}">
-            <a class="side-menu__item {{ request()->routeIs('social_links*') ? 'is-expanded active' : '' }}" data-bs-toggle="slide" href="javascript:void(0)"><i
-                    class="side-menu__icon fe fe-slack"></i><span
-                    class="side-menu__label">Social Links</span><i
+
+        {{-- <li class="slide {{ request()->routeIs(['settings.index','social_links.index']) ? 'is-expanded' : '' }}">
+            <a class="side-menu__item {{ request()->routeIs(['settings.index','social_links.index']) ? 'is-expanded active' : '' }}" data-bs-toggle="slide" href="javascript:void(0)"><i
+                    class="side-menu__icon fe fe-settings"></i><span
+                    class="side-menu__label">Survay</span><i
                     class="angle fe fe-chevron-right"></i></a>
-            <ul class="slide-menu">
-                <li class=""><a href="{{ route('social_links.index') }}" class="slide-item {{ request()->routeIs('social_links.index') ? 'active' : '' }}">SocialLinks</a></li>
-                <li class=""><a href="{{ route('social_links.create') }}" class="slide-item {{ request()->routeIs('social_links.create') ? 'active' : '' }}">Create Link</a></li>
+            <ul class="slide-menu {{ request()->routeIs(['survay.index','social_links.index']) ? 'open' : '' }}">
+                <li class=""><a href="{{ route('survay.index') }}" class="slide-item {{ request()->routeIs('survay.index') ? 'active' : '' }}">User Survay Question</a></li> 
             </ul>
         </li> --}}
+        
 
     </ul>
     <div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191"
