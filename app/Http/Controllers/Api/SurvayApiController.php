@@ -29,7 +29,7 @@ class SurvayApiController extends Controller
 
     function survay_answer_api()
     {
-        $survay = SurvayAnswer::all();
+        $survay = SurvayAnswer::find(1);
 
         return response()->json($survay);
     }
@@ -49,7 +49,7 @@ class SurvayApiController extends Controller
         // if($valiodator->fails()){
         //     return response()->json($valiodator->errors(),401);
         // }else{
-            $survay = new SurvayAnswer();
+            $survay = SurvayAnswer::find(1);
             $survay->why_you_joined_nepGov = $request->why_you_joined_nepGov;
             $survay->which_political_party_do_you_support = $request->which_political_party_do_you_support;
             $survay->what_is_your_ethnicity = $request->what_is_your_ethnicity;
