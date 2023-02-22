@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('clear-cache', function(){
     Artisan::call('cache:clear');
+    return redirect('/dashboard');
 });
 
 Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
