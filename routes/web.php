@@ -15,8 +15,12 @@ use App\Http\Controllers\backend\{
 use App\Http\Controllers\GroupUserController;
 use App\Http\Controllers\NormalVotingController;
 use App\Http\Controllers\SurvayQuestionController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 
+Route::get('clear-cache', function(){
+    Artisan::call('cache:clear');
+});
 
 Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
 Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post'); 
