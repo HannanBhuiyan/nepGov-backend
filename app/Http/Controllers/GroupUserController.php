@@ -80,9 +80,13 @@ class GroupUserController extends Controller
     public function sendMailToUsers(Request $request)
     {
  
-        // return $request;
+        // return $request->allEmails;
+        $request->validate([
+            'allEmails' => 'required'
+        ],[
+            'allEmails.required' => 'Please Select a Group First'
+        ]);
         foreach($request->allEmails as $email){
-            
             Mail::to($email)->send(new EmailOffer($request->slug));
         }
         return back()->with('mail sent');
