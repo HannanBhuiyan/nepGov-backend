@@ -34,7 +34,7 @@
                </div>
             </div>
             <div class="table-responsive">
-                <table class="table table-bordered text-nowrap text-center border-bottom" id="basic-datatable">
+                <table class="table table-bordered text-nowrap text-center border-bottom" id="">
                     <thead>
                     <tr>
                         <th scope="col">SL No</th>
@@ -63,7 +63,7 @@
                                         @if (!$loop->last) <hr> @endif
                                     {{-- </li> --}}
                                
-                                    <!-- Modal view-->
+                                    <!-- Modal sub cateogry view-->
                                     @push('modals')
                                         <div class="modal fade" id="Modalview__{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="Modal__{{$item->id}}" aria-hidden="true">
                                             <div class="modal-dialog modal-lg" role="document">
@@ -137,7 +137,7 @@
                                                                              
                                                                                  function drawChart() { 
                                                                                      var data = google.visualization.arrayToDataTable([
-                                                                                         ['Task', 'Hours per Day'],
+                                                                                         ['Topic', 'Question with Vote'],
                                                                                          <?php
                                                                                              foreach($charts as $chart){
                                                                                                  echo $chart;
@@ -189,6 +189,17 @@
                                         </div>
                                     @endpush
 
+                                    // <script>
+                                    //     $(document).ready(function(){
+                                    //     var table = $('#example').DataTable();
+ 
+                                    //     new $.fn.dataTable.Buttons( table, {
+                                    //         buttons: [
+                                    //             'copy', 'excel', 'pdf'
+                                    //         ]
+                                    //     } );
+                                    // </script>
+
                                     <!-- sub cat Modal edit -->
                                     @push('modals')
                                         <div class="modal fade" id="Modalsubedit__{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="Modal__{{$item->id}}" aria-hidden="true">
@@ -220,16 +231,6 @@
                                                                             <label> Need Registration ?</label>
                                                                         </div> 
                                                         
-                                                                        {{-- <div class="form-group">
-                                                                            <label>Status<span class="text-danger">*</span></label>
-                                                                            <select name="status" class="form-control">
-                                                                                <option value="normal" {{$item->status == 'normal' ? 'selected' : ''}}>Normal</option>   
-                                                                                <option value="live" {{$item->status == 'live' ? 'selected' : ''}}>Live</option>   
-                                                                            </select>
-                                                                            @error('status')
-                                                                                <span class="text-danger mt-1">{{ $message }}</span>
-                                                                            @enderror
-                                                                        </div> --}}
                                                                         <div class="form-group">
                                                                         @php
                                                                             $selected_country = json_decode($item->country);
@@ -427,7 +428,7 @@
     </div>
 </div>
 
-<!-- Modal Sub Category-->
+<!-- Modal add Sub Category-->
 <div class="modal fade" id="addsubcategorymodal_02"  aria-labelledby="addsubcategorymodal_02" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content pb-5">
@@ -704,11 +705,24 @@
     <script>
         $(document).ready(function(){
             var table = $('#example').DataTable( {
-                
+
                 buttons: [
-                    'excel', 'pdf'
+                    {
+                        extend: 'excelHtml5',
+                        exportOptions: {
+                            columns: ':visible'
+                        }
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        exportOptions: {
+                            columns: ':visible'
+                        }
+                    },
+                    
                 ]
             } );
+
 
             table.buttons().container()
             .appendTo('#example_wrapper .col-md-6:eq(0)')

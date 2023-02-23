@@ -98,18 +98,26 @@ class NormalReviewApiController extends Controller
 
     public function normalTopicPost(Request $request){
         
-        // return 'ok';
-        $datas = $request->except('_token');
-        
-        foreach($datas as $key=>$value){ 
-            NormalVotingCount::insert([
-              'topic_id' => $key,
-              'status' => $value, 
-              'created_at' => Carbon::now(),
-            ]);
-        }
+        return 'ok';
+        $datas = $request->except('_token'); 
+ 
+        // foreach($datas as $key=>$value){ 
+        //     NormalVotingCount::insert([
+        //       'topic_id' => $key,
+        //       'status' => $value, 
+        //       'created_at' => Carbon::now(),
+        //     ]);
+        // }
 
-        // return response()->json(['success' => 'ok']);
+        NormalVotingCount::insert([
+            'topic_id' => $request->topic_id,
+            'status' => $request->status, 
+            'created_at' => Carbon::now(),
+          ]);
+
+        return response()->json(['success' => 'ok']);
+        die();
+        //   response()->json(['success' => 'ok']);
 
         $ss = DB::table('normal_voting_counts')->get();
         $asd = collect($ss)->groupBy("topic_id");

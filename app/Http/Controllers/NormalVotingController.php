@@ -116,11 +116,13 @@ class NormalVotingController extends Controller
         return view('normalVotingTest', compact('polling','single_normal_topic'));
     }
 
-    public function normar_poling_post(Request $req)
+    public function normar_poling_post(Request $request)
     {   
-        // return 'ok';
-        $datas = $req->except('_token');
+         
 
+
+        $datas = $request->except('_token');
+    //  return $datas;
         foreach($datas as $key=>$value){ 
             // return $key;
             NormalVotingCount::insert([

@@ -54,14 +54,23 @@ class NewsApiController extends Controller
         if($valiodator->fails()){
             return response()->json($valiodator->errors(),401);
         }else{
-            $image = $request->file('feature_image');
-            $imag_ext = $image->getClientOriginalExtension();
-    
-            $hexCode = hexdec(uniqid());
-            $full_name = $hexCode.'.'.$imag_ext;
-            $upload_location = 'backend/assets/uploads/news/';
-            $last_image = $upload_location.$full_name;
-            Image::make($image)->resize(300, 300)->save($last_image);
+            if($request->hasFile('feature_image'))
+            {
+                $feature_image    = $request->file('feature_image');
+                $ext      = uniqid() . '.' . $feature_image->getClientOriginalExtension();
+                $location = 'backend/assets/uploads/news/';
+                $final_image = $location.$ext;
+                $feature_image->move( $location, $ext);
+            }
+
+            if($request->hasFile('image'))
+            {
+                $image    = $request->file('image');
+                $imag_ext      = uniqid() . '.' . $image->getClientOriginalExtension();
+                $location = 'backend/assets/uploads/news/';
+                $last_image = $location.$imag_ext;
+                $image->move( $location, $imag_ext);
+            }
             
             $data = new News;
 
@@ -69,7 +78,8 @@ class NewsApiController extends Controller
             $data->category_name = $cat_name->title;
             $data->title = $request->title;
             $data->slug = $request->slug;
-            $data->feature_image = $last_image;
+            $data->feature_image = $final_image;
+            $data->image = $last_image;
             $data->description = $request->description;
             $data->seo_title = $request->seo_title;
             $data->seo_desc = $request->seo_desc;
@@ -125,17 +135,26 @@ class NewsApiController extends Controller
             $data->seo_title = $request->seo_title;
             $data->seo_desc = $request->seo_desc;
 
-            if($request->hasFile('feature_image')){
-                $image = $request->file('feature_image');
-                $imag_ext = $image->getClientOriginalExtension();
-        
-                $hexCode = hexdec(uniqid());
-                $full_name = $hexCode.'.'.$imag_ext;
-                $upload_location = 'backend/assets/uploads/news/';
-                $last_image = $upload_location.$full_name;
-                Image::make($image)->resize(300, 300)->save($last_image);
-                
-                $data->feature_image = $last_image;
+            if($request->hasFile('feature_image'))
+            {
+                $feature_image    = $request->file('feature_image');
+                $ext      = uniqid() . '.' . $feature_image->getClientOriginalExtension();
+                $location = 'backend/assets/uploads/news/';
+                $final_image = $location.$ext;
+                $feature_image->move( $location, $ext);
+
+                $data->feature_image = $final_image;
+            }
+
+            if($request->hasFile('image'))
+            {
+                $image    = $request->file('image');
+                $imag_ext      = uniqid() . '.' . $image->getClientOriginalExtension();
+                $location = 'backend/assets/uploads/news/';
+                $last_image = $location.$imag_ext;
+                $image->move( $location, $imag_ext);
+
+                $data->image = $last_image;
             }
 
             $data->save();

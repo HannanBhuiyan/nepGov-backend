@@ -168,9 +168,27 @@
 <script>
     $(document).ready(function(){
         var table = $('#example').DataTable( {
-            // dom: 'Bfrtip',
+            // "dom": 'C<"clear">lfrtip',
             buttons: [
-                 'excel', 'pdf'
+                 {
+                    extend: 'copyHtml5',
+                    exportOptions: {
+                        columns: [ 0, ':visible' ]
+                    }
+                },
+                {
+                    extend: 'excelHtml5',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'pdfHtml5',
+                    exportOptions: {
+                        columns: [ 1, 2,3,4,5,6 ]
+                    }
+                },
+                
             ]
         } );
 

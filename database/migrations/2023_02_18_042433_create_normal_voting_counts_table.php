@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('normal_voting_counts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('topic_id');
-            $table->string('status');
+            $table->integer('status');
             $table->timestamps();
         });
     }
