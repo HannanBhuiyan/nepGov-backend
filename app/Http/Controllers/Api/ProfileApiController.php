@@ -39,22 +39,13 @@ class ProfileApiController extends Controller
 
     public function edit_profile_api(Request $request)
     {
-        $user = User::findOrFail(Auth::id());
-       
-        // if($request->hasFile('image'))
-        // {
-        //     $image    = $request->file('image');
-        //     $ext      = uniqid() . '.' . $image->getClientOriginalExtension();
-        //     $location = public_path('backend/assets/uploads/profile/');
-        //     $filename = $location.$ext;
-        //     $image->move( $location, $ext);
-        // }
+        // return 'ok';
+        $user = User::findOrFail(1);
 
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
         $user->username = $request->username;
-        // $user->image = $filename;
-        $user->email = $request->email;
+        // $user->email = $request->email;
         $user->street = $request->street;
         $user->city = $request->city;
         $user->state = $request->state;
