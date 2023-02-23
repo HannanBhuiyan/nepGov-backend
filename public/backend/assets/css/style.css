@@ -16568,8 +16568,8 @@ table.table-bordered.dataTable thead tr:first-child td {
 }
 
 .dt-buttons.btn-group {
-    position: absolute;
-    top: -5;
+    /* position: absolute;
+    top: 0; */
     left: 185px;
 }
 
