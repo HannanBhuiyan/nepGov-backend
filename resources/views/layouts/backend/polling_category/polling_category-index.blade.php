@@ -73,7 +73,7 @@
                                                     </div>
                                                     <div class="modal-body">
                                                         <h3>{{Str::upper($item->name)}} Details</h3>
-                                                        <table class="table table-bordered border-width-3">
+                                                        <table class="table table-bordered border-width-3" id="example">
                                                             <tr>
                                                                 <th> Name</th>
                                                                 <td>{{ $item->name }}</td>
@@ -700,4 +700,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
     <script src="//g.tutorialjinni.com/mojoaxel/bootstrap-select-country/dist/js/bootstrap-select-country.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            var table = $('#example').DataTable( {
+                
+                buttons: [
+                    'excel', 'pdf'
+                ]
+            } );
+
+            table.buttons().container()
+            .appendTo('#example_wrapper .col-md-6:eq(0)')
+
+        });
+    </script>
 @endsection

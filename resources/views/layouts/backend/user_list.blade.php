@@ -8,9 +8,6 @@
     .groupBtn{
         width: 120px; 
     }
-    .dt-buttons {
-        color: red
-    }
 </style>
 <div class="row mt-5">
     <div class="col-md-12 m-auto">
@@ -179,8 +176,6 @@
 
         table.buttons().container()
         .appendTo('#example_wrapper .col-md-6:eq(0)')
-
-        // $('#down_btn').append(table.buttons())
 
     });
 </script>
