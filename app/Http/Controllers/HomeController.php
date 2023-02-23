@@ -7,13 +7,14 @@ use App\Models\News;
 use App\Models\User;
 use App\Models\Crime;
 use App\Mail\EmailOffer;
+use Barryvdh\DomPDF\Facade\Pdf;
+use App\Models\UserGroup;
 use App\Models\NormalReview;
 use App\Models\NormalVoting;
 use Illuminate\Http\Request;
+use App\Models\PollingReview;
 use App\Models\PollingCategory;
 use App\Models\PollingQuestion;
-use App\Models\PollingReview;
-use App\Models\UserGroup;
 use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
@@ -73,9 +74,9 @@ class HomeController extends Controller
     public function users_list()
     {
         $user_groups = UserGroup::all();
-        $users = User::all();
+        $users = User::latest()->paginate(10);
         $categories = PollingCategory::all();
-        return view('layouts.backend.user_list',compact('users','user_groups', 'categories'));
+        return view('layouts.backend.user_list' ,compact('users','user_groups', 'categories'));
     }
 
     public function delete($id)
@@ -84,14 +85,16 @@ class HomeController extends Controller
         return redirect()->route('user.index')->with('fail', 'User delete success');
     }
 
-    // public function multi_email_offer(Request $request)
-    // {
-       
-    //     foreach ($request->check as $id) {
-    //         Mail::to(User::find($id)->email)->send(new EmailOffer());
-    //     }
-    //     return back()->with('success','mail send success');
-    // }
+    public function download_users(Request $request)
+    {
+        $users = User::latest()->paginate(10);
+        // return view('layouts.backend.download.users',compact('users'));
+        $pdf = PDF::loadView('layouts.backend.download.users',compact('users'));
+        return $pdf->download('users.pdf');
+        // return back();
+    }
+
+    
 }
 
 

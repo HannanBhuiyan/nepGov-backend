@@ -16,7 +16,7 @@
 <!-- ROW-1 -->
 <div class="row">
     <div class="col-sm-6 col-xl-4 col-md-6 col-lg-4">
-        <a href="{{ route('month_wise_voting_count') }}">Count Vote</a>
+        {{-- <a href="{{ route('month_wise_voting_count') }}">Count Vote</a> --}}
         <div class="card overflow-hidden">
             <div class="card-body text-center">
                 <h6 class=""><span class="text-secondary"><i class="fe fe-users mx-2 fs-20 text-secondary-shadow"></i></span>Users</h6>

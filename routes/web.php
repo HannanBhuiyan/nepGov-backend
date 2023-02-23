@@ -91,3 +91,8 @@ Route::get('survay', [SurvayController::class, 'index'])->name('survay.index');
 Route::post('survay/question/store', [SurvayController::class, 'store'])->name('survay_question.store');
 Route::put('survay/question/update/{id}', [SurvayController::class, 'update'])->name('survay_question.update');
 Route::get('survay/question/delete/{id}', [SurvayController::class, 'delete'])->name('survay_question.delete');
+
+
+// download pdf 
+
+Route::get('download/users', [HomeController::class, 'download_users'])->name('download.user.pdf');

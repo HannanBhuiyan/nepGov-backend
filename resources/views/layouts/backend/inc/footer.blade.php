@@ -252,6 +252,17 @@
     
 </script>
 
+{{-- <script>
+    $(document).ready(function() {
+        $('#basic-datatable').DataTable( {
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ]
+        } );
+    } );
+</script> --}}
+
 @yield('scripts')
 
 </body>

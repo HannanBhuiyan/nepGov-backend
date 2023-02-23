@@ -118,10 +118,11 @@ class NormalVotingController extends Controller
 
     public function normar_poling_post(Request $req)
     {   
-
+        // return 'ok';
         $datas = $req->except('_token');
 
         foreach($datas as $key=>$value){ 
+            // return $key;
             NormalVotingCount::insert([
               'topic_id' => $key,
               'status' => $value, 

@@ -1,18 +1,22 @@
 @extends('layouts.backend.backend-app')
 
+@section('links')
+    
+@endsection
 @section('content')
 <style>
     .groupBtn{
-        width: 120px;
+        width: 120px; 
     }
 </style>
 <div class="row mt-5">
     <div class="col-md-12 m-auto">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item active">Users</li> 
+              <li class="breadcrumb-item active">Users</li>  
             </ol>
         </nav>
+        
         <form action="{{route('assign_users_group')}}" method="POST">
             @csrf
             <div class="card p-3 mt-4"> 
@@ -21,7 +25,7 @@
                         <h3>Users List</h3>
                    </div>
                 </div>
-                <table class="text-center table table-bordered text-nowrap border-bottom" id="basic-datatable" >
+                <table class="text-center table table-bordered text-nowrap border-bottom" id="example" >
                     <thead>
                       <tr>
                         <th scope="col">SL NO</th>
@@ -152,10 +156,27 @@
             </div>
         </div>
     </form>
+
+    <button></button>
+    
 @endpush
 
 @endsection
 
 @section('scripts')
+<script>
+    $(document).ready(function(){
+        var table = $('#example').DataTable( {
+            // dom: 'Bfrtip',
+            buttons: [
+                 'excel', 'pdf'
+            ]
+        } );
+
+        table.buttons().container()
+        .appendTo('#example_wrapper .col-md-6:eq(0)')
+
+    });
+</script>
     
 @endsection

@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers\Api;
 
+use Carbon\Carbon;
+use Illuminate\Support\Arr;
+use App\Models\NormalOption;
 use App\Models\NormalReview;
+use App\Models\NormalVoting;
 use Illuminate\Http\Request;
 use App\Models\PollingNormal;
+use App\Models\PollingCategory;
+use App\Models\NormalVotingCount;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
-use App\Models\NormalOption;
-use App\Models\NormalVoting;
-use App\Models\PollingCategory;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
@@ -75,7 +77,7 @@ class NormalReviewApiController extends Controller
     }
 
     public function all_normal_voting(){
-        // return 'ok';
+        
         $normals = NormalVoting::latest()->get();
         return response()->json($normals);
     }
@@ -87,7 +89,7 @@ class NormalReviewApiController extends Controller
 
     public function normal_topic($categorySlug){
       
-        $polling =   PollingCategory::where('slug',$categorySlug)->first();
+       $polling =   PollingCategory::where('slug',$categorySlug)->first();
        
         $single_normal_topic = NormalVoting::where('category_id', $polling->id)->get();
       
@@ -95,6 +97,73 @@ class NormalReviewApiController extends Controller
     }
 
     public function normalTopicPost(Request $request){
-        return $request->all();
+        
+        // return 'ok';
+        $datas = $request->except('_token');
+        
+        foreach($datas as $key=>$value){ 
+            NormalVotingCount::insert([
+              'topic_id' => $key,
+              'status' => $value, 
+              'created_at' => Carbon::now(),
+            ]);
+        }
+
+        // return response()->json(['success' => 'ok']);
+
+        $ss = DB::table('normal_voting_counts')->get();
+        $asd = collect($ss)->groupBy("topic_id");
+
+        foreach($asd as $key=>$bsd){
+            $result = DB::table('normal_voting_counts') 
+            ->select(DB::raw('count(*) as count, status'))
+            ->where('topic_id',$key)
+            ->whereMonth('created_at',Carbon::today()->month)
+            ->groupBy('status')
+            ->get(); 
+            foreach($result as $res){
+                if($res->status == 0) {
+                    $normalVote = NormalVoting::where('id',$key)->first('option_one_count');
+                    $option_one = json_decode($normalVote->option_one_count);
+                    $k =[...$option_one];
+                        if(isset($k[Carbon::today()->month-1])){
+                            $k[Carbon::today()->month-1]=$result[1]->count ?? 0;
+                            NormalVoting::where('id',$key)->update([ 
+                                "option_one_count"=>json_encode($k)
+                            ]);
+                        }else{
+                            $value = [$result[1]->count ?? 0];
+                            $option_one_append =[...$option_one,...$value];
+                            NormalVoting::where('id',$key)->update([ 
+                                "option_one_count"=>json_encode($option_one_append)
+                            ]);
+                        }
+                } 
+
+                else if($res->status == 1) {
+                    $normalVote = NormalVoting::where('id',$key)->first('option_two_count');
+                    $option_two = json_decode($normalVote->option_two_count);
+                    $k =[...$option_two];
+                        if(isset($k[Carbon::today()->month-1])){
+                            $k[Carbon::today()->month-1]=$result[0]->count ?? 0;
+                            NormalVoting::where('id',$key)->update([ 
+                                "option_two_count"=>json_encode($k)
+                            ]);
+                        }else{
+                            $value = [$result[0]->count ?? 0];
+                            $option_two_append =[...$option_two,...$value];
+                            NormalVoting::where('id',$key)->update([ 
+                                "option_two_count"=>json_encode($option_two_append)
+                            ]);
+                        }
+                }
+            }
     }
+        $data = [
+            "msg"=> "Successfully submited data",
+            "status"=>200
+        ];
+        return response()->json($data);
+    }
+   
 }
