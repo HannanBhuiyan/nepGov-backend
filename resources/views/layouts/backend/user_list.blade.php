@@ -8,6 +8,9 @@
     .groupBtn{
         width: 120px; 
     }
+    .dt-buttons {
+        color: red
+    }
 </style>
 <div class="row mt-5">
     <div class="col-md-12 m-auto">
@@ -23,6 +26,7 @@
                 <div class="category_title my-3 d-flex justify-content-between">
                    <div class="left">
                         <h3>Users List</h3>
+                        <div id="down_btn"></div>
                    </div>
                 </div>
                 <table class="text-center table table-bordered text-nowrap border-bottom" id="example" >
@@ -175,6 +179,8 @@
 
         table.buttons().container()
         .appendTo('#example_wrapper .col-md-6:eq(0)')
+
+        // $('#down_btn').append(table.buttons())
 
     });
 </script>

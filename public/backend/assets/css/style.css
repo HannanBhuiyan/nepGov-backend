@@ -16569,8 +16569,8 @@ table.table-bordered.dataTable thead tr:first-child td {
 
 .dt-buttons.btn-group {
     position: absolute;
-    top: 0;
-    left: 156px;
+    top: -5;
+    left: 185px;
 }
 
 .notify-time {

@@ -25,7 +25,7 @@ class ProfileApiController extends Controller
         {
             $image    = $request->file('image');
             $ext      = uniqid() . '.' . $image->getClientOriginalExtension();
-            $location = public_path('backend/assets/uploads/profile/');
+            $location = 'backend/assets/uploads/profile/';
             $filename = $location.$ext;
             $image->move( $location, $ext);
         }
