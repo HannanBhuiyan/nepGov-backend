@@ -89,7 +89,7 @@ class NormalReviewApiController extends Controller
 
     public function normal_topic($categorySlug){
       
-       $polling =   PollingCategory::where('slug',$categorySlug)->first();
+       $polling =   PollingCategory::where('slug', $categorySlug)->first();
        
         $single_normal_topic = NormalVoting::where('category_id', $polling->id)->get();
       
