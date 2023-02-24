@@ -156,8 +156,7 @@ Route::middleware('auth:sanctum')->group( function () {
 
 
 // crime route
-Route::post('crime',[ CrimeApiController::class, 'crime_store']);
-Route::put('crime',[ CrimeApiController::class, 'crime_update']);
+
 
 });
 
@@ -179,7 +178,9 @@ Route::get('related/category/news/{slug}', [NewsApiController::class, 'related_c
 
 
 // crime route
-Route::apiResource('crime', CrimeApiController::class);
+Route::get('crime', [CrimeApiController::class, 'index']);
+Route::post('crime',[ CrimeApiController::class, 'store']);
+// Route::put('crime',[ CrimeApiController::class, 'update']);
 
 // crime Extra Question route
 Route::apiResource('crime_question', CrimeQuestionApiController::class);

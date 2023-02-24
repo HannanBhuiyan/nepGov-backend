@@ -26,7 +26,7 @@ return new class extends Migration
             $table->text('criminal_contact_details')->nullable();
             $table->string('has_vehicle')->nullable();
             $table->string('has_weapon')->nullable();
-            $table->integer('user_id');
+            $table->integer('user_id')->nullable();
             $table->integer('keep_user_in_contact')->nullable();
             $table->boolean('agreement')->default(false);
             $table->json('extra_info')->nullable();
