@@ -62,15 +62,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // get and post method for crime
 // http://127.0.0.1:8000/api/crime
 
-// put method
-// http://127.0.0.1:8000/api/crime/{id}
-
-
 // get and post method for crime question
 // http://127.0.0.1:8000/api/crime_question
-
-// put method
-// http://127.0.0.1:8000/api/crime_question/{id}
 
 
 // get and post method for page
@@ -95,9 +88,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // get and post method
 // http://127.0.0.1:8000/api/polling_category
-
-// put method
-// http://127.0.0.1:8000/api/polling_category/{id}
 
 // get and post method
 // http://127.0.0.1:8000/api/polling_question
@@ -146,17 +136,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // (email, password, password_confirmation, token)
 
 
-// Route::group([ 'middleware' => 'api', 'prefix' => 'auth'], function ($router) {
-//     Route::post('/login', [AuthController::class, 'login']);
-//     Route::post('/register', [AuthController::class, 'register']);
-//     Route::post('/logout', [AuthController::class, 'logout'])->name("api.logout");
-//     Route::post('/refresh', [AuthController::class, 'refresh']);
-//     Route::get('/profile', [AuthController::class, 'userProfile']);  
-// });
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
 
 Route::get('/user', function (Request $request) {
     return User::all();

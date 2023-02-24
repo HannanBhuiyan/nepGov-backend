@@ -54,7 +54,6 @@ class CrimeApiController extends Controller
             'has_vehicle' => 'required',
             'has_weapon' => 'required',
             'keep_user_in_contact' => 'required',
-            'agreement' => 'required',
         );
 
         $valiodator = Validator::make($request->all(), $rules);
@@ -74,8 +73,8 @@ class CrimeApiController extends Controller
             $crime->criminal_contact_details = $request->criminal_contact_details;
             $crime->has_vehicle = $request->has_vehicle;
             $crime->has_weapon = $request->has_weapon;
-            $crime->user_id = 1;
-            // $crime->user_id = Auth::id();
+            // $crime->user_id = 1;
+            $crime->user_id = Auth::id();
             $crime->keep_user_in_contact = $request->keep_user_in_contact;
             $crime->agreement = $request->agreement == 'on' ? 1 : 0;
             $crime->extra_info = json_encode($request->extra_info);
