@@ -15,7 +15,7 @@ class PollingReviewApiController extends Controller
 {
     public function store(Request $request)
     {
-
+        // return 'ok';
         $MAC = exec('getmac'); 
         $MAC = strtok($MAC, ' '); 
 
@@ -37,6 +37,7 @@ class PollingReviewApiController extends Controller
             $review->ip_address = $request->ip();
             $review->mac_id = $MAC;
             $review->save();
+            
             $review_id = $review->id;
             $IP = $request->ip();
             return $this->abc($review_id, $IP);
