@@ -153,6 +153,12 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::post('/profile/image', [ProfileApiController::class, 'update_image_api']);
     Route::post('/profile/password/change', [ProfileApiController::class, 'profile_password_change_api']);
     Route::post('/profile/edit', [ProfileApiController::class, 'edit_profile_api']);
+
+
+// crime route
+Route::post('crime',[ CrimeApiController::class, 'crime_store']);
+Route::put('crime',[ CrimeApiController::class, 'crime_update']);
+
 });
 
 Route::post('forgot-password', [ForgotPasswordController::class, 'forgotPassword']);

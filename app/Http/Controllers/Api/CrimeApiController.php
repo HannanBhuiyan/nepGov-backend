@@ -38,7 +38,7 @@ class CrimeApiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function crime_store(Request $request)
     {
         // return $request->extra_info;
         // return $req = json_decode($request->extra_info,true);
@@ -116,7 +116,7 @@ class CrimeApiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function crime_update(Request $request, $id)
     {
         $crime = Crime::findOrFail($id);
 
