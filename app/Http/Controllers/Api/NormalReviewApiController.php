@@ -114,15 +114,15 @@ class NormalReviewApiController extends Controller
             ]);
         }
 
-        
+
         // NormalVotingCount::insert([
         //     'topic_id' => $request->topic_id,
         //     'status' => $request->status, 
         //     'created_at' => Carbon::now(),
         //   ]);
 
-        return response()->json(['success' => 'ok']);
-        die();
+        // return response()->json(['success' => 'ok']);
+        // die();
         //   response()->json(['success' => 'ok']);
 
         $ss = DB::table('normal_voting_counts')->get();
