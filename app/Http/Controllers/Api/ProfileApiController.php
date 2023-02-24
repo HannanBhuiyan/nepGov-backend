@@ -40,7 +40,8 @@ class ProfileApiController extends Controller
     public function edit_profile_api(Request $request)
     {
         // return 'ok';
-        $user = User::findOrFail(1);
+        // return Auth::id();
+        $user = User::findOrFail(Auth::id());
 
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
