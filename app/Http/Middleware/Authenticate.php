@@ -22,20 +22,4 @@ class Authenticate extends Middleware
         }
     }
 
-    // public function handle($request, Closure $next, ...$guards): Response
-    // {
-    //     try {
-    //         $this->authenticate($request, $guards);
-    //     } catch (AuthenticationException $e) {
-    //         if (!$request->wantsJson()) {
-    //             throw $e;
-    //         }
-
-    //         if ($response = $this->auth->onceBasic()) {
-    //             return $response;
-    //         }
-    //     }
-
-    //     return $next($request);
-    // }
 }

@@ -86,17 +86,6 @@ class CrimeController extends Controller
 
         $crime->save();
         
-        // $c = CrimeQuestion::where('crime_type', $request->crime_type)->get();
-
-        // $cr = Crime::findOrFail($crime->id);
-        
-        // foreach($c as $a){
-        //     echo $a;
-        // };
-        // $cr->update([
-        //     'extra_info' => json_encode($json_field)
-        // ]);
-        // die();
         return redirect()->route('crime.index')->with('success', 'Crime create success');
     }
 

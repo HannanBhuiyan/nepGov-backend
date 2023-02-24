@@ -26,43 +26,9 @@ class WebsiteApiController extends Controller
     }
 
     public function store(Request $request)
-    {
-        // $rules = array(
-        //     'favicon' => 'required|image',
-        //     'logo_header' => 'required|image',
-        //     'logo_footer' => 'required|image'
-        // );
-        
-        // $valiodator = Validator::make($request->all(), $rules);
-        // if($valiodator->fails()){
-        //     return response()->json($valiodator->errors(),401);
-        // }else{
-        //     //For Favicon
-        //     $fav_image = $request->file('favicon');
-        //     $fav_final_image = $this->image_settings($fav_image);
-    
-        //     //For Header Logo
-        //     $header_image = $request->file('logo_header');
-        //     $header_final_image = $this->image_settings($header_image);
-    
-        //     //For Footer Logo
-        //     $footer_image = $request->file('logo_footer');
-        //     $footer_final_image = $this->image_settings($footer_image);
-    
-        //     //Save All data
-        //     $items = new Website;
-        //     $items->seo_title = $request->seo_title;
-        //     $items->seo_description = $request->seo_description;
-        //     $items->seo_keywords = $request->seo_keywords;
-        //     $items->favicon = $fav_final_image ;
-        //     $items->logo_header =  $header_final_image;
-        //     $items->logo_footer = $footer_final_image;
-        //     $items->save();
+   {
 
-        //     return ['success'=>'Website Create Success'];
-        // }
-
-    }
+   }
 
     public function show($id)
     {
@@ -123,8 +89,7 @@ class WebsiteApiController extends Controller
 
     public function destroy($id)
     {
-        // Website::findOrFail($id)->delete();
-        // return ['success'=> 'Website Delete Success'];
+    
     }
 
 }

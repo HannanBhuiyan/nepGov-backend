@@ -39,24 +39,6 @@ class PollingQuestionApiController extends Controller
      */
     public function store(Request $request)
     {
-        
-        // $rules = array(
-        //     'polling_category_id' => 'required',
-        //     'question' => 'required',
-        //     'slug' => 'required'
-        // );
-        // $valiodator = Validator::make($request->all(), $rules);
-        // if($valiodator->fails()){
-        //     return response()->json($valiodator->errors(),401);
-        // }else{
-        //     $cat = new PollingQuestion();
-        //     $cat->polling_category_id = $request->polling_category_id;
-        //     $cat->slug = $request->slug;
-        //     $cat->question = $request->question;
-    
-        //     $cat->save();
-        //     return response()->json(['status'=>200, 'success'=>'Question Create Success']);
-        // }
 
     }
 
@@ -91,23 +73,7 @@ class PollingQuestionApiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $cat = PollingQuestion::findOrFail($id);
-        
-        $rules = array(
-            'polling_category_id' => 'required',
-            'question' => 'required'
-        );
-        $valiodator = Validator::make($request->all(), $rules);
-        if($valiodator->fails()){
-            return response()->json($valiodator->errors(),401);
-        }else{
-            $cat->polling_category_id = $request->polling_category_id;
-            $cat->question = $request->question;
-    
-            $cat->save();
-            return response()->json(['status'=>200, 'success'=>'Question Update Success']);
-
-        }
+       
     }
 
     /**

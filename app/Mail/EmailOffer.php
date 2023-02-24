@@ -33,7 +33,7 @@ class EmailOffer extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Email Offer',
+            subject: 'Your Opinion with NepGov',
         );
     }
 

@@ -18,27 +18,6 @@ class SocialLinkApiController extends Controller
     public function store(Request $request)
     {
 
-        // $rules = array( 
-        //     "facebook" => 'nullable|url',
-        //     "twitter" => 'nullable|url',
-        //     "instagram" => 'nullable|url',
-        //     "linkedin" => 'nullable|url',
-        //     "youtube" => 'nullable|url', 
-        // );
-
-        // $valiodator = Validator::make($request->all(), $rules);
-        // if($valiodator->fails()){
-        //     return response()->json($valiodator->errors(),401);
-        // }else{
-        //     $socialurl = new SocialLinks;
-        //     $socialurl->facebook = $request->facebook;
-        //     $socialurl->twitter = $request->twitter;
-        //     $socialurl->instagram = $request->instagram;
-        //     $socialurl->linkedin = $request->linkedin;
-        //     $socialurl->youtube = $request->youtube;
-        //     $socialurl->save();
-        //     return ['success', 'SocialLink Create Success'];
-        // }
     }
 
     public function update(Request $request, $id)
@@ -69,7 +48,6 @@ class SocialLinkApiController extends Controller
 
     public function destroy($id)
     {
-        // SocialLinks::findOrFail($id)->delete();
-        // return ['success', 'SocialLink Delete Success'];
+
     }
 }

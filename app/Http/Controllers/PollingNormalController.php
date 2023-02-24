@@ -133,7 +133,7 @@ class PollingNormalController extends Controller
         foreach($norm_opt as $opt){
             $opt->delete();
         }
-// return $request->option;
+
         if($request->option){
             foreach($request->option as $key=>$optn){
                 NormalOption::insert([
@@ -157,9 +157,6 @@ class PollingNormalController extends Controller
         PollingNormal::findOrFail($id)->delete();
         return redirect()->route('polling_normal.index')->with('success', 'Normal Topic delete success');
         
-    }
-
-
-   
+    } 
 
 }

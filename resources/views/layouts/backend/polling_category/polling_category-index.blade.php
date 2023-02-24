@@ -189,16 +189,33 @@
                                         </div>
                                     @endpush
 
-                                    // <script>
-                                    //     $(document).ready(function(){
-                                    //     var table = $('#example').DataTable();
- 
-                                    //     new $.fn.dataTable.Buttons( table, {
-                                    //         buttons: [
-                                    //             'copy', 'excel', 'pdf'
-                                    //         ]
-                                    //     } );
-                                    // </script>
+                                    <script>
+                                        $(document).ready(function(){
+                                            var table = $('#example').DataTable( {
+
+                                                buttons: [
+                                                    {
+                                                        extend: 'excelHtml5',
+                                                        exportOptions: {
+                                                            columns: ':visible'
+                                                        }
+                                                    },
+                                                    {
+                                                        extend: 'pdfHtml5',
+                                                        exportOptions: {
+                                                            columns: ':visible'
+                                                        }
+                                                    },
+                                                    
+                                                ]
+                                            } );
+
+
+                                            table.buttons().container()
+                                            .appendTo('#example_wrapper .col-md-6:eq(0)')
+
+                                        });
+                                    </script>
 
                                     <!-- sub cat Modal edit -->
                                     @push('modals')
@@ -577,11 +594,6 @@
 
 @endsection
 
-@section('google-pie-chart-js')
-    
-
-@endsection
-
 
 @section('scripts')
     <script type="text/javascript"> 
@@ -704,7 +716,7 @@
 
     <script>
         $(document).ready(function(){
-            var table = $('#example').DataTable( {
+            var table = $('#').DataTable( {
 
                 buttons: [
                     {
@@ -724,8 +736,8 @@
             } );
 
 
-            table.buttons().container()
-            .appendTo('#example_wrapper .col-md-6:eq(0)')
+            // table.buttons().container()
+            // .appendTo('#example_wrapper .col-md-6:eq(0)')
 
         });
     </script>

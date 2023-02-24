@@ -119,10 +119,8 @@ class NormalVotingController extends Controller
     public function normar_poling_post(Request $request)
     {   
          
-
-
         $datas = $request->except('_token');
-    //  return $datas;
+    
         foreach($datas as $key=>$value){ 
             // return $key;
             NormalVotingCount::insert([
@@ -137,10 +135,6 @@ class NormalVotingController extends Controller
 
     public function month_wise_voting_count()
     {
-
-   
-        // return Carbon::today()->month;
-    //    return NormalVoting::whereMonth('created_at',Carbon::today()->month)->get();
 
         $ss = DB::table('normal_voting_counts')->get();
         $asd = collect($ss)->groupBy("topic_id");
@@ -194,38 +188,6 @@ class NormalVotingController extends Controller
 
             // print_r($res);
         }
-
-        
-
-        // return $asd;
-
-          
-        
-
-
-//         SELECT cate_id, SUM(total_cost)
-// FROM purchase            
-// GROUP BY cate_id;
-
-
-        // $user_info = DB::table('normal_voting_counts')
-        //         ->select('topic_id', DB::raw('count(status) as Approve' ) )   
-        //         ->Sum(Case When Upgraded = 1 Then 1 Else 0 End) As CountUpgraded
-        //         ->get();
-
-        // echo $user_info;
-
-
-        // $data ->select(DB::raw('count(id) as `data`'),DB::raw('YEAR(created_at) year, MONTH(created_at) month'))
-        //    ->groupby('year','month')
-        //    ->get();
-
- 
-
-        // foreach($user_info as $value){
-        //     $disappcount = NormalVotingCount::where('topic_id', $value->topic_id)->where('status', 0)->count();
-        //     echo $disappcount . "<br>";
-        // }
  
     }
 
