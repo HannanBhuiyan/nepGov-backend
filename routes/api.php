@@ -155,8 +155,8 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::post('/profile/edit', [ProfileApiController::class, 'edit_profile_api']);
 
 
-// crime route
-
+// survay route
+Route::post('survay/answers/store', [SurvayApiController::class, 'survay_answer_store']);
 
 });
 
@@ -240,7 +240,7 @@ Route::post('normal/topic', [NormalReviewApiController::class, 'normalTopicPost'
 // servay questions api
 Route::get('survay/questions/', [SurvayApiController::class, 'survay_question_api']);
 Route::get('survay/answers/', [SurvayApiController::class, 'survay_answer_api']);
-Route::post('survay/answers/store', [SurvayApiController::class, 'survay_answer_store']);
+// Route::post('survay/answers/store', [SurvayApiController::class, 'survay_answer_store']);
 
 
  
