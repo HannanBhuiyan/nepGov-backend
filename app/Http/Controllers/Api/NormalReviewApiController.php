@@ -89,7 +89,7 @@ class NormalReviewApiController extends Controller
 
     public function normal_topic($categorySlug){
       
-        if(!$categorySlug){
+        if($categorySlug){
 
             $polling =   PollingCategory::where('slug', $categorySlug)->first();
             if($polling){
