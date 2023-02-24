@@ -234,8 +234,8 @@ Route::get('all/topics', [PollingCategoryApiController::class, 'all_topics']);
 
 
 // normal voting api
-Route::get('normal/topic/{slug}', [NormalReviewApiController::class, 'normal_topic']);
 Route::post('normal/topic', [NormalReviewApiController::class, 'normalTopicPost']);
+Route::get('normal/topic/{slug}', [NormalReviewApiController::class, 'normal_topic']);
 
 // servay questions api
 Route::get('survay/questions/', [SurvayApiController::class, 'survay_question_api']);

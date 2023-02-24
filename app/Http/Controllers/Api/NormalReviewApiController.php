@@ -90,8 +90,7 @@ class NormalReviewApiController extends Controller
     public function normal_topic($categorySlug){
       
         if($categorySlug){
-
-            $polling =   PollingCategory::where('slug', $categorySlug)->first();
+            $polling =   PollingCategory::where('slug',$categorySlug)->first();
             if($polling){
                 $single_normal_topic = NormalVoting::where('category_id', $polling->id)->get();
     
@@ -105,22 +104,22 @@ class NormalReviewApiController extends Controller
 
     public function normalTopicPost(Request $request){
         
-        return 'ok';
         $datas = $request->except('_token'); 
- 
-        // foreach($datas as $key=>$value){ 
-        //     NormalVotingCount::insert([
-        //       'topic_id' => $key,
-        //       'status' => $value, 
-        //       'created_at' => Carbon::now(),
-        //     ]);
-        // }
 
-        NormalVotingCount::insert([
-            'topic_id' => $request->topic_id,
-            'status' => $request->status, 
-            'created_at' => Carbon::now(),
-          ]);
+        foreach($datas as $key=>$value){ 
+            NormalVotingCount::insert([
+              'topic_id' => $value["topic_id"],
+              'status' => $value["status"], 
+              'created_at' => Carbon::now(),
+            ]);
+        }
+
+        
+        // NormalVotingCount::insert([
+        //     'topic_id' => $request->topic_id,
+        //     'status' => $request->status, 
+        //     'created_at' => Carbon::now(),
+        //   ]);
 
         return response()->json(['success' => 'ok']);
         die();
