@@ -49,8 +49,8 @@ class PollingReviewApiController extends Controller
 
         $poll_que_id=PollingReview::findOrFail($id)->question_id;
 
-        $MAC = exec('getmac'); 
-        $MAC = strtok($MAC, ' '); 
+        // $MAC = exec('getmac'); 
+        // $MAC = strtok($MAC, ' '); 
 
         $options = QuestionOption::where('question_id',$poll_que_id)->get();
 
