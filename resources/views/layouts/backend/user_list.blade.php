@@ -165,17 +165,11 @@
 @endsection
 
 @section('scripts')
-<script>
+{{-- <script>
     $(document).ready(function(){
         var table = $('#example').DataTable( {
-            // "dom": 'C<"clear">lfrtip',
+            
             buttons: [
-                 {
-                    extend: 'copyHtml5',
-                    exportOptions: {
-                        columns: [ 0, ':visible' ]
-                    }
-                },
                 {
                     extend: 'excelHtml5',
                     exportOptions: {
@@ -196,6 +190,6 @@
         .appendTo('#example_wrapper .col-md-6:eq(0)')
 
     });
-</script>
+</script> --}}
     
 @endsection
