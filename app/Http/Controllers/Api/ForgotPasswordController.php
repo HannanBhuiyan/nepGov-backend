@@ -71,7 +71,7 @@ class ForgotPasswordController extends Controller
 
         return response([
             'message'=> __($status)
-        ], 500);
+        ], 200);
 
     }
 

@@ -161,8 +161,6 @@ Route::post('survay/answers/store', [SurvayApiController::class, 'survay_answer_
 });
 
 
-
-
 Route::post('forgot-password', [ForgotPasswordController::class, 'forgotPassword']);
 Route::post('reset-password', [ForgotPasswordController::class, 'reset']);
 
