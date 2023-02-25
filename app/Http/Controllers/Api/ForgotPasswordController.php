@@ -65,12 +65,13 @@ class ForgotPasswordController extends Controller
         if ($status == Password::PASSWORD_RESET) {
             
             return response([
+                'status' => 200,
                 'message'=> 'Password reset successfully'
             ]);
         }
 
         return response()->json([
-            'status' => 200,
+            'status' => 401,
             'message'=> __($status)
         ]);
 
