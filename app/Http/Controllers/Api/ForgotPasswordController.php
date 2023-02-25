@@ -69,9 +69,10 @@ class ForgotPasswordController extends Controller
             ]);
         }
 
-        return response([
+        return response()->json([
+            'status' => 200,
             'message'=> __($status)
-        ], 200);
+        ]);
 
     }
 

@@ -26,7 +26,7 @@
                         <div id="down_btn"></div>
                    </div>
                 </div>
-                <table class="text-center table table-bordered text-nowrap border-bottom" id="example" >
+                <table class="text-center table table-bordered text-nowrap border-bottom" id="basic-datatable" >
                     <thead>
                       <tr>
                         <th scope="col">SL NO</th>
