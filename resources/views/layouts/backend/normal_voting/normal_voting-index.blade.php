@@ -101,7 +101,9 @@
                     <h3>Normal Topic List</h3>
             </div>
             <div class="right">
+                @can('normal topic create')
                 <a class="btn btn-primary" href="" data-toggle="modal" data-target="#addnormaltopic">Add Topic</a>
+                @endcan
             </div>
             </div>
             <table class="text-center table table-bordered text-nowrap border-bottom" id="basic-datatable" >
@@ -120,15 +122,19 @@
                     @foreach ($normals as $norm)
                     <tr>
                         <td>{{ $loop->index + 1 }}</td>
-                        <td>{{$norm->category->category_name}}</td>
+                        <td>{{$norm->category->category_name ?? ''}}</td>
                         <td>{{$norm->topic ?? ''}}</td>
                         <td>{{$norm->option_one ?? ''}} <span class="badge badge-light">({{ $norm->option_one_count }})</span> </td>
                         <td>{{$norm->option_two ?? ''}} <span class="badge badge-light">({{ $norm->option_two_count }})</span></td>
                         {{-- <td>{{$norm->option_three ?? 'N/A'}}({{ $norm->option_three_count }})</td> --}}
                         
                         <td>
-                            <a href="" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modaledit--{{$norm->id}}">Edit</a>
-                            <a href="" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modaldemo8__{{$norm->id}}">Delete</a>
+                            @can('normal topic edit')
+                                <a href="" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modaledit--{{$norm->id}}">Edit</a>
+                            @endcan
+                            @can('normal topic delete')
+                            <a href="" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modaldemo8__{{$norm->id}}">Delete</a>              
+                            @endcan
                         </td>
                     </tr> 
                 

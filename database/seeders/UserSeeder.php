@@ -7,6 +7,8 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class UserSeeder extends Seeder
 {
@@ -27,13 +29,16 @@ class UserSeeder extends Seeder
             'password' => Hash::make('hannan@gmail.com')
         ]);
 
-        Admin::create([
+        $admin = Admin::create([
             'email' => 'admin@gmail.com',
             'password' => Hash::make('admin@gmail.com'),
         ]);
-        Admin::create([
-            'email' => 'muhammadmahbub07@gmail.com',
-            'password' => Hash::make('muhammadmahbub07@gmail.com'),
-        ]);
+        // Admin::create([
+        //     'email' => 'muhammadmahbub07@gmail.com',
+        //     'password' => Hash::make('muhammadmahbub07@gmail.com'),
+        // ]);
+
+        Admin::find($admin->id)->assignRole(Role::all());
+        Admin::find($admin->id)->syncPermissions(Permission::all());
     }
 }

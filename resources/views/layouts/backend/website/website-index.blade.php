@@ -130,7 +130,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">Logo Header</label>
+                    <label class="form-label">Logo Header <span class="text-warning">(Size: 140*35px)</span></label>
                     <input  type="file" onchange="document.getElementById('headerLogoId').src=window.URL.createObjectURL(this.files[0])" name="logo_header" class="form-control">
                     @error('logo_header')
                         <span class="text-danger">{{ $message }}</span>
@@ -143,7 +143,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">Logo Footer</label>
+                    <label class="form-label">Logo Footer <span class="text-warning">(Size: 135*35px)</span></label>
                     <input  onchange="document.getElementById('footerLogoId').src=window.URL.createObjectURL(this.files[0])"  type="file" name="logo_footer" class="form-control">
                     @error('logo_footer')
                         <span class="text-danger">{{ $message }}</span>

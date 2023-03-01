@@ -15,7 +15,9 @@
                     <h3>Category List</h3>
                </div>
                <div class="right">
-                    <a class="btn btn-primary" href="{{ route('category.create') }}">Add New Category</a>
+                @can('category create')
+                <a class="btn btn-primary" href="{{ route('category.create') }}">Add New Category</a>
+                @endcan
                </div>
             </div>
             <table class="text-center table table-bordered text-nowrap border-bottom" id="basic-datatable" >
@@ -39,8 +41,12 @@
                         <td>
                           <img src="{{ asset('backend/uploads/category') }}/{{ $category->category_image }}" alt="not found" width="70" height="70"></td>
                         <td>
+                            @can('category edit')
                             <a href="{{ route('category.edit', $category->id) }}" class="btn btn-success">Edit</a>
+                            @endcan
+                            @can('category delete')
                             <a href="" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modaldemo8__{{$category->id}}">Delete</a>
+                            @endcan
                             {{-- <a href="{{ route('category.delete', $category->id) }}" class="btn btn-danger">Delete</a> --}}
                         </td>
                     </tr>

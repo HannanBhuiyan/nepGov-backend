@@ -77,7 +77,7 @@
                             <input type="file" name="feature_image" onchange="document.getElementById('second_image').src=window.URL.createObjectURL(this.files[0])" class="form-control">
                         </div> 
                         <div class="form-group">
-                            <img width="500" height="200" id="second_image">
+                            <img width="400px" id="second_image">
                         </div>
         
                         <div class="form-group">

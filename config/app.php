@@ -186,7 +186,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        Spatie\Permission\PermissionServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         L5Swagger\L5SwaggerServiceProvider::class,
         /*

@@ -1,6 +1,4 @@
-
-
- @extends('layouts.backend.backend-app')
+@extends('layouts.backend.backend-app')
 
 @section('content')
 
@@ -21,7 +19,7 @@
                 @method('PUT')
                 <div class="form-group">
                     <label class="form-label">Facebook</label>
-                    <input type="url" class="form-control" name="facebook" value="{{ $items->facebook ?? ''}}">
+                    <input type="url" class="form-control" name="facebook" value="{{ $items->facebook ?? ''}}" placeholder="https://www.facebook.com/">
                     @error('facebook')
                         <span class="text-danger">{{  $message }}</span>
                      @enderror
@@ -29,7 +27,7 @@
 
                 <div class="form-group">
                     <label class="form-label">Twitter</label>
-                    <input type="url" class="form-control" name="twitter" value="{{ $items->twitter ?? '' }}">
+                    <input type="url" class="form-control" name="twitter" value="{{ $items->twitter ?? '' }}" placeholder="https://www.twitter.com/">
                     @error('twitter')
                         <span class="text-danger">{{  $message }}</span>
                      @enderror
@@ -37,7 +35,7 @@
 
                 <div class="form-group">
                     <label class="form-label">Instagram</label>
-                    <input type="url" class="form-control" name="instagram" value="{{ $items->instagram  ?? '' }}">
+                    <input type="url" class="form-control" name="instagram" value="{{ $items->instagram  ?? '' }}" placeholder="https://www.instagram.com/">
                     @error('instagram')
                         <span class="text-danger">{{  $message }}</span>
                      @enderror
@@ -45,7 +43,7 @@
 
                 <div class="form-group">
                     <label class="form-label">LinkedIn</label>
-                    <input type="url" class="form-control" name="linkedin" value="{{ $items->linkedin  ?? '' }}">
+                    <input type="url" class="form-control" name="linkedin" value="{{ $items->linkedin  ?? '' }}" placeholder="https://www.linkedin.com/">
                     @error('linkedin')
                         <span class="text-danger">{{  $message }}</span>
                      @enderror
@@ -53,7 +51,7 @@
 
                 <div class="form-group">
                     <label class="form-label">Youtube</label>
-                    <input type="url" class="form-control" name="youtube" value="{{ $items->youtube ?? ""}}">
+                    <input type="url" class="form-control" name="youtube" value="{{ $items->youtube ?? ""}}" placeholder="https://www.youtube.com/">
                     @error('youtube')
                         <span class="text-danger">{{  $message }}</span>
                      @enderror

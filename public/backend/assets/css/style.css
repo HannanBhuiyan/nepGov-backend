@@ -32023,7 +32023,7 @@ body.rtl {
 
 .select2-container--default .select2-selection--single .select2-selection__arrow {
     height: 2.375rem !important;
-    right: 9px !important;
+    right: 9% !important;
 }
 
 .select2-dropdown {

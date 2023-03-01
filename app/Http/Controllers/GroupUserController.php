@@ -52,6 +52,10 @@ class GroupUserController extends Controller
                 'category_id' => $request->category_id,
             ]);
         }
+
+        // foreach ($request->check as $user_id) {
+        //     $user_id->assignRole($request->role_name);
+        // }
         
 
         return back()->with('success', 'Group Assigned');
@@ -125,6 +129,6 @@ class GroupUserController extends Controller
      */
     public function destroy(AssignGroup $groupUser)
     {
-        //
+    
     }
 }

@@ -13,9 +13,11 @@
                <div class="left">
                     <h3>News List</h3>
                </div>
+               @can('news create')
                <div class="right">
                     <a class="btn btn-primary" href="{{ route('news.create') }}">Add New News</a>
                </div>
+               @endcan
             </div>
             <table class="text-center table table-bordered text-nowrap border-bottom" id="basic-datatable" >
                 <thead>
@@ -40,9 +42,18 @@
                             <img width="100px" src="{{ asset($news->image) }}" alt="image">
                         </td>
                         <td>
+                            @if (auth()->user()->can('news edit'))
                             <a href="{{ route('news.edit', $news->id) }}" class="btn btn-success">Edit</a>
+                            @endif
+                            {{-- @can('news edit')
+                            <a href="{{ route('news.edit', $news->id) }}" class="btn btn-success">Edit</a>
+                            @endcan --}}
+                            @can('news view')
                             <a href="{{ route('news.show', $news->id) }}" class="btn btn-info">View</a>
-                            <a href="" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modaldemo8__{{$news->id}}">Delete</a>
+                            @endcan
+                            @can('news delete')
+                            <a href="" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modaldemo8__{{$news->id}}">Delete</a>  
+                            @endcan
                             {{-- <a href="{{ route('news.delete', $news->id) }}" class="btn btn-danger">Delete</a> --}}
                         </td>
                     </tr> 

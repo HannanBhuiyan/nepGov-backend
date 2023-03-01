@@ -28,10 +28,6 @@
                     <div>
                         @foreach ($groups as $group)
                             <a type="radio" class="btn btn-outline-warning groupwise text-dark" data-id="{{$group->id}}">{{ $group->group_name }}</a>
-                            {{-- @php 
-                                $category_id =  App\Models\AssignGroup::where('group_id', $group->id)->first()->category_id;
-                                $category = App\Models\PollingCategory::find($category_id); 
-                            @endphp --}}
                         @endforeach
                     </div>
                    
@@ -62,6 +58,7 @@
 
     $('.groupwise').on('click', function (){
         let data_id = $(this).attr('data-id');
+        // alert(data_id)
         $('.groupwise').removeClass("btn-success text-white")
         $(this).addClass('btn-success text-white')
 
@@ -72,6 +69,7 @@
                 data_id: data_id,
             },
             success: function(response){
+                console.log(response);
                 $('#groupwiseusers').html(response.data)
             }
         });

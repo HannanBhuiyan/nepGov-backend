@@ -15,7 +15,9 @@
                     <h3>Pages List</h3>
                </div>
                <div class="right">
-                    <a class="btn btn-primary" href="{{ route('page.create') }}">Add New Page</a>
+                @can('page create')
+                <a class="btn btn-primary" href="{{ route('page.create') }}">Add New Page</a>
+                @endcan
                </div>
             </div>
             <div class="table-responsive">
@@ -27,7 +29,6 @@
                         <th scope="col">Slug</th>
                         <th scope="col">Placement</th>
                         <th scope="col">Description</th>
-                        <th scope="col">SEO Title</th>
                         <th scope="col">Action</th>
                     </tr>
                     </thead>
@@ -35,15 +36,20 @@
                         @foreach ($pages as $pages)
                         <tr>
                             <td>{{ $loop->index+1 }}</td>
-                            <td>{{ $pages->page_title }}</td>
-                            <td>{{ $pages->slug }}</td>
-                            <td>{{ $pages->placement }}</td>
-                            <td>{!! substr($pages->description,0,200) !!}</td>
-                            <td>{{ $pages->seo_title }}</td>
+                            <td>{{ $pages->page_title ?? '' }}</td>
+                            <td>{{ $pages->slug ?? '' }}</td>
+                            <td>{{ $pages->placement ?? '' }}</td>
+                            <td>{!! substr($pages->description,0,200) ?? '' !!}</td>
                             <td>
+                                @can('page edit')
                                 <a href="{{ route('page.edit', $pages->id) }}" class="btn btn-success">Edit</a>
+                                @endcan
+                                @can('page view')
                                 <a href="{{ route('page.show', $pages->id) }}" class="btn btn-info">View</a>
+                                @endcan
+                                @can('page delete')
                                 <a href="" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modaldemo8__{{$pages->id}}">Delete</a>
+                                @endcan
                             </td>
                         </tr>
 

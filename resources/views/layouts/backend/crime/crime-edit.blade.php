@@ -21,8 +21,7 @@
 
                 <div class="form-group">
                     <label>Crime Type<span class="text-danger">*</span></label>
-                    <select name="crime_type" class="form-control">
-                        <option selected>--Choose Crime--</option>   
+                    <select name="crime_type" class="form-control">  
                         <option {{$crime->crime_type == 'Crime 1' ? 'selected' : ''}}>Crime 1</option>   
                         <option {{$crime->crime_type == 'Crime 2' ? 'selected' : ''}}>Crime 2</option>   
                         <option {{$crime->crime_type == 'Crime 3' ? 'selected' : ''}}>Crime 3</option>   

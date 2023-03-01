@@ -90,7 +90,9 @@
                     <h3>Questions List</h3>
                </div>
                <div class="right">
+                @can('user survay question create')
                 <a class="btn btn-primary" href="" data-toggle="modal" data-target="#addquestionmodal_01">Add Question</a>
+                @endcan
            </div>
             </div>
             <div class="table-responsive">
@@ -128,8 +130,12 @@
                                 </ul>
                             </td>
                             <td>
+                                @can('user survay question edit')
                                 <a href="" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modaledit__{{$survay->id}}">Edit</a>
+                                @endcan
+                                @can('user survay question delete')              
                                 <a href="" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modaldemo8__{{$survay->id}}">Delete</a>
+                                @endcan
                             </td>
                         </tr>
                         @push('modals')

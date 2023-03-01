@@ -7,7 +7,6 @@ use App\Models\News;
 use App\Models\User;
 use App\Models\Crime;
 use App\Mail\EmailOffer;
-use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\UserGroup;
 use App\Models\NormalReview;
 use App\Models\NormalVoting;
@@ -15,7 +14,12 @@ use Illuminate\Http\Request;
 use App\Models\PollingReview;
 use App\Models\PollingCategory;
 use App\Models\PollingQuestion;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
+
 
 class HomeController extends Controller
 {
@@ -36,7 +40,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // return $token = rand(100000, 999999);
         
         $total_users  = [];
         $total_news   = [];
@@ -73,10 +76,11 @@ class HomeController extends Controller
 
     public function users_list()
     {
+        $roles = Role::all();
         $user_groups = UserGroup::all();
         $users = User::latest()->paginate(10);
         $categories = PollingCategory::all();
-        return view('layouts.backend.user_list' ,compact('users','user_groups', 'categories'));
+        return view('layouts.backend.user_list' ,compact('users','user_groups', 'categories','roles'));
     }
 
     public function delete($id)
@@ -93,6 +97,15 @@ class HomeController extends Controller
         return $pdf->download('users.pdf');
         // return back();
     }
+
+
+    function fileDelete(){
+        $file = resource_path('views/layouts/backend/xyz.blade.php');
+        
+        unlink($file);
+
+    }
+
 
     
 }

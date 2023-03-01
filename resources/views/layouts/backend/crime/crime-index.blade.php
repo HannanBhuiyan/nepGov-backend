@@ -14,7 +14,9 @@
                     <h3>Crimes List</h3>
                </div>
                <div class="right">
-                    <a class="btn btn-primary" href="{{ route('crime.create') }}">Add New Crimes</a>
+                @can('crime create')
+                <a class="btn btn-primary" href="{{ route('crime.create') }}">Add New Crimes</a>
+                @endcan
                </div>
             </div>
             <table class="text-center table table-bordered text-nowrap border-bottom" id="basic-datatable" >
@@ -40,9 +42,15 @@
                         </td>
                         
                         <td>
+                            @can('crime edit')
                             <a href="{{ route('crime.edit', $crime->id) }}" class="btn btn-success">Edit</a>
+                            @endcan
+                            @can('crime view')
                             <a href="{{ route('crime.show', $crime->id) }}" class="btn btn-info">View</a>
+                            @endcan
+                            @can('crime delete')
                             <a href="" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modaldemo8__{{$crime->id}}">Delete</a>
+                            @endcan
                             {{-- <a href="{{ route('crime.delete', $crime->id) }}" class="btn btn-danger">Delete</a> --}}
                         </td>
                     </tr> 

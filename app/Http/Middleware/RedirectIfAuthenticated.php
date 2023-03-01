@@ -2,10 +2,11 @@
 
 namespace App\Http\Middleware;
 
-use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Providers\RouteServiceProvider;
 
 class RedirectIfAuthenticated
 {
@@ -54,7 +55,12 @@ class RedirectIfAuthenticated
             }
 
             // if (Auth::guard($guard)->check()) {
-            //     return redirect(RouteServiceProvider::HOME);
+            //     $bd_table = DB::table('model_has_roles')->where('model_id',Auth::id());
+            //     if($bd_table){
+            //         return redirect(RouteServiceProvider::ADMIN);
+            //         // return 'ok';
+            //     }
+            //     // return redirect(RouteServiceProvider::HOME);
             // }
         }
 

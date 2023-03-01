@@ -5,7 +5,7 @@
     <div class="col-md-12 m-auto">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="{{ route('page.index') }}">List</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('page.index') }}">Page List</a></li>
               <li class="breadcrumb-item active" aria-current="page">Page Details</li>
             </ol>
           </nav>
@@ -21,11 +21,11 @@
                     <tbody>
                         <tr>
                             <th>Page Title</th>
-                            <td>{{ $pages->page_title }}</td>
+                            <td>{{ $pages->page_title ?? '' }}</td>
                         </tr>
                         <tr>
                             <th>Slug</th>
-                            <td>{{ $pages->slug }}</td>
+                            <td>{{ $pages->slug ?? '' }}</td>
                         </tr>
 
                         @if ($pages->placement == 'header')
@@ -40,20 +40,20 @@
                             </tr>
                             <tr>
                                 <th>Footer Column</th>
-                                <td>It goes to column {{ $pages->footer_column }}</td>
+                                <td>It goes to column {{ $pages->footer_column ?? ''}}</td>
                             </tr>
                         @endif
                         <tr>
                             <th>Description</th>
-                            <td>{!! $pages->description !!}</td>
+                            <td>{!! $pages->description ?? '' !!}</td>
                         </tr>
                         <tr>
                             <th>SEO Title</th>
-                            <td>{{ $pages->seo_title }}</td>
+                            <td>{{ $pages->seo_title ?? '' }}</td>
                         </tr>
                         <tr>
                             <th>SEO Description</th>
-                            <td>{!! $pages->seo_description !!}</td>
+                            <td>{!! $pages->seo_description ?? '' !!}</td>
                         </tr>
                     </tbody>
                 </table>

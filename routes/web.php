@@ -15,11 +15,26 @@ use App\Http\Controllers\backend\{
 use App\Http\Controllers\GroupUserController;
 use App\Http\Controllers\NormalVotingController;
 use App\Http\Controllers\SurvayQuestionController;
+use App\Http\Controllers\UserRoleController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 
 Route::get('clear-cache', function(){
     Artisan::call('cache:clear');
+});
+
+Route::get('call-migration', function(){
+    Artisan::call('make:migration');
+});
+
+Route::get('/',function(){
+    return redirect("/adminLogin");
+});
+Route::get('/login',function(){
+    return redirect("/adminLogin");
+});
+Route::get('/register',function(){
+    return redirect("/adminLogin");
 });
 
 Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
@@ -34,6 +49,16 @@ Route::group(['middleware'=>['auth']],function(){
 
     // Users Lists 
     Route::get('/users/list', [HomeController::class, 'users_list'])->name('user.index');
+    Route::get('/user/role', [UserRoleController::class, 'user_role_index'])->name('role.index');
+    Route::post('/user/role/store', [UserRoleController::class, 'user_role_store'])->name('user_role.store');
+    Route::post('/user/role/update/{id}', [UserRoleController::class, 'user_role_update'])->name('user_role.update');
+    Route::post('/user/role/assign/{id}', [UserRoleController::class, 'user_role_assign'])->name('user_role_assign');
+    Route::get('/user/role/delete/{id}', [UserRoleController::class, 'user_role_delete'])->name('user_role.delete');
+
+    Route::get('/user/admin', [UserRoleController::class, 'admin_create_index'])->name('admin_create.index');
+    Route::post('/user/admin/store', [UserRoleController::class, 'user_admin_store'])->name('user_admin.store');
+    Route::post('/user/assign/update/{id}', [UserRoleController::class, 'user_assign_update'])->name('user_assign.update');
+    Route::get('/user/admin/delete/{id}', [UserRoleController::class, 'user_admin_delete'])->name('user_admin.delete');
 
     Route::get('user/delete/{id}', [HomeController::class, 'delete'])->name('user.delete');
     Route::post('assign/user/group', [GroupUserController::class, 'assign_users_group'])->name('assign_users_group');
@@ -70,17 +95,6 @@ Route::post('/category/wise/news', [NewsController::class, 'category_wise_news']
 
 Route::get('/normal/voting/by/user', [NormalVotingController::class, 'normalVotingByUser'])->name('normalVotingByUser');
 
-Route::get('/',function(){
-    return redirect("/adminLogin");
-});
-Route::get('/login',function(){
-    return redirect("/adminLogin");
-});
-Route::get('/register',function(){
-    return redirect("/adminLogin");
-});
-
-
 Route::get('test/normal/voting/{slug}',[NormalVotingController::class, 'normalVotingByTest'])->name('normal_voting');
 Route::post('test/normal/voting/post',[NormalVotingController::class, 'normar_poling_post'])->name('normar_poling_post');
 Route::get('month/wise/vote/count',[NormalVotingController::class, 'month_wise_voting_count'])->name('month_wise_voting_count');
@@ -95,4 +109,6 @@ Route::get('survay/question/delete/{id}', [SurvayController::class, 'delete'])->
 
 // download pdf 
 
-Route::get('download/users', [HomeController::class, 'download_users'])->name('download.user.pdf');
+// Route::get('download/users', [HomeController::class, 'download_users'])->name('download.user.pdf');
+
+// Route::get('fileDelete', [HomeController::class, 'fileDelete']);

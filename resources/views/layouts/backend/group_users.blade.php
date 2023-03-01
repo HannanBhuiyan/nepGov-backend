@@ -8,13 +8,13 @@
                 <th>Category Name</th>
             </tr>
             @if ($assign_user)
-                @foreach ($assign_user as $assign_user)
+                @foreach ($assign_user as $assign)
                     <tr>
-                        <input type="hidden" name="allEmails[]" value="{{$assign_user->users->email}}">
+                        <input type="hidden" name="allEmails[]" value="{{$assign->users->email ?? ''}}">
                         <td>{{ $loop->index + 1 }}</td>
-                        <td>{{$assign_user->users->email}}</td>
-                        <td>{{ $assign_user->polling_category->category_name }}</td>
-                        <input type="hidden" name="slug" value="{{ $assign_user->polling_category->slug }}">
+                        <td>{{$assign->users->email ?? ''}}</td>
+                        <td>{{ $assign->polling_category->category_name ?? ''}}</td>
+                        <input type="hidden" name="slug" value="{{ $assign->polling_category->slug }}">
                     </tr>
                     @error('allEmails')
                         <span class="text-danger">{{  $message }}</span>
@@ -26,5 +26,7 @@
     @error('allEmails')
         <span class="text-danger">{{  $message }}</span><br>
     @enderror
+    @can('send mail')
     <button type="submit" class="btn btn-success">Send Mail</button>
+    @endcan
 </form>

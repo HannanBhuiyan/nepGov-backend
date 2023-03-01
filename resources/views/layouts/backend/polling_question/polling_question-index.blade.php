@@ -28,7 +28,9 @@
                     <h3>Questions List</h3>
                 </div>
                 <div class="right">
+                    @can('live question create')
                     <a class="btn btn-primary" href="{{ route('polling_question.create') }}">Add New Questions</a>
+                    @endcan
                 </div>
                 </div>
                 <div class="table-responsive">
@@ -68,8 +70,12 @@
                                     </ul>
                                 </td>
                                 <td>
+                                    @can('live question edit')
                                     <a href="{{ route('polling_question.edit', $question->id) }}" class="btn btn-success">Edit</a>
+                                    @endcan
+                                    @can('live question delete')
                                     <a href="" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modaldemo8__{{$question->id}}">Delete</a>
+                                    @endcan
                                 </td>
                             </tr>
 

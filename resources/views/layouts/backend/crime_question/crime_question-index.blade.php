@@ -14,7 +14,9 @@
                     <h3>Question List</h3>
                </div>
                <div class="right">
-                    <a class="btn btn-primary" href="{{ route('crime_question.create') }}">Add New Question</a>
+                @can('crime question create')
+                <a class="btn btn-primary" href="{{ route('crime_question.create') }}">Add New Question</a>
+                @endcan
                </div>
             </div>
             <table class="text-center table table-bordered text-nowrap border-bottom" id="basic-datatable" >
@@ -35,9 +37,13 @@
                         <td>{{$ques->crime_type}}</td>
                         <td>{{$ques->question}}</td>
                         <td>{{$ques->answer_type}}</td>
-                        <td>
+                        <td>    
+                            @can('crime question edit')
                             <a href="{{ route('crime_question.edit', $ques->id) }}" class="btn btn-success">Edit</a>
+                            @endcan
+                            @can('crime question delete')
                             <a href="" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modaldemo8__{{$ques->id}}">Delete</a>
+                            @endcan
                         </td>
                     </tr> 
 

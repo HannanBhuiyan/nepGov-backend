@@ -8,11 +8,14 @@
         <li class="sub-category">
             <h3>Main</h3>
         </li>
+        
+        @role('Super Admin')
         <li class="slide">
             <a class="side-menu__item has-link {{ request()->routeIs('home') ? 'active' : '' }}" data-bs-toggle="slide" href="{{ route('home') }}"><i
                     class="side-menu__icon fe fe-home"></i><span
                     class="side-menu__label">Dashboard</span></a>
         </li>
+        @endrole
         <li class="sub-category">
             <h3>UI Kit</h3>
         </li> 
@@ -28,6 +31,20 @@
             </ul>
         </li>
 
+        @role('Super Admin')
+        <li class="slide {{ request()->routeIs(['role*','admin_create*']) ? 'is-expanded active' : '' }}">
+            <a class="side-menu__item {{ request()->routeIs(['role*','admin_create*']) ? 'is-expanded active' : '' }}" data-bs-toggle="slide" href="javascript:void(0)"><i
+                    class="side-menu__icon fe fe-users"></i><span
+                    class="side-menu__label">Role Permission</span><i
+                    class="angle fe fe-chevron-right"></i></a>
+            <ul class="slide-menu">
+                <li><a href="{{ route('role.index') }}" class="slide-item {{ request()->routeIs('role.index') ? 'active' : '' }}"> Role</a></li>
+                <li><a href="{{ route('admin_create.index') }}" class="slide-item {{ request()->routeIs('admin_create.index') ? 'active' : '' }}">User Assign Role</a></li>
+            </ul>
+        </li>
+        @endrole
+
+        {{-- @hasanyrole('Editor|Super Admin') --}}
         <li class="slide {{ request()->routeIs(['news*','category*']) ? 'is-expanded active' : '' }}">
             <a class="side-menu__item {{ request()->routeIs(['news*','category*']) ? 'is-expanded active' : '' }}" data-bs-toggle="slide" href="javascript:void(0)"><i
                     class="side-menu__icon fe fe-calendar"></i><span
@@ -36,9 +53,9 @@
             <ul class="slide-menu">
                 <li><a href="{{ route('news.index') }}" class="slide-item {{ request()->routeIs('news*') ? 'active' : '' }}"> News List</a></li>
                 <li><a href="{{ route('category.index') }}" class="slide-item {{ request()->routeIs('category*') ? 'active' : '' }}">News Category</a></li>
-                {{-- <li><a href="{{ route('news.create') }}" class="slide-item {{ request()->routeIs('news.create') ? 'active' : '' }}">Create News</a></li> --}}
             </ul>
         </li>
+        {{-- @endhasanyrole --}}
 
         <li class="slide {{ request()->routeIs(['crime*','crime_question*']) ? 'is-expanded' : '' }}">
             <a class="side-menu__item {{ request()->routeIs(['crime*','crime_question*']) ? 'is-expanded active' : '' }}" data-bs-toggle="slide" href="javascript:void(0)"><i
@@ -52,46 +69,11 @@
         </li>
 
         <li class="slide {{ request()->routeIs(['polling_category*','polling_question*','question_option*','polling_normal*','polling_sub_cat*','normal_voting*']) ? 'is-expanded' : '' }}">
-            <a class="side-menu__item {{ request()->routeIs(['polling_category*','polling_question*','question_option*','polling_normal*','polling_sub_cat*','normal_voting*']) ? 'active' : '' }}" data-bs-toggle="slide" href="javascript:void(0)"><i
-                    class="side-menu__icon fe fe-box"></i><span
-                    class="side-menu__label">Polling</span><i
-                    class="angle fe fe-chevron-right"></i></a>
+            <a class="side-menu__item {{ request()->routeIs(['polling_category*','polling_question*','question_option*','polling_normal*','polling_sub_cat*','normal_voting*']) ? 'active' : '' }}" data-bs-toggle="slide" href="javascript:void(0)"><i class="side-menu__icon fe fe-box"></i><span class="side-menu__label">Polling</span><i class="angle fe fe-chevron-right"></i></a>
             <ul class="slide-menu {{ request()->routeIs(['polling_category*','polling_question*','question_option*','polling_normal*','polling_sub_cat*','normal_voting*']) ? 'open' : '' }}">
-                {{-- <li class=" {{ request()->routeIs('polling_category*') ? 'sub-slide is-expanded' : '' }}">
-                    <a class=" {{ request()->routeIs('polling_category*') ? 'sub-side-menu__item is-expanded active' : '' }}" data-bs-toggle="sub-slide" href="javascript:void(0)"><i
-                            class="side-menu__icon fe fe-slack"></i><span
-                            class="side-menu__label">Polling Category</span><i
-                            class="angle fe fe-chevron-right"></i></a>
-                    <ul class="sub-slide-menu"> --}}
-                        <li class=""><a href="{{ route('normal_voting.index') }}" class="sub-slide-item {{ request()->routeIs('normal_voting*') ? 'active' : '' }}">Topics (Normal)</a></li>
-                        {{-- <li class=""><a href="{{ route('polling_normal.index') }}" class="sub-slide-item {{ request()->routeIs('polling_normal*') ? 'active' : '' }}">Topics (Normal)</a></li> --}}
-                        <li class=""><a href="{{ route('polling_category.index') }}" class="sub-slide-item {{ request()->routeIs('polling_category*') ? 'active' : '' }}">Topics (Live)</a></li>
-                        {{-- <li class=""><a href="{{ route('polling_category.create') }}" class="sub-slide-item {{ request()->routeIs('polling_category.create') ? 'active' : '' }}">Create Category</a></li> --}}
-                    {{-- </ul>
-                </li> --}}
-        
-                {{-- <li class=" {{ request()->routeIs('polling_question*') ? 'sub-slide is-expanded' : '' }}">
-                    <a class=" {{ request()->routeIs('polling_question*') ? 'sub-side-menu__item is-expanded active' : '' }}" data-bs-toggle="sub-slide" href="javascript:void(0)"><i
-                            class="side-menu__icon fe fe-slack"></i><span
-                            class="side-menu__label">Polling Question</span><i
-                            class="angle fe fe-chevron-right"></i></a>
-                    <ul class="sub-slide-menu"> --}}
-                        <li class=""><a href="{{ route('polling_question.index') }}" class="sub-slide-item {{ request()->routeIs(['polling_question*','polling_sub_cat*']) ? 'active' : '' }}">Questions(live)</a></li>
-                        {{-- <li class=""><a href="{{ route('polling_question.create') }}" class="sub-slide-item {{ request()->routeIs('polling_question.create') ? 'active' : '' }}">Create Question</a></li> --}}
-                    {{-- </ul>
-                </li> --}}
-        
-                {{-- <li class="{{ request()->routeIs('question_option*') ? 'sub-slide is-expanded' : '' }}">
-                    <a class=" {{ request()->routeIs('question_option*') ? 'sub-side-menu__item is-expanded active' : '' }}" data-bs-toggle="sub-slide" href="javascript:void(0)"><i
-                            class="side-menu__icon fe fe-slack"></i><span
-                            class="side-menu__label">Question Option</span><i
-                            class="angle fe fe-chevron-right"></i></a>
-                    <ul class="sub-slide-menu"> --}}
-                        {{-- <li class=""><a href="{{ route('question_option.index') }}" class="sub-slide-item {{ request()->routeIs('question_option*') ? 'active' : '' }}">Options</a></li> --}}
-                        {{-- <li class=""><a href="{{ route('question_option.create') }}" class="sub-slide-item {{ request()->routeIs('question_option.create') ? 'active' : '' }}">Create Option</a></li> --}}
-                    {{-- </ul>
-                </li> --}}
-
+                <li class=""><a href="{{ route('normal_voting.index') }}" class="sub-slide-item {{ request()->routeIs('normal_voting*') ? 'active' : '' }}">Topics (Normal)</a></li>
+                <li class=""><a href="{{ route('polling_category.index') }}" class="sub-slide-item {{ request()->routeIs('polling_category*') ? 'active' : '' }}">Topics (Live)</a></li>
+                <li class=""><a href="{{ route('polling_question.index') }}" class="sub-slide-item {{ request()->routeIs(['polling_question*','polling_sub_cat*']) ? 'active' : '' }}">Questions(live)</a></li>
             </ul>
         </li>
         
@@ -103,33 +85,25 @@
                     class="angle fe fe-chevron-right"></i></a>
             <ul class="slide-menu">
                 <li class=""><a href="{{ route('page.index') }}" class="slide-item {{ request()->routeIs('page*') ? 'active' : '' }}">Page Lists</a></li>
-                {{-- <li><a href="{{ route('page.create') }}" class="slide-item {{ request()->routeIs('page.create') ? 'active' : '' }}">Create Page</a></li> --}}
             </ul>
         </li>
 
+        @role('Super Admin')
         <li class="slide {{ request()->routeIs(['settings.index','social_links.index']) ? 'is-expanded' : '' }}">
             <a class="side-menu__item {{ request()->routeIs(['settings.index','social_links.index']) ? 'is-expanded active' : '' }}" data-bs-toggle="slide" href="javascript:void(0)"><i
                     class="side-menu__icon fe fe-settings"></i><span
                     class="side-menu__label">Settings</span><i
                     class="angle fe fe-chevron-right"></i></a>
             <ul class="slide-menu {{ request()->routeIs(['settings.index','social_links.index']) ? 'open' : '' }}">
+                @can('general settings edit')
                 <li class=""><a href="{{ route('settings.index') }}" class="slide-item {{ request()->routeIs('settings.index') ? 'active' : '' }}">General Settings</a></li>
-                {{-- <li><a href="{{ route('settings.create') }}" class="slide-item {{ request()->routeIs('settings.create') ? 'active' : '' }}">Create Setting</a></li> --}}
-                <li class=""><a href="{{ route('social_links.index') }}" class="slide-item {{ request()->routeIs('social_links.index') ? 'active' : '' }}">SocialLink Settings</a></li>
+                @endcan
+                @can('social link settings edit')
+                <li class=""><a href="{{ route('social_links.index') }}" class="slide-item {{ request()->routeIs('social_links.index') ? 'active' : '' }}">SocialLink Settings</a></li>                  
+                @endcan
             </ul>
         </li>
-
-        {{-- <li class="slide {{ request()->routeIs(['settings.index','social_links.index']) ? 'is-expanded' : '' }}">
-            <a class="side-menu__item {{ request()->routeIs(['settings.index','social_links.index']) ? 'is-expanded active' : '' }}" data-bs-toggle="slide" href="javascript:void(0)"><i
-                    class="side-menu__icon fe fe-settings"></i><span
-                    class="side-menu__label">Survay</span><i
-                    class="angle fe fe-chevron-right"></i></a>
-            <ul class="slide-menu {{ request()->routeIs(['survay.index','social_links.index']) ? 'open' : '' }}">
-                <li class=""><a href="{{ route('survay.index') }}" class="slide-item {{ request()->routeIs('survay.index') ? 'active' : '' }}">User Survay Question</a></li> 
-            </ul>
-        </li> --}}
-        
-
+        @endrole
     </ul>
     <div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191"
             width="24" height="24" viewBox="0 0 24 24">

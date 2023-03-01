@@ -8,6 +8,12 @@
     .groupBtn{
         width: 120px; 
     }
+    .close_btn{
+        width: 120px;
+        position: absolute;
+        bottom: 10px;
+        right: 20px;
+    }
 </style>
 <div class="row mt-5">
     <div class="col-md-12 m-auto">
@@ -30,7 +36,6 @@
                     <thead>
                       <tr>
                         <th scope="col">SL NO</th>
-                        {{-- <th scope="col">Group</th> --}}
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
                         <th scope="col">Political Support</th>
@@ -47,7 +52,6 @@
                         @endphp
                         <tr>
                             <td>{{ $loop->index + 1 }}</td>
-                            {{-- <td><input type="checkbox" name="check[]" value="{{ $user->id }}"></td> --}}
                             <td >
                                 <input id="userCheck-{{$user->id}}" type="checkbox" name="check[]" value="{{ $user->id }}">
                                 <label for="userCheck-{{$user->id}}" style="cursor: pointer">{{ $user->username ?? 'N/A' }}</label>
@@ -59,8 +63,10 @@
                             <td>{{ Carbon\Carbon::parse($user->date_of_birth)->age ?? 'N/A' }}</td>
                             
                             <td>
-                                {{-- <a href="{{ route('user.details', $user->id) }}" class="btn btn-info">View</a> --}}
+                                {{-- <a data-bs-toggle="modal" data-bs-target="#modalassign8__{{$user->id}}" class="btn btn-info">Assign Role</a> --}}
+                                @can('user delete')
                                 <a href="" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modaldemo8__{{$user->id}}">Delete</a>
+                                @endcan
                             </td>
                         </tr> 
     
@@ -85,15 +91,47 @@
                               </div>
                           </div>
                       </div>
+
+                      <!-- Modal edit user  assign-->
+                        {{-- <div class="modal fade" id="modalassign8__{{$user->id}}"  aria-labelledby="modalassign8__{{$user->id}}" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content pb-5">
+                                    
+                                    <div class="modal-body">
+                                        <form action="{{ route('user_role_assign',$user->id) }}" method="post">
+                                            @csrf
+                                            <div class="form-group">
+                                                <label>Role<span class="text-danger">*</span> </label>
+                                                <select name="user[]" class="form-control" multiple>
+                                                    <option selected>--Select User--</option>
+                                                    @foreach ($roles as $role)
+                                                        <option value="{{ $role->name }}">{{ $role->name }}</option>
+                                                    @endforeach    
+                                                </select>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <input type="submit" class="form-control btn btn-primary" value="Assign Role">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <a href="" class="close_btn btn btn-secondary" data-dismiss="modal">Close</a>
+                                </div>
+                            </div>
+                        </div> --}}
                         @endforeach
                     </tbody>
                 </table>
                 <div class="row" style="margin-left: 50px">
+                    @can('user group assign')
                     <button type="button" class="btn btn-success groupBtn m-3" data-bs-toggle="modal" data-bs-target="#modaldForGroup">Assign Group</button>
+                    @endcan
+                    @can('user group create')
                     <button type="button" class="btn btn-info groupBtn m-3" data-bs-toggle="modal" data-bs-target="#modaldAssign">Create Group</button>
+                    @endcan
                 </div>
                 
-                {{-- assign modal --}}
+                {{-- assign group modal --}}
                 <div class="modal fade" id="modaldForGroup">
                     <div class="modal-dialog modal-dialog-centered text-center" role="document">
                         <div class="modal-content modal-content-demo">
@@ -129,6 +167,8 @@
                         </div>
                     </div>
                 </div>
+
+
             </div>
         </form>
     </div>
@@ -157,39 +197,11 @@
             </div>
         </div>
     </form>
-
-    <button></button>
     
 @endpush
 
 @endsection
 
 @section('scripts')
-{{-- <script>
-    $(document).ready(function(){
-        var table = $('#example').DataTable( {
-            
-            buttons: [
-                {
-                    extend: 'excelHtml5',
-                    exportOptions: {
-                        columns: ':visible'
-                    }
-                },
-                {
-                    extend: 'pdfHtml5',
-                    exportOptions: {
-                        columns: [ 1, 2,3,4,5,6 ]
-                    }
-                },
-                
-            ]
-        } );
 
-        table.buttons().container()
-        .appendTo('#example_wrapper .col-md-6:eq(0)')
-
-    });
-</script> --}}
-    
 @endsection

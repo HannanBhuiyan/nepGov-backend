@@ -43,7 +43,7 @@
                     <label>Answer Type <span class="text-danger">*</span></label>
                     <select name="answer_type" class="form-control">
                         <option value="input" {{$question->amswer_type == 'input' ? 'selected' : ''}}>Input</option>   
-                        <option value="boolean" {{$question->amswer_type == 'boolean' ? 'selected' : ''}}>Boolean</option>   
+                        <option value="boolean" {{$question->answer_type == 'boolean' ? 'selected' : ''}}>Boolean</option>   
                     </select>
                     @error('answer_type')
                         <span class="text-danger mt-1">{{ $message }}</span>
@@ -63,10 +63,5 @@
 
 
 @section('scripts')
-    <script type="text/javascript">
-        $(document).ready(function(){
-
-
-    });
-    </script>
+   
 @endsection

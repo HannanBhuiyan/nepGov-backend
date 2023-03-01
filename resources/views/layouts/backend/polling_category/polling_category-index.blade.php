@@ -28,9 +28,15 @@
                     <h3>Category List</h3>
                </div>
                <div class="right">
-                    <a class="btn btn-primary" href="" data-toggle="modal" data-target="#addquestionmodal_01">Add Question</a>
-                    <a class="btn btn-primary" href="" data-toggle="modal" data-target="#addsubcategorymodal_02">Add Topics</a>
-                    <a class="btn btn-primary" href="" data-toggle="modal" data-target="#addcategorymodal_03">Add Category</a>
+                @can('live question create')
+                <a class="btn btn-primary" href="" data-toggle="modal" data-target="#addquestionmodal_01">Add Question</a>
+                @endcan
+                @can('live topic create')
+                <a class="btn btn-primary" href="" data-toggle="modal" data-target="#addsubcategorymodal_02">Add Topics</a>
+                @endcan
+                @can('live category create')
+                <a class="btn btn-primary" href="" data-toggle="modal" data-target="#addcategorymodal_03">Add Category</a>
+                @endcan
                </div>
             </div>
             <div class="table-responsive">
@@ -39,7 +45,7 @@
                     <tr>
                         <th scope="col">SL No</th>
                         <th scope="col">Category Name</th>
-                        <th scope="col">Sub Category</th>
+                        <th scope="col">Topics</th>
                         <th scope="col">Action</th>
                     </tr>
                     </thead>
@@ -56,8 +62,12 @@
                                                 <a href="" data-toggle="modal" data-target="#Modalview__{{$item->id}}">{{Str::upper($item->name)}}</a>
                                             </div> 
                                             <div class="col-6">
-                                                <a href="" data-toggle="modal" data-target="#Modalsubedit__{{$item->id}}" class="text-success mx-3">Edit</a>
+                                                @can('live topic edit')
+                                                <a href="" data-toggle="modal" data-target="#Modalsubedit__{{$item->id}}" class="text-success mx-3">Edit</a>                                                    
+                                                @endcan
+                                                @can('live topic delete')
                                                 <a href="" data-toggle="modal" data-target="#modaldelsub__{{$item->id}}" class="text-danger">Delete</a>
+                                                @endcan
                                             </div> 
                                         </div>
                                         @if (!$loop->last) <hr> @endif
@@ -69,7 +79,7 @@
                                             <div class="modal-dialog modal-lg" role="document">
                                                 <div class="modal-content pb-5">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="Modal__{{$item->id}}">Sub Category</h5>
+                                                        <h5 class="modal-title" id="Modal__{{$item->id}}">Topic</h5>
                                                     </div>
                                                     <div class="modal-body">
                                                         <h3>{{Str::upper($item->name)}} Details</h3>
@@ -144,13 +154,11 @@
                                                                                              }
                                                                                          ?>
                                                                                      ])
-                                                                         
                                                                                      var options = {
                                                                                         'title': 'Voting Reviews',
                                                                                         'width':500,
                                                                                         'height':500
                                                                                      }
-                                                                                     
                                                                                      var chart = new google.visualization.PieChart(document.getElementById('googlepiechart__{{ $que->id }}'))
                                                                          
                                                                                      chart.draw(data, options)
@@ -167,56 +175,24 @@
                                                                                     @endif 
                                                                                 </ol> 
                                                                             @endforeach
-                                                                            
+
                                                                             </li>
-                                                                            
                                                                             @if ($opt_count->count() > 0)
                                                                                 <div class="card">
                                                                                     <div id="googlepiechart__{{ $que->id }}"></div>
                                                                                 </div>    
                                                                             @endif
-                                                                            
                                                                     @endforeach
                                                                 </td>    
                                                             </tr>
                                                         </table>
- 
                                                     </div>
-                                        
                                                     <a href="" class="close_btn btn btn-secondary" data-dismiss="modal">Close</a>
                                                 </div>
                                             </div>
                                         </div>
                                     @endpush
-
-                                    <script>
-                                        $(document).ready(function(){
-                                            var table = $('#example').DataTable( {
-
-                                                buttons: [
-                                                    {
-                                                        extend: 'excelHtml5',
-                                                        exportOptions: {
-                                                            columns: ':visible'
-                                                        }
-                                                    },
-                                                    {
-                                                        extend: 'pdfHtml5',
-                                                        exportOptions: {
-                                                            columns: ':visible'
-                                                        }
-                                                    },
-                                                    
-                                                ]
-                                            } );
-
-
-                                            table.buttons().container()
-                                            .appendTo('#example_wrapper .col-md-6:eq(0)')
-
-                                        });
-                                    </script>
-
+                                    
                                     <!-- sub cat Modal edit -->
                                     @push('modals')
                                         <div class="modal fade" id="Modalsubedit__{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="Modal__{{$item->id}}" aria-hidden="true">
@@ -226,7 +202,7 @@
                                                         <h5 class="modal-title" id="Modal__{{$item->id}}">{{Str::upper($item->name)}}</h5>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <div class="row mt-5">
+                                                        <div class="row">
                                                             <div class="col-md-12 m-auto">
                                                                 <div class="card p-3 mt-4"> 
                                                                     <div class="category_title my-3">
@@ -333,8 +309,12 @@
                                 @endforeach
                             </td>
                             <td>
+                                @can('live category edit')
                                 <a href="" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modaledit__{{$cat->id}}">Edit</a>
+                                @endcan
+                                @can('live category delete')   
                                 <a href="" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modaldemo8__{{$cat->id}}">Delete</a>
+                                @endcan
                             </td>
                         </tr>
                         @php
@@ -350,7 +330,7 @@
                                             @csrf
                                             @method("PUT")
                                             <div class="form-group">
-                                                <label> Category Name <span class="text-danger">*</span></label>
+                                                <label> <h5>Category Name <span class="text-danger">*</span></h5></label>
                                                 <input type="text" value="{{$cat->category_name}}" class="form-control" id="category_name" name="category_name" placeholder="Category Name">
                                                 @error('category_name')
                                                     <span class="text-danger">{{ $message }}</span>
@@ -508,7 +488,6 @@
                 </form>
             </div>
                  
-            {{-- <div class="properties-container"></div> --}}
             <a href="" class="close_btn btn btn-secondary" data-dismiss="modal">Close</a>
         </div>
     </div>
@@ -591,7 +570,6 @@
     </div>
 </div>  
 
-
 @endsection
 
 
@@ -620,7 +598,7 @@
         }) 
 
 
-        // country dropdown
+        //###### country dropdown
         $(document).ready(function(){ 
 
             $('.country_dropdown').select2({
@@ -635,12 +613,11 @@
             });
 
             $('.global_button').click(function(){
-                var length = $('#mySelectList option').length();
-                alert(length)
+                $('.specific_country').hide()
                 $('.global_button').addClass("btn-info")
                 $('.specific_button').removeClass("btn-info")
 
-                alert('Please remove the selected countries') 
+                alert('Please remove the selected countries if exists') 
             });
             $('.specific_button').click(function(){
                 $('.specific_country').show()
@@ -652,7 +629,7 @@
                 $('.global_btn').addClass("btn-info")
                 $('.specific_btn').removeClass("btn-info")
 
-                alert('Please remove the selected countries') 
+                alert('Please remove the selected countries if exists') 
             });
             $('.specific_btn').click(function(){
                 $('.specific_coun').show()
@@ -703,10 +680,6 @@
                 $(this).closest(".new_properties").remove();
             }); 
         });
-   
- 
- 
-        
     </script>
  
    
@@ -714,31 +687,4 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
     <script src="//g.tutorialjinni.com/mojoaxel/bootstrap-select-country/dist/js/bootstrap-select-country.min.js"></script>
 
-    <script>
-        $(document).ready(function(){
-            var table = $('#').DataTable( {
-
-                buttons: [
-                    {
-                        extend: 'excelHtml5',
-                        exportOptions: {
-                            columns: ':visible'
-                        }
-                    },
-                    {
-                        extend: 'pdfHtml5',
-                        exportOptions: {
-                            columns: ':visible'
-                        }
-                    },
-                    
-                ]
-            } );
-
-
-            // table.buttons().container()
-            // .appendTo('#example_wrapper .col-md-6:eq(0)')
-
-        });
-    </script>
 @endsection

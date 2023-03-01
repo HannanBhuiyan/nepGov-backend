@@ -6,7 +6,7 @@
         <div class="card-body">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="{{ route('page.index') }}">List</a></li>
+                  <li class="breadcrumb-item"><a href="{{ route('news.index') }}">News List</a></li>
                   <li class="breadcrumb-item active" aria-current="page">News Details</li>
                 </ol>
               </nav>
@@ -28,23 +28,23 @@
                     </tr>
                     <tr>
                         <th> Title</th>
-                        <td>{{ $news->title }}</td>
+                        <td>{{ $news->title ??'' }}</td>
                     </tr>
                     <tr>
                         <th>Slug</th>
-                        <td>{{ $news->slug }}</td>
+                        <td>{{ $news->slug ??''}}</td>
                     </tr>
                     <tr>
                         <th>Category</th>
-                        <td>{{ $news->category->title }}</td>
+                        <td>{{ $news->category->title??'' }}</td>
                     </tr>
                     <tr>
                         <th>Description</th>
-                        <td>{!! $news->description !!}</td>
+                        <td>{!! $news->description ?? '' !!}</td>
                     </tr>
                     <tr>
                         <th>SEO Title</th>
-                        <td>{{ $news->seo_title }}</td>
+                        <td>{{ $news->seo_title ?? ''}}</td>
                     </tr>
                     <tr>
                         <th>SEO Description</th>

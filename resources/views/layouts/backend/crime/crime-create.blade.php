@@ -19,10 +19,10 @@
                 <div class="form-group">
                     <label>Crime Type<span class="text-danger">*</span></label>
                     <select name="crime_type" class="form-control">
-                        <option selected>--Choose Crime--</option>   
-                        <option>Crime 1</option>   
-                        <option>Crime 2</option>   
-                        <option>Crime 3</option>   
+                        <option selected value="">--Choose Crime--</option>   
+                        <option value="Crime 1">Crime 1</option>   
+                        <option value="Crime 2">Crime 2</option>   
+                        <option value="Crime 3">Crime 3</option>   
                     </select>
                     @error('crime_type')
                         <span class="text-danger mt-1">{{ $message }}</span>
@@ -149,7 +149,7 @@
                 </div> 
 
                 <div class="form-group">
-                    <input type="submit" class="form-control btn btn-primary" value="Add Crime">
+                    <input type="submit" class="form-control btn btn-primary" value="Save Crime">
                 </div>
 
             </form>

@@ -48,13 +48,20 @@
                                     <option id="sss2" value="footer" {{ $pages->placement == 'footer' ? 'selected' : '' }}>Footer</option>
                                 </select>
 
-                                @if ( $pages->placement == 'footer')
-                                    <select class="form-control mt-2" name="footer_column" id="column_name">
-                                        <option selected disabled>Footer Column</option>
-                                        <option value="2" {{ $pages->footer_column == '2' ? 'selected' : '' }}>2</option>
-                                        <option value="3" {{ $pages->footer_column == '3' ? 'selected' : '' }}>3</option>
-                                    </select>
+                                @if ($pages->placement == 'header')
+                                <select class="form-control mt-2" name="footer_column" id="hide_footer_column">
+                                    <option selected disabled>Footer Column</option>
+                                    <option value="2" {{ $pages->footer_column == '2' ? 'selected' : '' }}>2</option>
+                                    <option value="3" {{ $pages->footer_column == '3' ? 'selected' : '' }}>3</option>
+                                </select>
+                                @else
+                                <select class="form-control mt-2" name="footer_column" id="column_name">
+                                    <option selected disabled>Footer Column</option>
+                                    <option value="2" {{ $pages->footer_column == '2' ? 'selected' : '' }}>2</option>
+                                    <option value="3" {{ $pages->footer_column == '3' ? 'selected' : '' }}>3</option>
+                                </select>
                                 @endif
+
                                 @error('placement')
                                     <span class="text-danger">{{  $message }}</span>
                                 @enderror
@@ -100,12 +107,12 @@
                 $('.page_slug').val($(this).val().toLowerCase().split(',').join('').replace(/\s/g,"-").replace(/\?/g, '-'));
             });
 
-
+            
             $("#column_name").show();
-            // $("#sss2").select(function(){
-            //     alert('wow')
-            // });
 
+            $("#hide_footer_column").hide();
+
+            
 
         $("#choosepage").on('change',function(e){
             var select = document.getElementById('choosepage');
@@ -113,9 +120,11 @@
 
             if(text == "Footer"){
                 $('#column_name').show(200);
+                $("#hide_footer_column").show();
+                 
             }else{
                 $('#column_name').hide(200);
-
+                $("#hide_footer_column").hide();
             }
         });
 
