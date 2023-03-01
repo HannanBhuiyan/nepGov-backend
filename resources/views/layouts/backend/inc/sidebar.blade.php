@@ -51,8 +51,8 @@
                     class="side-menu__label">News</span><i
                     class="angle fe fe-chevron-right"></i></a>
             <ul class="slide-menu">
-                <li><a href="{{ route('news.index') }}" class="slide-item {{ request()->routeIs('news*') ? 'active' : '' }}"> News List</a></li>
                 <li><a href="{{ route('category.index') }}" class="slide-item {{ request()->routeIs('category*') ? 'active' : '' }}">News Category</a></li>
+                <li><a href="{{ route('news.index') }}" class="slide-item {{ request()->routeIs('news*') ? 'active' : '' }}"> News List</a></li>
             </ul>
         </li>
         {{-- @endhasanyrole --}}
@@ -71,9 +71,9 @@
         <li class="slide {{ request()->routeIs(['polling_category*','polling_question*','question_option*','polling_normal*','polling_sub_cat*','normal_voting*']) ? 'is-expanded' : '' }}">
             <a class="side-menu__item {{ request()->routeIs(['polling_category*','polling_question*','question_option*','polling_normal*','polling_sub_cat*','normal_voting*']) ? 'active' : '' }}" data-bs-toggle="slide" href="javascript:void(0)"><i class="side-menu__icon fe fe-box"></i><span class="side-menu__label">Polling</span><i class="angle fe fe-chevron-right"></i></a>
             <ul class="slide-menu {{ request()->routeIs(['polling_category*','polling_question*','question_option*','polling_normal*','polling_sub_cat*','normal_voting*']) ? 'open' : '' }}">
-                <li class=""><a href="{{ route('normal_voting.index') }}" class="sub-slide-item {{ request()->routeIs('normal_voting*') ? 'active' : '' }}">Topics (Normal)</a></li>
                 <li class=""><a href="{{ route('polling_category.index') }}" class="sub-slide-item {{ request()->routeIs('polling_category*') ? 'active' : '' }}">Topics (Live)</a></li>
                 <li class=""><a href="{{ route('polling_question.index') }}" class="sub-slide-item {{ request()->routeIs(['polling_question*','polling_sub_cat*']) ? 'active' : '' }}">Questions(live)</a></li>
+                <li class=""><a href="{{ route('normal_voting.index') }}" class="sub-slide-item {{ request()->routeIs('normal_voting*') ? 'active' : '' }}">Topics (Normal)</a></li>
             </ul>
         </li>
         

@@ -48,19 +48,20 @@ class CategoryController extends Controller
             'category_short_desc.required' => 'Category Short Description is required'
         ]);
 
+        $category = new category();
+        
         if($request->hasFile('category_image'))
         {
            $image      = $request->file('category_image');
            $filename   = uniqid() . '.' . $image->getClientOriginalExtension();
            $location   = public_path('backend/uploads/category/');
            $image->move( $location, $filename);
+           $category->category_image = $filename;
         }
 
-        $category = new category();
         $category->title = $request->title;
         $category->slug = $request->slug;
         $category->category_short_desc = $request->category_short_desc;
-        $category->category_image = $filename;
 
         $category->save();
         return redirect()->route('category.index')->with('success', 'Category create success');

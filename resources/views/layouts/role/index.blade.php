@@ -46,8 +46,11 @@
                                 @can('permission edit',)
                                 <a data-bs-toggle="modal" data-bs-target="#modaledit8__{{$role->id}}" class="btn btn-success">Edit Permission</a>
                                 @endcan
+                                
                                 @can('role delete')
-                                <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modaldemo8__{{$role->id}}">Delete</a>
+                                    @if ($role->id != 1)
+                                    <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modaldemo8__{{$role->id}}">Delete</a>
+                                    @endif
                                 @endcan
                             </td>
                         </tr> 
