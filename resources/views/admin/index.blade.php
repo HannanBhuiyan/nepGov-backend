@@ -141,7 +141,7 @@
                             <h4>Role</h4>
                             @foreach ($roles as $role)
                                 <input type="checkbox" id="role__{{ $role->id }}" name="role[]" value="{{ $role->name }}">
-                                <label for="role__{{ $role->id }}">{{ $role->name }} </label> <br>
+                                <label for="role__{{ $role->id }}" style="cursor: pointer">{{ $role->name }} </label> <br>
                             @endforeach    
                         </div>
 

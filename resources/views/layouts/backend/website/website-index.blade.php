@@ -92,8 +92,7 @@
                 
                 <div class="form-group">
                     <label class="form-label">SEO Keywords</label>
-                    {{-- <input type="text" class="form-control" data-role="tagsinput" name="seo_keywords" value="{{ $items->seo_keywords ?? ''}}"> --}}
-                    <input type="text" class="form-control" name="seo_keywords" value="{{ $items->seo_keywords ?? old('seo_keywords') }}" data-role="tagsinput">
+                    <input type="text" class="form-control" data-tag-trigger="Space" data-role="tagsinput" name="seo_keywords" value="{{ $items->seo_keywords ?? ''}}">
                 </div>
                 
 

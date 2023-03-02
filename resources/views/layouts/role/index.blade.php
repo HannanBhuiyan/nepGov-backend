@@ -66,8 +66,10 @@
 
                                             <div class="form-group">
                                                 <label> Role:- </label>
-                                                <h3>{{$role->name}}</h3>
-                                                <input type="hidden" class="form-control" id="name" name="name" value="{{$role->name}}" placeholder="Role">
+                                                <h4>{{$role->name}}</h4>
+                                                @if ($role->name != 'Super Admin')
+                                                <input type="text" class="form-control" id="name" name="name" value="{{$role->name}}" placeholder="Role">
+                                                @endif
                                                 @error('name')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror

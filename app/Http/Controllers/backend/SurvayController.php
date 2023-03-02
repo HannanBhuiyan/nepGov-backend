@@ -18,7 +18,6 @@ class SurvayController extends Controller
 
     public function store(Request $request)
     {
-        // return $request;
         $request->validate([
             'survay_question' => 'required',
             'slug' => 'required'
@@ -37,14 +36,6 @@ class SurvayController extends Controller
                 'survay_question_id' => $question->id,
                 'created_at' => Carbon::now()
             ]);
-            // foreach($request->options as $key=>$opt){
-            //     SurvayOption::insert([
-            //         'options' => $request->options[$key],
-            //         'answer_type' => $request->answer_type,
-            //         'survay_question_id' => $question->id,
-            //         'created_at' => Carbon::now()
-            //     ]);
-            // }
         }else{
             SurvayOption::insert([
                 'answer_type' => $request->answer_type,

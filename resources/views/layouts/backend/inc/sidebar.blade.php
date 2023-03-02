@@ -9,13 +9,13 @@
             <h3>Main</h3>
         </li>
         
-        @role('Super Admin')
+        {{-- @role('Super Admin') --}}
         <li class="slide">
             <a class="side-menu__item has-link {{ request()->routeIs('home') ? 'active' : '' }}" data-bs-toggle="slide" href="{{ route('home') }}"><i
                     class="side-menu__icon fe fe-home"></i><span
                     class="side-menu__label">Dashboard</span></a>
         </li>
-        @endrole
+        {{-- @endrole --}}
         <li class="sub-category">
             <h3>UI Kit</h3>
         </li> 
@@ -88,7 +88,7 @@
             </ul>
         </li>
 
-        @role('Super Admin')
+        {{-- @role('Super Admin') --}}
         <li class="slide {{ request()->routeIs(['settings.index','social_links.index']) ? 'is-expanded' : '' }}">
             <a class="side-menu__item {{ request()->routeIs(['settings.index','social_links.index']) ? 'is-expanded active' : '' }}" data-bs-toggle="slide" href="javascript:void(0)"><i
                     class="side-menu__icon fe fe-settings"></i><span
@@ -103,7 +103,7 @@
                 @endcan
             </ul>
         </li>
-        @endrole
+        {{-- @endrole --}}
     </ul>
     <div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191"
             width="24" height="24" viewBox="0 0 24 24">
