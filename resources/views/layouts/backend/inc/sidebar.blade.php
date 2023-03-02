@@ -89,6 +89,7 @@
         </li>
 
         {{-- @role('Super Admin') --}}
+        @if (auth()->user()->can('general settings edit') || auth()->user()->can('social link settings edit'))
         <li class="slide {{ request()->routeIs(['settings.index','social_links.index']) ? 'is-expanded' : '' }}">
             <a class="side-menu__item {{ request()->routeIs(['settings.index','social_links.index']) ? 'is-expanded active' : '' }}" data-bs-toggle="slide" href="javascript:void(0)"><i
                     class="side-menu__icon fe fe-settings"></i><span
@@ -102,7 +103,8 @@
                 <li class=""><a href="{{ route('social_links.index') }}" class="slide-item {{ request()->routeIs('social_links.index') ? 'active' : '' }}">SocialLink Settings</a></li>                  
                 @endcan
             </ul>
-        </li>
+        </li>            
+        @endif
         {{-- @endrole --}}
     </ul>
     <div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191"

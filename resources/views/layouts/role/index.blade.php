@@ -150,7 +150,7 @@
                         <div class="form-group">
                             <h3>Permission <span class="text-danger">*</span></h3>
                             <input class="" type="checkbox" id="flexSwitchCheckDefault" onchange="checkAll(this)">
-                            <label class="" for="flexSwitchCheckDefault"><h4>Select All</h4></label><br>
+                            <label class="" for="flexSwitchCheckDefault">Select All</label><br>
                             @foreach ($permissions as $permission)
                             <input class="inner-checkbox" id="perm__{{$permission->id}}" type="checkbox" name="permission[]" value="{{ $permission->name }}">
                             <label for="perm__{{$permission->id}}" style="cursor: pointer">{{ $permission->name }} </label> <br>

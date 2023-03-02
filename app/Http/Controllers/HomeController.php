@@ -19,7 +19,7 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
-
+use Illuminate\Support\Facades\App;
 
 class HomeController extends Controller
 {
@@ -40,6 +40,15 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // return env('MAIL_USERNAME');
+        // $path = base_path('.env');
+        // $test = file_get_contents($path);
+
+        // if (file_exists($path)) {
+        // file_put_contents($path, str_replace('APP_ENV=local', 'APP_ENV=production', $test));
+        // }
+
+        // die;
         
         $total_users  = [];
         $total_news   = [];
