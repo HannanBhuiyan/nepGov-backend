@@ -54,7 +54,7 @@
                             <td>{{ $loop->index + 1 }}</td>
                             <td >
                                 <input id="userCheck-{{$user->id}}" type="checkbox" name="check[]" value="{{ $user->id }}">
-                                <label for="userCheck-{{$user->id}}" style="cursor: pointer">{{ $user->first_name ?? 'N/A' }} {{ $user->last_name ?? 'N/A'}}</label>
+                                <label for="userCheck-{{$user->id}}" style="cursor: pointer">{{ $user->first_name ?? ''}} {{ $user->last_name ?? ''}}</label>
                             </td>
                             <td>{{ $user->email ?? '' }}</td>
                             <td>{{ Str::headline($user_infos->which_political_party_do_you_support ?? 'N/A') }}</td>
