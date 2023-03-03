@@ -30,7 +30,9 @@ class SurvayApiController extends Controller
 
     function survay_answer_store(Request $request)
     {
-        
+     
+
+
         $rules = array(
             'why_you_joined_nepGov' => 'required',
             'which_political_party_do_you_support' => 'required',
@@ -43,39 +45,23 @@ class SurvayApiController extends Controller
         if($valiodator->fails()){
             return response()->json($valiodator->errors(),401);
         }else{
-            $existsss = SurvayAnswer::where('user_id', Auth::id())->exists();
-         
-            // $existsss = SurvayAnswer::where('user_id', 1)->exists();
-            
-            if($existsss){
-                $survay = SurvayAnswer::where('user_id', Auth::id())->first();
-                $survay->why_you_joined_nepGov = $request->why_you_joined_nepGov;
-                $survay->which_political_party_do_you_support = $request->which_political_party_do_you_support;
-                $survay->what_is_your_ethnicity = $request->what_is_your_ethnicity;
-                $survay->highest_educational_qualification_you_have = $request->highest_educational_qualification_you_have;
-                $survay->your_concern_to_our_category = $request->your_concern_to_our_category;
-                $survay->extra_questions = json_encode($request->extra_questions);
-                $survay->save();
-            }else{
-                $survay = new SurvayAnswer;
+            $survay = new SurvayAnswer;
                 $survay->why_you_joined_nepGov = $request->why_you_joined_nepGov;
                 $survay->which_political_party_do_you_support = $request->which_political_party_do_you_support;
                 $survay->what_is_your_ethnicity = $request->what_is_your_ethnicity;
                 $survay->highest_educational_qualification_you_have = $request->highest_educational_qualification_you_have;
                 $survay->your_concern_to_our_category = $request->your_concern_to_our_category;
                 // $survay->user_id = 2;
-                $survay->user_id = Auth::id();
+                $survay->user_id = $request->user_id;
                 $survay->extra_questions = json_encode($request->extra_questions);  
-
                 $survay->save();
-            }
 
-            $userId = User::find($survay->user_id);
-            $userId->is_survay = "true";
-            $userId->save();
+                 $userId = User::find($survay->user_id);
+                $userId->is_survay = "true";
+                $userId->save();
+           
         }
      
-
         return response()->json(['status'=>200, 'success'=>'Survay Answer Stored Success']);
 
     }
