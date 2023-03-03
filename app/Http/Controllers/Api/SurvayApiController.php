@@ -70,10 +70,9 @@ class SurvayApiController extends Controller
                 $survay->save();
             }
 
-            $userId = Auth::id();
-            User::find($userId)->update([
-                "is_survay"=>"true"
-            ]);
+            $userId = User::find($survay->user_id);
+            $userId->is_survay = "true";
+            $userId->save();
         }
      
 
