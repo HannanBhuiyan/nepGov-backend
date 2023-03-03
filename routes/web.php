@@ -48,7 +48,12 @@ Route::group(['middleware'=>['auth']],function(){
     Route::get('/dashboard', [HomeController::class, 'index'])->name('home');
 
     // Users Lists 
+    Route::get('/admin/create', [HomeController::class, 'create_admin'])->name('create_admin');
+    Route::post('/admin/store', [HomeController::class, 'create_admin_store'])->name('admin_create.store');
     Route::get('/users/list', [HomeController::class, 'users_list'])->name('user.index');
+    Route::get('admin/edit/user/{id}', [HomeController::class, 'adminEditUser'])->name('admin_edit_user');
+    Route::get('admin/view/user/{id}', [HomeController::class, 'adminViewUser'])->name('admin_view_user');
+    Route::put('admin/update/user/{id}', [HomeController::class, 'adminUpdateUser'])->name('admin_user_update');
     Route::get('/user/role', [UserRoleController::class, 'user_role_index'])->name('role.index');
     Route::post('/user/role/store', [UserRoleController::class, 'user_role_store'])->name('user_role.store');
     Route::post('/user/role/update/{id}', [UserRoleController::class, 'user_role_update'])->name('user_role.update');

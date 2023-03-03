@@ -238,7 +238,7 @@ Route::get('normal/topic/{slug}', [NormalReviewApiController::class, 'normal_top
 // servay questions api
 Route::get('survay/questions/', [SurvayApiController::class, 'survay_question_api']);
 Route::get('survay/answers/', [SurvayApiController::class, 'survay_answer_api']);
-// Route::post('survay/answers/store', [SurvayApiController::class, 'survay_answer_store']);
+Route::post('survay/answers/store', [SurvayApiController::class, 'survay_answer_store']);
 
 
  

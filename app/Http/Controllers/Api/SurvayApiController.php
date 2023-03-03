@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Models\SurvayAnswer;
-use App\Models\SurvayQuestion;
 use Illuminate\Http\Request;
+use App\Models\SurvayQuestion;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class SurvayApiController extends Controller
 {
@@ -43,6 +44,7 @@ class SurvayApiController extends Controller
             return response()->json($valiodator->errors(),401);
         }else{
             $existsss = SurvayAnswer::where('user_id', Auth::id())->exists();
+         
             // $existsss = SurvayAnswer::where('user_id', 1)->exists();
             
             if($existsss){
@@ -53,7 +55,6 @@ class SurvayApiController extends Controller
                 $survay->highest_educational_qualification_you_have = $request->highest_educational_qualification_you_have;
                 $survay->your_concern_to_our_category = $request->your_concern_to_our_category;
                 $survay->extra_questions = json_encode($request->extra_questions);
-                
                 $survay->save();
             }else{
                 $survay = new SurvayAnswer;
@@ -68,8 +69,14 @@ class SurvayApiController extends Controller
 
                 $survay->save();
             }
+
+            $userId = Auth::id();
+            User::find($userId)->update([
+                "is_survay"=>"true"
+            ]);
         }
-        
+     
+
         return response()->json(['status'=>200, 'success'=>'Survay Answer Stored Success']);
 
     }

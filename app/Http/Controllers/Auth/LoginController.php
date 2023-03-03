@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Laravel\Sanctum\Sanctum;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\SurvayAnswer;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;

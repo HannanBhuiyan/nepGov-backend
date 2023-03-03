@@ -61,11 +61,13 @@
                             <td>{{ Str::headline($user_infos->what_is_your_ethnicity ?? 'N/A') }}</td>
                             <td>{{ Str::headline($user_infos->highest_educational_qualification_you_have ?? 'N/A') }}</td>
                             <td>{{ \Carbon\Carbon::parse($user->date_of_birth)->diff(\Carbon\Carbon::now())->format('%y years') }}</td>
-                            // {{-- <td>{{ Carbon\Carbon::parse($user->date_of_birth)->age ?? 'N/A' }}</td> --}}
+                            {{-- <td>{{ Carbon\Carbon::parse($user->date_of_birth)->age ?? 'N/A' }}</td> --}}
                             
                             <td>
                                 {{-- <a data-bs-toggle="modal" data-bs-target="#modalassign8__{{$user->id}}" class="btn btn-info">Assign Role</a> --}}
                                 @can('user delete')
+                                <a href="{{route('admin_edit_user', $user->id) }}" class="btn btn-info">Edit</a>
+                                <a href="{{route('admin_view_user', $user->id) }}" class="btn btn-primary">View</a>
                                 <a href="" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modaldemo8__{{$user->id}}">Delete</a>
                                 @endcan
                             </td>

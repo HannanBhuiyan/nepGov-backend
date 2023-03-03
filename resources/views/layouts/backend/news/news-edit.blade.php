@@ -14,7 +14,7 @@
         </nav>
         <div class="card p-3 mt-4">
             <div class="category_title my-3">
-                <h3>Add News</h3>
+                <h3>Update News</h3>
             </div>
             <form action="{{ route('news.update', $news->id) }}" method="post" enctype="multipart/form-data">
                 @csrf

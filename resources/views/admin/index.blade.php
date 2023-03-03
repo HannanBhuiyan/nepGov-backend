@@ -23,6 +23,7 @@
                    </div>
                    <div class="right">
                     @can('assign role to users')
+                    <a class="btn btn-info" href="{{route('create_admin')}}">Admin Create</a>
                     <a class="btn btn-primary" data-toggle="modal" data-target="#addusermodal_01">Assign Role to Users</a>
                     @endcan
                   </div>

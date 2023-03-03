@@ -30,6 +30,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('is_survay')->default('false');
             $table->string('token_verify')->nullable();
             $table->rememberToken();
             $table->timestamps();

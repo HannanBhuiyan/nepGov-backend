@@ -32,14 +32,20 @@
         </li>
 
         @role('Super Admin')
-        <li class="slide {{ request()->routeIs(['role*','admin_create*']) ? 'is-expanded active' : '' }}">
-            <a class="side-menu__item {{ request()->routeIs(['role*','admin_create*']) ? 'is-expanded active' : '' }}" data-bs-toggle="slide" href="javascript:void(0)"><i
+        {{-- <li class="slide">
+            <a class="side-menu__item has-link {{ request()->routeIs('create_admin') ? 'active' : '' }}" data-bs-toggle="slide" href="{{ route('create_admin') }}"><i
+                    class="side-menu__icon fe fe-user"></i><span
+                    class="side-menu__label">Admin Create</span></a>
+        </li> --}}
+        <li class="slide {{ request()->routeIs(['role*','admin_create*','create_admin']) ? 'is-expanded active' : '' }}">
+            <a class="side-menu__item {{ request()->routeIs(['role*','admin_create*','create_admin']) ? 'is-expanded active' : '' }}" data-bs-toggle="slide" href="javascript:void(0)"><i
                     class="side-menu__icon fe fe-users"></i><span
-                    class="side-menu__label">Role Permission</span><i
+                    class="side-menu__label">Admin/Role Permission</span><i
                     class="angle fe fe-chevron-right"></i></a>
             <ul class="slide-menu">
                 <li><a href="{{ route('role.index') }}" class="slide-item {{ request()->routeIs('role.index') ? 'active' : '' }}"> Role</a></li>
-                <li><a href="{{ route('admin_create.index') }}" class="slide-item {{ request()->routeIs('admin_create.index') ? 'active' : '' }}">User Assign Role</a></li>
+                <li><a href="{{ route('create_admin') }}" class="slide-item {{ request()->routeIs('create_admin') ? 'active' : '' }}">Admin Create</a></li>
+                <li><a href="{{ route('admin_create.index') }}" class="slide-item {{ request()->routeIs('admin_create.index') ? 'active' : '' }}">Admins/Assign Role</a></li>
             </ul>
         </li>
         @endrole
