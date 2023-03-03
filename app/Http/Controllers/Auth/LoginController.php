@@ -95,6 +95,9 @@ class LoginController extends Controller
 
             if($varify == 'yes'){
                 $user = User::create([
+                    'first_name' => $request->first_name,
+                    'last_name' => $request->last_name,
+                    'username' => $request->username,
                     'email' => $request->email,
                     "token_verify"=>1,
                     'password' => Hash::make($request->password),
@@ -106,6 +109,9 @@ class LoginController extends Controller
                 DB::table('verify_needs')->where('email',$request->email)->delete();
             }else{
                 $user = User::create([
+                    'first_name' => $request->first_name,
+                    'last_name' => $request->last_name,
+                    'username' => $request->username,
                     'email' => $request->email,
                     'password' => Hash::make($request->password),
                     'country' => $request->country,
@@ -150,7 +156,7 @@ class LoginController extends Controller
             }else{
                 return response()->json([
                     'status' => false,
-                    'message' => 'Credentials does not match',
+                    'message' => 'Credentials do not match',
                 ]);
             } 
         }
@@ -158,7 +164,7 @@ class LoginController extends Controller
            
             return response()->json([
                 'status' => false,
-                'message' => 'Credentials does not match',
+                'message' => 'Credentials do not match',
             ]);
         }  
 
