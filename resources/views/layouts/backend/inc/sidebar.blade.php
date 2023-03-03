@@ -44,7 +44,7 @@
                     class="angle fe fe-chevron-right"></i></a>
             <ul class="slide-menu">
                 <li><a href="{{ route('role.index') }}" class="slide-item {{ request()->routeIs('role.index') ? 'active' : '' }}"> Role</a></li>
-                <li><a href="{{ route('create_admin') }}" class="slide-item {{ request()->routeIs('create_admin') ? 'active' : '' }}">Admin Create</a></li>
+                {{-- <li><a href="{{ route('create_admin') }}" class="slide-item {{ request()->routeIs('create_admin') ? 'active' : '' }}">Admin Create</a></li> --}}
                 <li><a href="{{ route('admin_create.index') }}" class="slide-item {{ request()->routeIs('admin_create.index') ? 'active' : '' }}">Admins/Assign Role</a></li>
             </ul>
         </li>

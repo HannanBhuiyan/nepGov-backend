@@ -60,7 +60,11 @@
                                 @endif
                             </td>
                             <td>
+                                @if ($user_roles_exists)
                                 <a data-bs-toggle="modal" data-bs-target="#modaledit8__{{$user->id}}" class="btn btn-info">Edit</a>
+                                @else   
+                                <a data-bs-toggle="modal" data-bs-target="#modaledit8__{{$user->id}}" class="btn btn-info">Assign Role</a>
+                                @endif
                                 @can('user delete')
                                 <a href="" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modaldemo8__{{$user->id}}">Delete</a>
                                 @endcan
