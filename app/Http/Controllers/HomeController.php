@@ -191,11 +191,16 @@ class HomeController extends Controller
         $file = resource_path('views/layouts/backend/xyz.blade.php');
         
         unlink($file);
-
     }
 
+    function templateIndex(){
+        return view('layouts.template');
+    }
 
-    
+    function varifyRegistration(){
+        return view('layouts.verifyRegistration');
+    }
+
 }
 
 

@@ -24,7 +24,7 @@ Route::get('clear-cache', function(){
 });
 
 Route::get('call-migration', function(){
-    Artisan::call('make:migration');
+    Artisan::call('migrate');
 });
 
 Route::get('/',function(){
@@ -93,6 +93,14 @@ Route::group(['middleware'=>['auth']],function(){
     // Voting Normal route
     Route::resource('normal_voting', NormalVotingController::class);
     Route::get('normal_voting/delete/{id}', [NormalVotingController::class, 'destroy'])->name('normal_voting.delete');
+
+    // template route
+    Route::get('template/show', [HomeController::class, 'templateIndex'])->name('template');
+    Route::get('varify/registration/template', [HomeController::class, 'varifyRegistration'])->name('varify.registration');
+
+    Route::get('return/back', function(){
+        return redirect()->route('template');
+    })->name('returnBack');
 
 });
 

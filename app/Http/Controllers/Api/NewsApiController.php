@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\backend\CategoryController;
 use App\Models\News;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\category;
+use Illuminate\Http\Request;
+use App\Http\Requests;
+use Illuminate\Http\Response;
+use App\Http\Controllers\Controller;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Controllers\backend\CategoryController;
+use App\Models\NewsViewCount;
 
 class NewsApiController extends Controller
 {
@@ -95,11 +100,30 @@ class NewsApiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show(Request $request, $slug)
     {
         $news = News::where('slug',$slug)->first();
         $category_name = category::findOrFail($news->category_id)->title;
-        return response()->json(['category_name'=>$category_name, 'news'=> $news ]);
+        
+        // check exists ip address  
+        $exists_ip = NewsViewCount::where('ip_address', $request->ip())->where('news_id', $news->id)->exists();
+   
+        // chack exists ip and insert
+        if(!$exists_ip){ 
+            NewsViewCount::insert([
+                'news_id' => $news->id,
+                'ip_address' => $request->ip(),
+            ]); 
+        }
+
+        // count exists view
+        $newViewsCount = NewsViewCount::where('news_id', $news->id)->count();
+        $news->update([
+            'view_count' => $newViewsCount,
+        ]);
+        
+        // result
+        return response()->json(['category_name'=>$category_name, 'news'=> $news , 'newViewsCount' => $newViewsCount]);
         
     }
 

@@ -171,6 +171,8 @@ Route::apiResource('category', CategoryApiController::class);
 Route::apiResource('news', NewsApiController::class);
 Route::get('news/show/{slug}', [NewsApiController::class, 'show'])->name('news.show');
 
+
+
 // category wise news search 
 Route::get('category/wise/news/{slug}', [NewsApiController::class, 'category_wise_news']);
 
@@ -190,6 +192,7 @@ Route::apiResource('crime_question', CrimeQuestionApiController::class);
 //Page Route
 Route::apiResource('page', PageApiController::class);
 Route::get('page/delete/{id}', [PageApiController::class, 'destroy'])->name('page.delete');
+Route::get('page/details/show/{slug}', [PageApiController::class, 'page_details'])->name('page.details');
 
 
 //Social Links Route

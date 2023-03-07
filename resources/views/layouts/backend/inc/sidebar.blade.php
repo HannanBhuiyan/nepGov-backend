@@ -94,6 +94,12 @@
             </ul>
         </li>
 
+        <li class="slide">
+            <a class="side-menu__item has-link {{ request()->routeIs('template') ? 'active' : '' }}" data-bs-toggle="slide" href="{{ route('template') }}"><i
+                    class="side-menu__icon fa fa-foursquare"></i><span
+                    class="side-menu__label">Template</span></a>
+        </li>
+
         {{-- @role('Super Admin') --}}
         @if (auth()->user()->can('general settings edit') || auth()->user()->can('social link settings edit'))
         <li class="slide {{ request()->routeIs(['settings.index','social_links.index']) ? 'is-expanded' : '' }}">

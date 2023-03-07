@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Models\Page;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\PageViewCount;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Validator;
 
@@ -84,4 +85,31 @@ class PageApiController extends Controller
         return response()->json(['status'=>200, 'success'=>'Page Delete Success']);
         
     }
+
+    public function page_details(Request $request, $slug)
+    {
+        $page = Page::where('slug',$slug)->first();
+        
+        // check exists ip address  
+        $exists_ip = PageViewCount::where('ip_address', $request->ip())->where('page_id', $page->id)->exists();
+   
+        // chack exists ip and insert
+        if(!$exists_ip){ 
+            PageViewCount::insert([
+                'page_id' => $page->id,
+                'ip_address' => $request->ip(),
+            ]); 
+        }
+
+        // count exists view
+        $pageViewsCount = PageViewCount::where('page_id', $page->id)->count();
+        $page->update([
+            'view_count' => $pageViewsCount,
+        ]);
+        
+        // result
+        return response()->json(['page'=> $page]);
+        
+    }
+
 }

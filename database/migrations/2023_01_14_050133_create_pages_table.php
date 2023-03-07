@@ -20,6 +20,7 @@ return new class extends Migration
             $table->longText('description')->nullable();
             $table->string('placement');
             $table->string('footer_column')->nullable();
+            $table->string('view_count')->default(0);
             $table->string('seo_title')->nullable();
             $table->longText('seo_description')->nullable();
             $table->timestamps();
