@@ -99,37 +99,6 @@
     </table>
     <!-- padding -->
 
-
-    <!-- lock -->
-    <table style="width: 100%;">
-        <tr>
-            <td>
-                <table style="width: 100%; max-width: 650px; margin: auto; background: #fff;">
-                    <tr>
-                        <td style="text-align: center;"><img src="https://i.postimg.cc/YqNN1nRR/lock.png" alt=""></td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
-    <!-- lock -->
-
-
-    <!-- padding -->
-    <table style="width: 100%;">
-        <tr>
-            <td>
-                <table style="width: 100%; max-width: 650px; height: 40px; margin: auto; background: #fff;">
-                    <tr>
-                        <td></td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
-    <!-- padding -->
-
-
     <!-- title -->
     <table style="width: 100%;">
         <tr>
@@ -137,7 +106,7 @@
                 <table style="width: 100%; max-width: 650px; margin: auto; background: #fff;">
                     <tr>
                         <td style="width: 40px;"></td>
-                        <td style="text-align: center; font-size: 28px; font-weight: 600;">Enter this verification code to create your NepGov account :</td>
+                        <td style="text-align: center; font-size: 20px; font-weight: 700;">You can reset password from bellow link:-</td>
                         <td style="width: 40px;"></td>
                     </tr>
                 </table>
@@ -161,14 +130,13 @@
     </table>
     <!-- padding -->
 
-
     <!-- verification code -->
     <table style="width: 100%;">
         <tr>
             <td>
                 <table style="width: 100%; max-width: 650px; margin: auto; background: #fff;">
                     <tr>
-                        <td style="text-align: center; font-size: 34px; font-weight: bold;">Token</td>
+                        <td style="text-align: center; font-size: 30px; font-weight: bold;"><a href="!#">Reset Password</a></td>
                     </tr>
                 </table>
             </td>
@@ -193,20 +161,7 @@
 
 
     <!-- content -->
-    <table style="width: 100%;">
-        <tr>
-            <td>
-                <table style="width: 100%; max-width: 650px; margin: auto; background: #fff;">
-                    <tr>
-                        <td style="width: 40px"></td>
-                        <td style="text-align: center; font-size: 16px; font-weight: 500;">You're receiving this code because your email was entered on the NepGov website 
-                            at <a href="https://nepgov.vercel.app/loginPage">account.nepgov.com</a> If this was not you, please ignore this email - no account will created. </td>
-                        <td style="width: 40px"></td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
+    
     <!-- content -->
 
 
@@ -277,7 +232,7 @@
     <table style="width: 100%;">
         <tr>
             <td>
-                <table style="width: 50%; max-width: 650px; margin: auto; background: #F8F7FC;">
+                <table style="width: 100%; max-width: 650px; margin: auto; background: #F8F7FC;">
                     <tr>
                         <td style="width: 40px;"></td>
                         <td style="font-size: 16px; color: gray;"><a style="color: gray;" href="https://nepgov.vercel.app/privacyPolicyPage">Privacy</a> </td>
@@ -289,6 +244,7 @@
     </table>
     <!-- footer main -->
 
+    <!-- padding -->
     <!-- padding -->
     <table style="width: 100%;">
         <tr>
@@ -304,6 +260,7 @@
         </tr>
     </table>
     <!-- padding -->
+    <!-- padding -->
 <!-- footer-->
 
     <!-- top gap table -->
@@ -315,6 +272,7 @@
         </tr>
     </table>
     <!-- top gap table -->
+
 
 
 </body>

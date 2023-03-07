@@ -23,7 +23,6 @@ return new class extends Migration
             $table->string("feature_image")->nullable();
             $table->longText('description');
             $table->integer('view_count')->default(0);
-            $table->string('ip_address')->nullable();
             $table->string('seo_title')->nullable();
             $table->text('seo_desc')->nullable();
             $table->timestamps();

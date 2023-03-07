@@ -96,7 +96,8 @@ Route::group(['middleware'=>['auth']],function(){
 
     // template route
     Route::get('template/show', [HomeController::class, 'templateIndex'])->name('template');
-    Route::get('varify/registration/template', [HomeController::class, 'varifyRegistration'])->name('varify.registration');
+    Route::get('varify/registration/template', [HomeController::class, 'varifyRegistration'])->name('varify.registration.template');
+    Route::get('forget/password/template', [HomeController::class, 'forgetPassword'])->name('forget.password.template');
 
     Route::get('return/back', function(){
         return redirect()->route('template');

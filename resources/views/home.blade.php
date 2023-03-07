@@ -118,13 +118,25 @@
         <div class="card">
             <div class="card-body text-center">
                 <i class="fa fa-firefox text-primary fa-3x"></i>
-                <h6 class="mt-4 mb-2">Total Visit</h6>
-                <h2 class="mb-2 number-font">834</h2>
-                <p class="text-muted">Sed ut perspiciatis unde omnis accusantium doloremque</p>
+                <h6 class="mt-4 mb-2">Total News View</h6>
+                <h2 class="mb-2 number-font">{{$news_view_count->count() ?? ''}}</h2>
+                <p class="text-muted">Page viewed total {{$news_view_count->count() ?? ''}} times</p>
             </div>
         </div>
     </div>
-    
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-3">
+        <div class="card">
+            <div class="card-body text-center">
+                <i class="fa fa-pie-chart text-info fa-3x"></i>
+                <h6 class="mt-4 mb-2">Total Page View</h6>
+                <h2 class="mb-2  number-font">{{$page_view_count->count() ?? ''}}</h2>
+                <p class="text-muted">Page viewed total {{$page_view_count->count() ?? ''}} times</p>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="row">
+        
     <div class="col-sm-6 col-md-6 col-lg-6 col-xl-3">
         <div class="card">
             <div class="card-body">

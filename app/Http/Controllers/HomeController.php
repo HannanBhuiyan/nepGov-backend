@@ -8,9 +8,11 @@ use App\Models\User;
 use App\Models\Crime;
 use App\Mail\EmailOffer;
 use App\Models\Admin;
+use App\Models\NewsViewCount;
 use App\Models\UserGroup;
 use App\Models\NormalReview;
 use App\Models\NormalVoting;
+use App\Models\PageViewCount;
 use Illuminate\Http\Request;
 use App\Models\PollingReview;
 use App\Models\PollingCategory;
@@ -80,10 +82,12 @@ class HomeController extends Controller
 
         $users = User::all();
         $news = News::all();
+        $news_view_count = NewsViewCount::all();
+        $page_view_count = PageViewCount::all();
         $crimes = Crime::all();
         $live_rev = PollingReview::all();
         $normal_rev = NormalReview::all();
-        return view('home',compact('users','news','crimes','total_users','total_news','last_30_days_users','last_7_days_users','normal_reviews','polling_reviews','last_7_days_news','last_30_days_news','last_7_days_live','last_7_days_normal','live_rev','normal_rev','last_30_days_crime','last_7_days_crime'));
+        return view('home',compact('users','news','news_view_count','page_view_count','crimes','total_users','total_news','last_30_days_users','last_7_days_users','normal_reviews','polling_reviews','last_7_days_news','last_30_days_news','last_7_days_live','last_7_days_normal','live_rev','normal_rev','last_30_days_crime','last_7_days_crime'));
     }
 
     public function create_admin()
@@ -199,6 +203,10 @@ class HomeController extends Controller
 
     function varifyRegistration(){
         return view('layouts.verifyRegistration');
+    }
+
+    function forgetPassword(){
+        return view('layouts.forgetPassword');
     }
 
 }
