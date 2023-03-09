@@ -26,9 +26,9 @@
                     <tr>
                         <th scope="col">SL No</th>
                         <th scope="col">Page Title</th>
-                        <th scope="col">Slug</th>
+                        {{-- <th scope="col">Slug</th> --}}
                         <th scope="col">Placement</th>
-                        <th scope="col">Description</th>
+                        {{-- <th scope="col">Description</th> --}}
                         <th scope="col">View Count</th>
                         <th scope="col">Action</th>
                     </tr>
@@ -38,9 +38,9 @@
                         <tr>
                             <td>{{ $loop->index+1 }}</td>
                             <td>{{ $pages->page_title ?? '' }}</td>
-                            <td>{{ $pages->slug ?? '' }}</td>
+                            {{-- <td>{{ $pages->slug ?? '' }}</td> --}}
                             <td>{{ $pages->placement ?? '' }}</td>
-                            <td>{!! substr($pages->description,0,200) ?? '' !!}</td>
+                            {{-- <td>{!! substr($pages->description,0,200) ?? '' !!}</td> --}}
                             <td>{{ $pages->view_count ?? '0' }}</td>
                             <td>
                                 @can('page edit')
