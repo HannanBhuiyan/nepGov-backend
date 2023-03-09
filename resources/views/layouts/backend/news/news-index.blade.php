@@ -29,7 +29,7 @@
                     <th scope="col">SL NO</th>
                     <th scope="col">News Title</th>
                     <th scope="col">Category</th>
-                    {{-- <th scope="col">News Description</th> --}}
+                    <th scope="col">View Count</th>
                     <th scope="col">Image</th>
                     <th scope="col">Action</th>
                   </tr>
@@ -41,7 +41,7 @@
                         <td>{{ $loop->index + 1 }}</td>
                         <td>{{ $news->title }}</td>
                         <td>{{ $news->category->title }}</td>
-                        {{-- <td> {{ substr($news->description,0,100) }} </td> --}}
+                        <td> {{ $news->view_count ?? '0' }} </td>
                         <td>
                             <img width="100px" src="{{ asset($news->image) }}" alt="image">
                         </td>
