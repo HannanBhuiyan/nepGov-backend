@@ -32,6 +32,7 @@ class NormalVotingController extends Controller
     
     public function store(Request $request)
     {
+        // return PollingCategory::find($request->category_id)->category_name;
         $request->validate([
             'category_id' => 'required',
             'topic' => 'required',
@@ -39,7 +40,7 @@ class NormalVotingController extends Controller
             'option_one' => 'required',
             'option_two' => 'required'
         ]); 
-
+        
         $months = Carbon::today()->month;
         $count = [];
         for($i=1; $i<=$months; $i++){
@@ -47,6 +48,7 @@ class NormalVotingController extends Controller
         }
         $cat = new NormalVoting();
         $cat->category_id = $request->category_id;
+        $cat->category_name = PollingCategory::find($request->category_id)->category_name;
         $cat->topic = $request->topic;
         $cat->slug = $request->slug;
         $cat->option_one = $request->option_one;

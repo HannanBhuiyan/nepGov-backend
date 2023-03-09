@@ -76,7 +76,7 @@ class HomeController extends Controller
         $last_30_days_news = News::where('created_at','>=',Carbon::now()->subdays(30))->get();
         $last_7_days_news = News::where('created_at','>=',Carbon::now()->subdays(7))->get();
         $last_7_days_live = PollingReview::where('created_at','>=',Carbon::now()->subdays(7))->get();
-        $last_7_days_normal = NormalReview::where('created_at','>=',Carbon::now()->subdays(7))->get();
+        $last_7_days_normal = NormalVoting::where('created_at','>=',Carbon::now()->subdays(7))->get();
         $last_30_days_crime = Crime::where('created_at','>=',Carbon::now()->subdays(30))->get();
         $last_7_days_crime = Crime::where('created_at','>=',Carbon::now()->subdays(7))->get();
 
@@ -86,7 +86,7 @@ class HomeController extends Controller
         $page_view_count = PageViewCount::all();
         $crimes = Crime::all();
         $live_rev = PollingReview::all();
-        $normal_rev = NormalReview::all();
+        $normal_rev = NormalVoting::all();
         return view('home',compact('users','news','news_view_count','page_view_count','crimes','total_users','total_news','last_30_days_users','last_7_days_users','normal_reviews','polling_reviews','last_7_days_news','last_30_days_news','last_7_days_live','last_7_days_normal','live_rev','normal_rev','last_30_days_crime','last_7_days_crime'));
     }
 

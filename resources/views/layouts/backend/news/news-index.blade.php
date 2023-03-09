@@ -43,7 +43,7 @@
                         <td>{{ $news->category->title }}</td>
                         <td> {{ $news->view_count ?? '0' }} </td>
                         <td>
-                            <img width="100px" src="{{ asset($news->image) }}" alt="image">
+                            <img width="100px" src="{{ asset($news->feature_image) }}" alt="image">
                         </td>
                         <td>
                             @if (auth()->user()->can('news edit'))

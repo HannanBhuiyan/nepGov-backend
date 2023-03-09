@@ -6,7 +6,7 @@ use App\Models\News;
 use App\Models\category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\Models\PollingCategory;
 use Intervention\Image\Facades\Image;
 
 class NewsController extends Controller
@@ -64,11 +64,11 @@ class NewsController extends Controller
         $final_image = $upload_location.hexdec(uniqid()).'.'.$image_ext;
         Image::make($feature_image)->resize(1900, 466)->save($final_image);
 
-        $image = $request->file('image');
-        $imag_ext = $image->getClientOriginalExtension();
-        $location = 'backend/assets/uploads/news/';
-        $last_image = $location.hexdec(uniqid()).'.'.$imag_ext;
-        Image::make($image)->resize(360, 360)->save($last_image);
+        // $image = $request->file('image');
+        // $imag_ext = $image->getClientOriginalExtension();
+        // $location = 'backend/assets/uploads/news/';
+        // $last_image = $location.hexdec(uniqid()).'.'.$imag_ext;
+        // Image::make($image)->resize(360, 360)->save($last_image);
 
         $data = new News;
 
@@ -77,7 +77,7 @@ class NewsController extends Controller
         $data->title = $request->title;
         $data->slug = $request->slug;
         $data->feature_image = $final_image;
-        $data->image = $last_image;
+        // $data->image = $last_image;
         $data->description = $request->description;
         $data->seo_title = $request->seo_title;
         $data->seo_desc = $request->seo_desc;
@@ -145,16 +145,16 @@ class NewsController extends Controller
         $data->seo_title = $request->seo_title;
         $data->seo_desc = $request->seo_desc;
 
-        if($request->hasFile('image')){
-            $image = $request->file('image');
-            $imag_ext = $image->getClientOriginalExtension();
-            $hexCode = hexdec(uniqid());
-            $full_name = $hexCode.'.'.$imag_ext;
-            $upload_location = 'backend/assets/uploads/news/';
-            $last_image = $upload_location.$full_name;
-            Image::make($image)->resize(360, 360)->save($last_image);
-            $data->image = $last_image;
-        }
+        // if($request->hasFile('image')){
+        //     $image = $request->file('image');
+        //     $imag_ext = $image->getClientOriginalExtension();
+        //     $hexCode = hexdec(uniqid());
+        //     $full_name = $hexCode.'.'.$imag_ext;
+        //     $upload_location = 'backend/assets/uploads/news/';
+        //     $last_image = $upload_location.$full_name;
+        //     Image::make($image)->resize(360, 360)->save($last_image);
+        //     $data->image = $last_image;
+        // }
         if($request->hasFile('feature_image')){
             $image = $request->file('feature_image');
             $imag_ext = $image->getClientOriginalExtension();

@@ -18,12 +18,12 @@
             <div class="table-responsive">
                 
                 <table class="table table-bordered border-width-3 mt-4">
-                    <tr>
+                    {{-- <tr>
                         <th> Image</th>
                         <td><img src="{{ asset($news->image ) }}" alt="not found" width="200px"></td>
-                    </tr>
+                    </tr> --}}
                     <tr>
-                        <th> Details Page Image</th>
+                        <th> Feature Image</th>
                         <td><img src="{{ asset($news->feature_image ) }}" alt="not found" width="500px" height="200px"></td>
                     </tr>
                     <tr>

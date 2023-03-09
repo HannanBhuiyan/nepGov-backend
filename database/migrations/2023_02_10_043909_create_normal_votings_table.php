@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('normal_votings', function (Blueprint $table) {
             $table->id();
             $table->integer('category_id');
+            $table->integer('category_name')->nullable();
             $table->string('topic');
             $table->string('slug');
             $table->string('option_one');

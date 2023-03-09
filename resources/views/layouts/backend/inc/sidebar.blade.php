@@ -39,7 +39,7 @@
         </li> --}}
         <li class="slide {{ request()->routeIs(['role*','admin_create*','create_admin']) ? 'is-expanded active' : '' }}">
             <a class="side-menu__item {{ request()->routeIs(['role*','admin_create*','create_admin']) ? 'is-expanded active' : '' }}" data-bs-toggle="slide" href="javascript:void(0)"><i
-                    class="side-menu__icon fe fe-users"></i><span
+                    class="side-menu__icon fe fe-user"></i><span
                     class="side-menu__label">Admin/Role Permission</span><i
                     class="angle fe fe-chevron-right"></i></a>
             <ul class="slide-menu">

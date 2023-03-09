@@ -51,7 +51,7 @@
                             @enderror
                         </div>
         
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="image">Front Image <span class="text-warning">(size: 360*360px)</span></label>
                             <input type="file" name="image" onchange="document.getElementById('first_image').src=window.URL.createObjectURL(this.files[0])"  class="form-control">
                             @error('image')
@@ -60,10 +60,10 @@
                         </div> 
                         <div class="form-group">
                             <img width="200" id="first_image">
-                        </div>
+                        </div> --}}
 
                         <div class="form-group">
-                            <label for="feature_image">Details Page Image <span class="text-warning">(size: 1900*466px)</span></label>
+                            <label for="feature_image">Feature Image <span class="text-warning">(size: 1900*466px)</span></label>
                             <input type="file" onchange="document.getElementById('second_image').src=window.URL.createObjectURL(this.files[0])"  name="feature_image"  class="form-control">
                             @error('feature_image')
                                 <span class="text-danger">{{ $message }}</span>
@@ -126,15 +126,6 @@
         $('#seo_slug').val($(this).val().toLowerCase().split(',').join('').replace(/\s/g,"-").replace(/\?/g, '-'));
     }) 
 
- 
-    // document.getElementById('feature_image').onchange = function() {
-    //     var src = URL.createObjectURL(this.files[0])
-    //     document.getElementById('first_image').src = src
-    // }
-    // document.getElementById('image').onchange = function() {
-    //     var src = URL.createObjectURL(this.files[1])
-    //     document.getElementById('second_image').src = src
-    // }
 
     CKEDITOR.replace('description');
 

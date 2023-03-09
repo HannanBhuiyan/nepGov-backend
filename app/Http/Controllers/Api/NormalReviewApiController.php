@@ -90,10 +90,10 @@ class NormalReviewApiController extends Controller
     public function normal_topic($categorySlug){
       
         if($categorySlug){
-            $polling =   PollingCategory::where('slug',$categorySlug)->first();
+            $polling =   PollingCategory::where('slug', $categorySlug)->first();
             if($polling){
                 $single_normal_topic = NormalVoting::where('category_id', $polling->id)->get();
-    
+
                 return response()->json($single_normal_topic);
             }else{
                 return response()->json(["message" => "category doesn't exist"]);
@@ -101,6 +101,9 @@ class NormalReviewApiController extends Controller
         }
       
     }
+
+    // $single_normal_topiccc->category->category_name
+
 
     public function normalTopicPost(Request $request){
         

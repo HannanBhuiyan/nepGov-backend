@@ -75,10 +75,10 @@
                         <h4 class="fw-normal mt-2 mb-0 number-font1">{{$last_7_days_crime->count()}}</h4>
                     </div>
                     <div class="col text-center"> <span class="text-muted">Monthly</span>
-                        <h4 class="fw-normal mt-2 mb-0 number-font1">{{$last_30_days_crime->count()}}</h4>
+                        <h4 class="fw-normal mt-2 mb-0 number-font1">{{ $last_30_days_crime->count() }}</h4>
                     </div>
                     <div class="col text-center"> <span class="text-muted">Total</span>
-                        <h4 class="fw-normal mt-2 mb-0 number-font1">{{$crimes->count()}}</h4>
+                        <h4 class="fw-normal mt-2 mb-0 number-font1">{{ $crimes->count() }}</h4>
                     </div>
                 </div>
             </div>
@@ -159,7 +159,7 @@
                     <h2 class="mb-2 mt-0">{{$live_rev->count()}}</h2>
                     <div id="circle-2" class="mt-3 mb-3 chart-dropshadow-warning"></div>
                     <div class="chart-circle-value-3 text-warning fs-20"><i class="icon icon-chart"></i></div>
-                    <p class="mb-0 text-start"><span class="dot-label bg-warning me-2"></span>Weekly Review <span class="float-end">{{round($last_7_days_normal->count())}}</span></p>
+                    <p class="mb-0 text-start"><span class="dot-label bg-warning me-2"></span>Weekly Review <span class="float-end">{{round($last_7_days_live->count())}}</span></p>
                 </div>
             </div>
         </div>
@@ -172,34 +172,14 @@
                     <small class="text-muted">Normal Review</small>
                     <h2 class="mb-2 mt-0">{{$normal_rev->count()}}</h2>
                     <div id="circle-3" class="mt-3 mb-3 chart-dropshadow-danger"></div>
-                    <div class="chart-circle-value-3 text-danger fs-20"><i class="icon icon-basket"></i></div>
+                    <div class="chart-circle-value-3 text-danger fs-20"><i class="icon icon-chart"></i></div>
                     <p class="mb-0 text-start"><span class="dot-label bg-danger me-2"></span>Weekly Review <span class="float-end">{{round($last_7_days_normal->count())}}</span></p>
                 </div>
             </div>
         </div>
     </div>
 
-</div>
-
-
-
-
-{{-- <div class="row">
-    
-    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-3">
-        <div class="card">
-            <div class="card-body text-center">
-                <i class="fa fa-firefox text-primary fa-3x"></i>
-                <h6 class="mt-4 mb-2">Total Visit</h6>
-                <h2 class="mb-2 number-font">834</h2>
-                <p class="text-muted">Sed ut perspiciatis unde omnis accusantium doloremque</p>
-            </div>
-        </div>
-    </div>
-
-</div> --}}
-<!-- ROW-1 END --> 
-
+</div> 
 
 
 @endsection

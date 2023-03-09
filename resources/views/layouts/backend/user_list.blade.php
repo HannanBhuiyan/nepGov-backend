@@ -60,8 +60,7 @@
                             <td>{{ Str::headline($user_infos->which_political_party_do_you_support ?? 'N/A') }}</td>
                             <td>{{ Str::headline($user_infos->what_is_your_ethnicity ?? 'N/A') }}</td>
                             <td>{{ Str::headline($user_infos->highest_educational_qualification_you_have ?? 'N/A') }}</td>
-                            <td>{{ \Carbon\Carbon::parse($user->date_of_birth)->diff(\Carbon\Carbon::now())->format('%y years') }}</td>
-                            {{-- <td>{{ Carbon\Carbon::parse($user->date_of_birth)->age ?? 'N/A' }}</td> --}}
+                            <td>{{ date("Y") - $user->date_of_birth }} Yesrs</td>
                             
                             <td>
                                 {{-- <a data-bs-toggle="modal" data-bs-target="#modalassign8__{{$user->id}}" class="btn btn-info">Assign Role</a> --}}

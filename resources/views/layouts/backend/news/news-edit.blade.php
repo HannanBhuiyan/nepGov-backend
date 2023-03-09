@@ -53,7 +53,7 @@
                             @enderror
                         </div>
         
-                        <div class="col-12">
+                        {{-- <div class="col-12">
                             <div class="form-group">
                                 <label for="image"> Previous Image</label><br>
                                 <img src="{{ asset($news->image ) }}" alt="not found" width="200">
@@ -65,16 +65,16 @@
                         </div> 
                         <div class="form-group">
                             <img width="200" id="first_image">
-                        </div>
+                        </div> --}}
 
                         <div class="col-12">
                             <div class="form-group">
-                                <label for="image"> Previous Details Image</label><br>
+                                <label for="image"> Previous Feature Image</label><br>
                                 <img src="{{ asset($news->feature_image ) }}" alt="not found" width="500" height="200">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="feature_image">Details Page Image <span class="text-warning">(size: 1900*466px)</span></label>
+                            <label for="feature_image">Feature Image <span class="text-warning">(size: 1900*466px)</span></label>
                             <input type="file" name="feature_image" onchange="document.getElementById('second_image').src=window.URL.createObjectURL(this.files[0])" class="form-control">
                         </div> 
                         <div class="form-group">
@@ -130,15 +130,6 @@
         $('#seo_slug').val($(this).val().toLowerCase().split(',').join('').replace(/\s/g,"-").replace(/\?/g, '-'));
     }) 
 
-
-    // document.getElementById('image').onchange = function() {
-    //     var src = URL.createObjectURL(this.files[0])
-    //     document.getElementById('output_image').src = src
-    // }
-    // document.getElementById('feature_image').onchange = function() {
-    //     var src = URL.createObjectURL(this.files[0])
-    //     document.getElementById('output').src = src
-    // }
 
     CKEDITOR.replace('description');
 
