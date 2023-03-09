@@ -248,7 +248,7 @@
     <!-- padding -->
 
 
-<!-- footer main -->
+    <!-- footer main -->
     <table style="width: 100%;">
         <tr>
             <td>
@@ -308,7 +308,7 @@
         </tr>
     </table>
     <!-- padding -->
-<!-- footer-->
+    <!-- footer-->
 
     <!-- top gap table -->
     <table style="height: 40px; ">

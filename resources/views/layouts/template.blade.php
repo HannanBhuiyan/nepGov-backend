@@ -7,17 +7,18 @@
     <div class="col-md-12 m-auto">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item active">Template</li>  
+              <li class="breadcrumb-item active"></li>  
             </ol>
         </nav>
 
-        <div class="card p-3 mt-4"> 
+        <div class="card pt-5"> 
             <div class="category_title my-3 d-flex justify-content-between">
                 <div class="left">
-                    <h3>Template</h3>
+                    <h3 style="margin-left: 60px">Template</h3>
                 </div>
                 
             </div>
+            {{-- <h3>Template</h3> --}}
         </div>
 
     </div>
@@ -72,7 +73,7 @@
             <table style="height: 40px; ">
                 <tr>
                     <td>
-                        <h1 class="ml-5 text-info" style="margin-left:50px">Verify Registration</h1>
+                        <h1 class="ml-5 text-dark" style="margin-left:60px">Verify Registration</h1>
                     </td>
                 </tr>
             </table>
@@ -219,8 +220,9 @@
                             <tr>
                                 <td style="width: 40px"></td>
                                 <td style="text-align: center; font-size: 16px; font-weight: 500;">You're receiving this code because your email was entered on the NepGov website 
-                                    at <a href="https://nepgov.vercel.app/loginPage">account.nepgov.com</a> If this was not you, please ignore this email - no account will created. </td>
+                                    at <a href="javascript:void(0)">account.nepgov.com</a> If this was not you, please ignore this email - no account will created. </td>
                                 <td style="width: 40px"></td>
+                                {{-- <a href="https://nepgov.vercel.app/loginPage">account.nepgov.com</a> --}}
                             </tr>
                         </table>
                     </td>
@@ -281,7 +283,7 @@
                     <td>
                         <table style="width: 100%; max-width: 650px; margin: auto; background: #F8F7FC;">
                             <tr>
-                                <td style="height: 25px;"></td>
+                                <td style="height: 0px;"></td>
                             </tr>
                         </table>
                     </td>
@@ -292,9 +294,12 @@
                 <tr>
                     <td>
                         <table style="width: 100%; max-width: 650px; margin: auto; background: #F8F7FC;">
-                            <tr>
+                            <tr style="height: 100px">
                                 <td style="width: 40px;"></td>
-                                <td style="font-size: 16px; color: gray"><a style="color: gray;" href="https://nepgov.vercel.app/privacyPolicyPage" class="pb-5">Privacy</a> </td>
+                                <td style="font-size: 16px; color: gray">
+                                    <a style="color: gray;" href="javascript:void(0)" class="pb-5">Privacy</a> 
+                                    {{-- <a style="color: gray;" href="https://nepgov.vercel.app/privacyPolicyPage" class="pb-5">Privacy</a>  --}}
+                                </td>
                                 <td style="width: 40px;"></td>
                             </tr>
                         </table>
@@ -314,217 +319,481 @@
             <!-- top gap table -->
         </div>
         <div class="col-6">
+
+            <div class="row">
+                <div class="col-12">
+
+                    <!-- top gap table -->
+                    <table style="height: 40px; ">
+                        <tr>
+                            <td>
+                                <h1 class="ml-5 text-dark" style="margin-left:60px">User Survay</h1>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- top gap table -->
+                
+                
+                    <!-- padding -->
+                    <table style="width: 100%;">
+                        <tr>
+                            <td>
+                                <table style="width: 100%; max-width: 650px; height: 30px; margin: auto; background: #fff;">
+                                    <tr>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- padding -->
+                
+                    
+                    <!-- template header -->
+                    <table style="width: 100%;">
+                        <tr>
+                            <td>
+                                <table style="width: 100%; max-width: 650px; margin: auto; background: #fff;">
+                                    <tr>
+                                        <td style="width: 200px;"></td>
+                                        <td style="text-align: center;"><a style=" color:tomato; font-size: 30px; font-weight: 600;" href="#!"><img src="https://i.postimg.cc/9fQBXdGp/Logo.png" alt=""></a></td>
+                                        <td style="width: 200px;"></td>
+                                    </tr>
+                                    
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- template header -->
+                
+                
+                    <!-- padding -->
+                    <table style="width: 100%;">
+                        <tr>
+                            <td>
+                                <table style="width: 100%; max-width: 650px; height: 40px; margin: auto; background: #fff;">
+                                    <tr>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                
+                
+                    <!-- title -->
+                    <table style="width: 100%;">
+                        <tr>
+                            <td>
+                                <table style="width: 100%; max-width: 650px; margin: auto; background: #fff;">
+                                    <tr>
+                                        <td style="width: 40px;"></td>
+                                        <td style="text-align: center; font-size: 20px; font-weight: 700;">Are you interested to share your opinion on this Topics:</td>
+                                        <td style="width: 40px;"></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- title -->
+                
+                
+                    <!-- padding -->
+                    <table style="width: 100%;">
+                        <tr>
+                            <td>
+                                <table style="width: 100%; max-width: 650px; height: 30px; margin: auto; background: #fff;">
+                                    <tr>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- padding -->
+     
+                    <!-- verification code -->
+                    <table style="width: 100%;">
+                        <tr>
+                            <td>
+                                <table style="width: 100%; max-width: 650px; margin: auto; background: #fff;">
+                                    <tr>
+                                        <td style="text-align: center; font-size: 30px; font-weight: bold;">Category/Topic : </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- verification code -->
+                
+                
+                    <!-- padding -->
+                    <table style="width: 100%;">
+                        <tr>
+                            <td>
+                                <table style="width: 100%; max-width: 650px; height: 30px; margin: auto; background: #fff;">
+                                    <tr>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- padding -->
+                
+                
+                    <!-- content -->
+                    <table style="width: 100%;">
+                        <tr>
+                            <td>
+                                <table style="width: 100%; max-width: 650px; margin: auto; background: #fff;">
+                                    <tr>
+                                        <td style="width: 40px"></td>
+                                        <td style="text-align: center; font-size: 20px; font-weight: 500;">
+                                            Please visit this site to share your opinion <br>
+                                            {{-- <a href="https://nepgov.vercel.app/normal-vote/slug">Click Here to Vote</a> <br><br> --}}
+                                            <a href="javascript:void(0)">Click Here to Vote</a> <br><br>
+                                            <span style="text-align: center; font-size: 15px; font-weight: 300;"> If you are not interested, please ignore this email. </span>
+                                        </td>
+                                        <td style="width: 40px"></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- content -->
+                
+                
+                    <!-- padding -->
+                    <table style="width: 100%;">
+                        <tr>
+                            <td>
+                                <table style="width: 100%; max-width: 650px; height: 50px; margin: auto; background: #fff;">
+                                    <tr>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- padding -->
+                
+                
+                    <!-- footer-->
+                
+                    <!-- padding -->
+                    <table style="width: 100%;">
+                        <tr>
+                            <td>
+                                <table style="width: 100%; max-width: 650px; height: 40px; margin: auto; background:#F8F7FC">
+                                    <tr>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- padding -->
+                
+                
+                    <!-- footer main -->
+                    <table style="width: 100%;">
+                        <tr>
+                            <td>
+                                <table style="width: 100%; max-width: 650px; margin: auto; background: #F8F7FC;">
+                                    <tr>
+                                        <td style="width: 40px;"></td>
+                                        <td style="font-size: 14px; font-weight: 400; color: gray;">NepGov Service LTD </td>
+                                        <td style="width: 40px;"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 40px;"></td>
+                                        <td style="font-size: 14px; font-weight: 400; color: gray;">50 Block, NewYork City, NewYork, United State </td>
+                                        <td style="width: 40px;"></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                
+                    <table style="width: 100%;">
+                        <tr>
+                            <td>
+                                <table style="width: 100%; max-width: 650px; margin: auto; background: #F8F7FC;">
+                                    <tr>
+                                        <td style="height: 25px;"></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                
+                    <table style="width: 100%;">
+                        <tr>
+                            <td>
+                                <table style="width: 100%; max-width: 650px; margin: auto; background: #F8F7FC;">
+                                    <tr>
+                                        <td style="width: 40px;"></td>
+                                        <td style="font-size: 16px; color: gray;">
+                                            <a style="color: gray;" href="javascript:void(0)">Privacy</a>
+                                            {{-- <a style="color: gray;" href="https://nepgov.vercel.app/privacyPolicyPage">Privacy</a> --}}
+                                        </td>
+                                        <td style="width: 40px;"></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- footer main -->
+                
+                    <!-- padding -->
+                    <table style="width: 100%;">
+                        <tr>
+                            <td>
+                                <table style="width: 100%; max-width: 650px; height: 40px; margin: auto; background:#F8F7FC">
+                                    <tr>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- padding -->
+                    <!-- footer-->
+                
+                    <!-- top gap table -->
+                    <table style="height: 40px; ">
+                        <tr>
+                            <td>
+                
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- top gap table -->
+    
+                </div>
+
+                <div class="col-12">
+                    <!-- top gap table -->
+                    <table style="height: 40px; ">
+                        <tr>
+                            <td>
+                                <h1 class="ml-5 text-dark" style="margin-left:60px">Forget Password</h1>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- top gap table -->
+
+
+                    <!-- padding -->
+                    <table style="width: 100%;">
+                        <tr>
+                            <td>
+                                <table style="width: 100%; max-width: 650px; height: 30px; margin: auto; background: #fff;">
+                                    <tr>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- padding -->
+
+                    
+                    <!-- template header -->
+                    <table style="width: 100%;">
+                        <tr>
+                            <td>
+                                <table style="width: 100%; max-width: 650px; margin: auto; background: #fff;">
+                                    <tr>
+                                        <td style="width: 200px;"></td>
+                                        <td style="text-align: center;"><a style=" color:tomato; font-size: 30px; font-weight: 600;" href="#!"><img src="https://i.postimg.cc/9fQBXdGp/Logo.png" alt=""></a></td>
+                                        <td style="width: 200px;"></td>
+                                    </tr>
+                                    
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- template header -->
+
+
+                    <!-- padding -->
+                    <table style="width: 100%;">
+                        <tr>
+                            <td>
+                                <table style="width: 100%; max-width: 650px; height: 40px; margin: auto; background: #fff;">
+                                    <tr>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- padding -->
+
+                    <!-- title -->
+                    <table style="width: 100%;">
+                        <tr>
+                            <td>
+                                <table style="width: 100%; max-width: 650px; margin: auto; background: #fff;">
+                                    <tr>
+                                        <td style="width: 40px;"></td>
+                                        <td style="text-align: center; font-size: 20px; font-weight: 700;">You can reset password from bellow link:-</td>
+                                        <td style="width: 40px;"></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- title -->
+
+
+                    <!-- padding -->
+                    <table style="width: 100%;">
+                        <tr>
+                            <td>
+                                <table style="width: 100%; max-width: 650px; height: 30px; margin: auto; background: #fff;">
+                                    <tr>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- padding -->
+
+                    <!-- verification code -->
+                    <table style="width: 100%;">
+                        <tr>
+                            <td>
+                                <table style="width: 100%; max-width: 650px; margin: auto; background: #fff;">
+                                    <tr>
+                                        <td style="text-align: center; font-size: 30px; font-weight: bold;"><a href="">Reset Password</a></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- verification code -->
+
+
+                    <!-- padding -->
+                    <table style="width: 100%;">
+                        <tr>
+                            <td>
+                                <table style="width: 100%; max-width: 650px; height: 30px; margin: auto; background: #fff;">
+                                    <tr>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- padding -->
+
+                    <!-- padding -->
+                    <table style="width: 100%;">
+                        <tr>
+                            <td>
+                                <table style="width: 100%; max-width: 650px; height: 50px; margin: auto; background: #fff;">
+                                    <tr>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- padding -->
+
+
+                    <!-- footer-->
+
+                    <!-- padding -->
+                    <table style="width: 100%;">
+                        <tr>
+                            <td>
+                                <table style="width: 100%; max-width: 650px; height: 40px; margin: auto; background:#F8F7FC">
+                                    <tr>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- padding -->
+
+
+                    <!-- footer main -->
+                    <table style="width: 100%;">
+                        <tr>
+                            <td>
+                                <table style="width: 100%; max-width: 650px; margin: auto; background: #F8F7FC;">
+                                    <tr>
+                                        <td style="width: 40px;"></td>
+                                        <td style="font-size: 14px; font-weight: 400; color: gray;">NepGov Service LTD </td>
+                                        <td style="width: 40px;"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 40px;"></td>
+                                        <td style="font-size: 14px; font-weight: 400; color: gray;">50 Block, NewYork City, NewYork, United State </td>
+                                        <td style="width: 40px;"></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table style="width: 100%;">
+                        <tr>
+                            <td>
+                                <table style="width: 100%; max-width: 650px; margin: auto; background: #F8F7FC;">
+                                    <tr>
+                                        <td style="height: 0px;"></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table style="width: 100%;">
+                        <tr>
+                            <td>
+                                <table style="width: 100%; max-width: 650px; margin: auto; background: #F8F7FC;">
+                                    <tr style="height: 100px">
+                                        <td style="width: 40px;"></td>
+                                        <td style="font-size: 16px; color: gray;">
+                                            <a style="color: gray;" href="javascript:void(0)">Privacy</a> 
+                                            {{-- <a style="color: gray;" href="https://nepgov.vercel.app/privacyPolicyPage">Privacy</a>  --}}
+                                        </td>
+                                        <td style="width: 40px;"></td>
+                                    </tr>
+                                    
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- footer main -->
+
+                    <!-- footer-->
+
+                    <!-- top gap table -->
+                    <table style="height: 40px; ">
+                        <tr>
+                            <td>
+
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- top gap table -->
+
+                </div>
+                </div>
+            </div>
         
-            <!-- top gap table -->
-            <table style="height: 40px; ">
-                <tr>
-                    <td>
-                        <h1 class="ml-5 text-info" style="margin-left:50px">Forget Password</h1>
-                    </td>
-                </tr>
-            </table>
-            <!-- top gap table -->
-
-
-            <!-- padding -->
-            <table style="width: 100%;">
-                <tr>
-                    <td>
-                        <table style="width: 100%; max-width: 650px; height: 30px; margin: auto; background: #fff;">
-                            <tr>
-                                <td></td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
-            <!-- padding -->
-
             
-            <!-- template header -->
-            <table style="width: 100%;">
-                <tr>
-                    <td>
-                        <table style="width: 100%; max-width: 650px; margin: auto; background: #fff;">
-                            <tr>
-                                <td style="width: 200px;"></td>
-                                <td style="text-align: center;"><a style=" color:tomato; font-size: 30px; font-weight: 600;" href="#!"><img src="https://i.postimg.cc/9fQBXdGp/Logo.png" alt=""></a></td>
-                                <td style="width: 200px;"></td>
-                            </tr>
-                            
-                        </table>
-                    </td>
-                </tr>
-            </table>
-            <!-- template header -->
 
-
-            <!-- padding -->
-            <table style="width: 100%;">
-                <tr>
-                    <td>
-                        <table style="width: 100%; max-width: 650px; height: 40px; margin: auto; background: #fff;">
-                            <tr>
-                                <td></td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
-            <!-- padding -->
-
-            <!-- title -->
-            <table style="width: 100%;">
-                <tr>
-                    <td>
-                        <table style="width: 100%; max-width: 650px; margin: auto; background: #fff;">
-                            <tr>
-                                <td style="width: 40px;"></td>
-                                <td style="text-align: center; font-size: 20px; font-weight: 700;">You can reset password from bellow link:-</td>
-                                <td style="width: 40px;"></td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
-            <!-- title -->
-
-
-            <!-- padding -->
-            <table style="width: 100%;">
-                <tr>
-                    <td>
-                        <table style="width: 100%; max-width: 650px; height: 30px; margin: auto; background: #fff;">
-                            <tr>
-                                <td></td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
-            <!-- padding -->
-
-            <!-- verification code -->
-            <table style="width: 100%;">
-                <tr>
-                    <td>
-                        <table style="width: 100%; max-width: 650px; margin: auto; background: #fff;">
-                            <tr>
-                                <td style="text-align: center; font-size: 30px; font-weight: bold;"><a href="">Reset Password</a></td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
-            <!-- verification code -->
-
-
-            <!-- padding -->
-            <table style="width: 100%;">
-                <tr>
-                    <td>
-                        <table style="width: 100%; max-width: 650px; height: 30px; margin: auto; background: #fff;">
-                            <tr>
-                                <td></td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
-            <!-- padding -->
-
-            <!-- padding -->
-            <table style="width: 100%;">
-                <tr>
-                    <td>
-                        <table style="width: 100%; max-width: 650px; height: 50px; margin: auto; background: #fff;">
-                            <tr>
-                                <td></td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
-            <!-- padding -->
-
-
-            <!-- footer-->
-
-            <!-- padding -->
-            <table style="width: 100%;">
-                <tr>
-                    <td>
-                        <table style="width: 100%; max-width: 650px; height: 40px; margin: auto; background:#F8F7FC">
-                            <tr>
-                                <td></td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
-            <!-- padding -->
-
-
-            <!-- footer main -->
-            <table style="width: 100%;">
-                <tr>
-                    <td>
-                        <table style="width: 100%; max-width: 650px; margin: auto; background: #F8F7FC;">
-                            <tr>
-                                <td style="width: 40px;"></td>
-                                <td style="font-size: 14px; font-weight: 400; color: gray;">NepGov Service LTD </td>
-                                <td style="width: 40px;"></td>
-                            </tr>
-                            <tr>
-                                <td style="width: 40px;"></td>
-                                <td style="font-size: 14px; font-weight: 400; color: gray;">50 Block, NewYork City, NewYork, United State </td>
-                                <td style="width: 40px;"></td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
-
-            <table style="width: 100%;">
-                <tr>
-                    <td>
-                        <table style="width: 100%; max-width: 650px; margin: auto; background: #F8F7FC;">
-                            <tr>
-                                <td style="height: 25px;"></td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
-
-            <table style="width: 100%;">
-                <tr>
-                    <td>
-                        <table style="width: 100%; max-width: 650px; margin: auto; background: #F8F7FC;">
-                            <tr>
-                                <td style="width: 40px;"></td>
-                                <td style="font-size: 16px; color: gray;"><a style="color: gray;" href="https://nepgov.vercel.app/privacyPolicyPage">Privacy</a> </td>
-                                <td style="width: 40px;"></td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
-            <!-- footer main -->
-
-            <!-- footer-->
-
-            <!-- top gap table -->
-            <table style="height: 40px; ">
-                <tr>
-                    <td>
-
-                    </td>
-                </tr>
-            </table>
-            <!-- top gap table -->
-
-        </div>
+        
     </div>
 
     </body>

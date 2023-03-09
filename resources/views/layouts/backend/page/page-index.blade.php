@@ -29,6 +29,7 @@
                         <th scope="col">Slug</th>
                         <th scope="col">Placement</th>
                         <th scope="col">Description</th>
+                        <th scope="col">View Count</th>
                         <th scope="col">Action</th>
                     </tr>
                     </thead>
@@ -40,6 +41,7 @@
                             <td>{{ $pages->slug ?? '' }}</td>
                             <td>{{ $pages->placement ?? '' }}</td>
                             <td>{!! substr($pages->description,0,200) ?? '' !!}</td>
+                            <td>{{ $pages->view_count ?? '0' }}</td>
                             <td>
                                 @can('page edit')
                                 <a href="{{ route('page.edit', $pages->id) }}" class="btn btn-success">Edit</a>
