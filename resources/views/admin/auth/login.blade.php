@@ -53,7 +53,8 @@
                 <!-- CONTAINER OPEN -->
                 <div class="col col-login mx-auto mt-7">
                     <div class="text-center">
-                        <img src="{{ asset('backend') }}/assets/images/brand/logo-white.png" class="header-brand-img" alt="">
+                        <img src="{{ asset('backend') }}/assets/uploads/brand/footer-logo.webp" class="header-brand-img" alt="">
+                        
                     </div>
                 </div>
 

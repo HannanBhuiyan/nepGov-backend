@@ -49,7 +49,15 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.4/css/buttons.dataTables.min.css">
 
     
-
+    <style>
+        .cke_chrome,input,select,textarea, .bootstrap-tagsinput{
+            border: 1px solid #777777 !important;
+        }
+        .bootstrap-tagsinput input{
+            border: none !important;
+        }
+       
+    </style>
 
     @yield('links')
 

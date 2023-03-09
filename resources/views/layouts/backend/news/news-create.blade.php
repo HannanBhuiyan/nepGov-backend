@@ -1,18 +1,6 @@
 
 @extends('layouts.backend.backend-app')
 
-<style>
-    .form-group input{
-        border: 1px solid #777777;
-    }
-    .form-group select{
-        border: 1px solid #777777;
-    }
-    .cke_chrome {
-        border: 1px solid #777777 !important;
-    }
-</style>
-
 @section('content')
 
 <div class="row mt-5">
