@@ -2,27 +2,7 @@
 
 
 @section('content')
-
-<div class="row mt-5">
-    <div class="col-md-12 m-auto">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item active"></li>  
-            </ol>
-        </nav>
-
-        <div class="card pt-5"> 
-            <div class="category_title my-3 d-flex justify-content-between">
-                <div class="left">
-                    <h3 style="margin-left: 60px">Template</h3>
-                </div>
-                
-            </div>
-            {{-- <h3>Template</h3> --}}
-        </div>
-
-    </div>
-</div>
+ 
 
     <!DOCTYPE html>
     <html lang="en">
@@ -70,10 +50,11 @@
         <div class="col-6">
 
             <!-- top gap table -->
-            <table style="height: 40px; ">
+            <table style="height: 40px;">
                 <tr>
                     <td>
-                        <h1 class="ml-5 text-dark" style="margin-left:60px">Verify Registration</h1>
+                        <h1 class="ml-5 text-dark" style="margin-left:60px;font-weight: 700;
+                        margin-top: 80px;">Verify Registration</h1>
                     </td>
                 </tr>
             </table>
@@ -327,7 +308,8 @@
                     <table style="height: 40px; ">
                         <tr>
                             <td>
-                                <h1 class="ml-5 text-dark" style="margin-left:60px">User Survay</h1>
+                                <h1 class="ml-5 text-dark" style="margin-left:60px;font-weight: 700;
+                                margin-top: 80px;">User Survay</h1>
                             </td>
                         </tr>
                     </table>
@@ -578,7 +560,8 @@
                     <table style="height: 40px; ">
                         <tr>
                             <td>
-                                <h1 class="ml-5 text-dark" style="margin-left:60px">Forget Password</h1>
+                                <h1 class="ml-5 text-dark" style="margin-left:60px;font-weight: 700;
+                                margin-top: 30px;">Forget Password</h1>
                             </td>
                         </tr>
                     </table>
