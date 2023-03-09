@@ -119,15 +119,32 @@
                 </tr>
                 </thead>
                 <tbody>
+                    
                     @foreach ($normals as $norm)
+
+
+                   
+
                     <tr>
                         <td>{{ $loop->index + 1 }}</td>
                         <td>{{$norm->category->category_name ?? ''}}</td>
                         <td>{{$norm->topic ?? ''}}</td>
-                        <td>{{$norm->option_one ?? ''}} <span class="badge badge-light">({{ $norm->option_one_count }})</span> </td>
-                        <td>{{$norm->option_two ?? ''}} <span class="badge badge-light">({{ $norm->option_two_count }})</span></td>
-                        {{-- <td>{{$norm->option_three ?? 'N/A'}}({{ $norm->option_three_count }})</td> --}}
-                        
+                        <td>
+                            {{$norm->option_one ?? ''}} 
+                            <span class="badge badge-light"> 
+                                (@php
+                                    echo array_sum(explode(",",$norm->option_one_count))
+                                @endphp)
+                            </span>  
+                        </td>
+                        <td>
+                            {{$norm->option_two ?? ''}} 
+                            <span class="badge badge-light"> 
+                            (@php
+                                    echo array_sum(explode(",",$norm->option_two_count))
+                                @endphp) 
+                            </span>
+                        </td> 
                         <td>
                             @can('normal topic edit')
                                 <a href="" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modaledit--{{$norm->id}}">Edit</a>
