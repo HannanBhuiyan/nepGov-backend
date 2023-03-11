@@ -9,13 +9,13 @@
             <h3>Main</h3>
         </li>
         
-        {{-- @role('Super Admin') --}}
+        @can('dashboard')
         <li class="slide">
             <a class="side-menu__item has-link {{ request()->routeIs('home') ? 'active' : '' }}" data-bs-toggle="slide" href="{{ route('home') }}"><i
                     class="side-menu__icon fe fe-home"></i><span
                     class="side-menu__label">Dashboard</span></a>
         </li>
-        {{-- @endrole --}}
+        @endcan
         <li class="sub-category">
             <h3>UI Kit</h3>
         </li> 
