@@ -22,8 +22,10 @@
                         <div id="down_btn"></div>
                    </div>
                    <div class="right">
-                    @can('assign role to users')
+                    @can('admin create')
                     <a class="btn btn-info" href="{{route('create_admin')}}">Admin Create</a>
+                    @endcan
+                    @can('assign role to users')
                     <a class="btn btn-primary" data-toggle="modal" data-target="#addusermodal_01">Assign Role to Users</a>
                     @endcan
                   </div>
@@ -60,11 +62,13 @@
                                 @endif
                             </td>
                             <td>
-                                @if ($user_roles_exists)
-                                <a data-bs-toggle="modal" data-bs-target="#modaledit8__{{$user->id}}" class="btn btn-info">Edit</a>
-                                @else   
-                                <a data-bs-toggle="modal" data-bs-target="#modaledit8__{{$user->id}}" class="btn btn-info">Assign Role</a>
-                                @endif
+                                @can('assign role to users')
+                                    @if ($user_roles_exists)
+                                    <a data-bs-toggle="modal" data-bs-target="#modaledit8__{{$user->id}}" class="btn btn-info">Edit</a>
+                                    @else   
+                                    <a data-bs-toggle="modal" data-bs-target="#modaledit8__{{$user->id}}" class="btn btn-info">Assign Role</a>
+                                    @endif
+                                @endcan
                                 @can('user delete')
                                 <a href="" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modaldemo8__{{$user->id}}">Delete</a>
                                 @endcan
@@ -87,8 +91,8 @@
                                                          $user_roles = DB::table("model_has_roles")->where("model_has_roles.model_id",$user->id)->pluck('model_has_roles.role_id')->all();
                                                     @endphp
                                                     @foreach ($roles as $role)
-                                                        <input type="checkbox" {{ in_array($role->id, $user_roles) ? 'checked' : '' }} name="role[]" value="{{ $role->name }}" multiple>
-                                                        <label>{{ $role->name }} </label> <br>
+                                                        <input id="roll__{{$loop->index}}" type="checkbox" {{ in_array($role->id, $user_roles) ? 'checked' : '' }} name="role[]" value="{{ $role->name }}" multiple>
+                                                        <label for="roll__{{$loop->index}}" style="cursor: pointer">{{ $role->name }} </label> <br>
                                                     @endforeach    
                                             </div>
                                             
@@ -145,8 +149,8 @@
                         <div class="form-group">
                             <h4>Role</h4>
                             @foreach ($roles as $role)
-                                <input type="checkbox" id="role__{{ $role->id }}" name="role[]" value="{{ $role->name }}">
-                                <label for="role__{{ $role->id }}" style="cursor: pointer">{{ $role->name }} </label> <br>
+                                <input type="checkbox" id="rol__{{ $loop->index }}" name="role[]" value="{{ $role->name }}">
+                                <label for="rol__{{ $loop->index }}" style="cursor: pointer">{{ $role->name }} </label> <br>
                             @endforeach    
                         </div>
 

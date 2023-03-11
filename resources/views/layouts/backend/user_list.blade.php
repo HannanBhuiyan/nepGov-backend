@@ -64,9 +64,13 @@
                             
                             <td>
                                 {{-- <a data-bs-toggle="modal" data-bs-target="#modalassign8__{{$user->id}}" class="btn btn-info">Assign Role</a> --}}
-                                @can('user delete')
+                                @can('user edit')
                                 <a href="{{route('admin_edit_user', $user->id) }}" class="btn btn-info">Edit</a>
+                                @endcan
+                                @can('user view')
                                 <a href="{{route('admin_view_user', $user->id) }}" class="btn btn-primary">View</a>
+                                @endcan
+                                @can('user delete')
                                 <a href="" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modaldemo8__{{$user->id}}">Delete</a>
                                 @endcan
                             </td>
