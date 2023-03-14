@@ -19,7 +19,7 @@ class PollingSubCategoryController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -167,6 +167,16 @@ class PollingSubCategoryController extends Controller
         }
 
 
+         // polling category auto update
+         $today_Date =  Carbon::now()->format('m/d/Y');
+         $polling_sub_categories = PollingSubCategory::all();
+ 
+         foreach($polling_sub_categories as $polling_sub_categorie){
+            if($today_Date > $polling_sub_categorie->end_time ){
+                $cat->is_published = 'pause';
+            }
+         }
+
         
         if($request->country == null){
             $cat->country = 'global';
@@ -176,6 +186,8 @@ class PollingSubCategoryController extends Controller
 
         $cat->save();
         return redirect()->route('polling_category.index')->with('success', 'SubCategory Update success');
+
+
     }
 
     /**

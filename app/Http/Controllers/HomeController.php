@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
 use App\Models\PollingReview;
 use App\Models\PollingCategory;
 use App\Models\PollingQuestion;
+use App\Models\PollingSubCategory;
 use App\Models\SurvayAnswer;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Spatie\Permission\Models\Role;
@@ -45,15 +46,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // return env('MAIL_USERNAME');
-        // $path = base_path('.env');
-        // $test = file_get_contents($path);
-
-        // if (file_exists($path)) {
-        // file_put_contents($path, str_replace('APP_ENV=local', 'APP_ENV=production', $test));
-        // }
-
-        // die;
+         
         
         $total_users  = [];
         $total_news   = [];
@@ -87,6 +80,8 @@ class HomeController extends Controller
         $crimes = Crime::all();
         $live_rev = PollingReview::all();
         $normal_rev = NormalVoting::all();
+
+        
         return view('home',compact('users','news','news_view_count','page_view_count','crimes','total_users','total_news','last_30_days_users','last_7_days_users','normal_reviews','polling_reviews','last_7_days_news','last_30_days_news','last_7_days_live','last_7_days_normal','live_rev','normal_rev','last_30_days_crime','last_7_days_crime'));
     }
 

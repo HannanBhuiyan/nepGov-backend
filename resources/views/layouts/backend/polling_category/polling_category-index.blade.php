@@ -598,8 +598,8 @@
                         <label for="need_registration"> Need Registration ? <span class="text-danger">*</span></label>
                     </div> 
 
-                    <div class="form-group" id="needTimeBtn">
-                        <input id="need_specifi_time" class="need_specifi_time_class" type="checkbox" name="need_specifi_time" placeholder="" >
+                    <div class="form-group">
+                        <input id="need_specifi_time mycheckedbtn"   type="checkbox" name="need_specifi_time" placeholder="" >
                         <label for="need_specifi_time"> Need Specifice Time ? </label>
                     </div> 
 
@@ -634,8 +634,7 @@
                                 <span class="text-danger mt-1">{{ $message }}</span>
                             @enderror
                         </div>
-
-                             
+   
                     </div>
                     
                     <div class="form-group">
@@ -702,7 +701,7 @@
         }) 
 
 
-        // ###### country dropdown ## 
+   
         
         $(document).ready(function(){ 
             
@@ -753,20 +752,7 @@
             });
 
 
-            // ##### specifiq time fixed ##
-            $('#needTimeDiv').hide();
-              
-            $('.need_specifi_time_class').click(function() {
-                if ($(this).is(':checked')) {
-                    $('#needTimeDiv').show();
-                }
-                else {
-                    $('#needTimeDiv').hide();
-                   
-                }
-            }); 
-
-
+            
 
             // edit settings
             $('.edit_need_specifi_time').click(function() {
@@ -783,6 +769,8 @@
 
 
         });
+
+       
 
         $(document).ready(function(){
         $('#poll_cat').change(function(){
@@ -847,6 +835,20 @@
                 $(this).closest(".new_properties").remove();
             }); 
         });
+    </script>
+
+    <script>
+        $(document).ready(function(){
+            $('#needTimeDiv').hide();
+            $('input[name=need_specifi_time]').click(function() {
+                if ($(this).is(':checked')) {
+                $('#needTimeDiv').show();
+                }
+                else {
+                    $('#needTimeDiv').hide();
+                }
+            });  
+        })
     </script>
  
    
