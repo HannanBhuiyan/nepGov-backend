@@ -165,18 +165,7 @@ class PollingSubCategoryController extends Controller
         }else{
             $cat->is_published = $request->is_published;
         }
-
-
-         // polling category auto update
-         $today_Date =  Carbon::now()->format('m/d/Y');
-         $polling_sub_categories = PollingSubCategory::all();
  
-         foreach($polling_sub_categories as $polling_sub_categorie){
-            if($today_Date > $polling_sub_categorie->end_time ){
-                $cat->is_published = 'pause';
-            }
-         }
-
         
         if($request->country == null){
             $cat->country = 'global';

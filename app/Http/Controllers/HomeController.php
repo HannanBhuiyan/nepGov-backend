@@ -82,6 +82,23 @@ class HomeController extends Controller
         $normal_rev = NormalVoting::all();
 
         
+        // polling category auto update
+        $today_Date =  Carbon::now()->format('m/d/Y');
+        $polling_sub_categories = PollingSubCategory::all();
+
+        foreach($polling_sub_categories as $polling_sub_categorie){
+            if($today_Date >  $polling_sub_categorie->end_time){
+
+                $id = PollingSubCategory::where('end_time', '=', $polling_sub_categorie->end_time)->first()->id. "<br>";
+
+                $data = PollingSubCategory::find($id); 
+                $data->is_published = 'pause'; 
+                $data->save(); 
+            }
+        }
+
+       
+
         return view('home',compact('users','news','news_view_count','page_view_count','crimes','total_users','total_news','last_30_days_users','last_7_days_users','normal_reviews','polling_reviews','last_7_days_news','last_30_days_news','last_7_days_live','last_7_days_normal','live_rev','normal_rev','last_30_days_crime','last_7_days_crime'));
     }
 
