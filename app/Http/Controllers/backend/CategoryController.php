@@ -17,7 +17,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = category::all();
+        $categories = category::latest()->get();
        return view('layouts.backend.category.category-index', compact('categories'));
     }
 

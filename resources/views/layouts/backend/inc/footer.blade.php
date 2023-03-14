@@ -176,6 +176,7 @@
 
 <!-- CK Editor JS -->
 <script src="https://cdn.ckeditor.com/4.20.1/standard/ckeditor.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/js/multi-select-tag.js"></script>
 
 <!-- CUSTOM JS -->
 <script src="{{ asset('backend') }}/assets/js/custom.js"></script>
@@ -251,6 +252,7 @@
 </script>
 
 @yield('scripts')
+
 
 </body>
 

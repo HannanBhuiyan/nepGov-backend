@@ -28,7 +28,7 @@ class QuestionOptionController extends Controller
     public function create()
     {
         return view('layouts.backend.question_option.question_option-create',[
-            'questions' => PollingQuestion::all()
+            'questions' => PollingQuestion::latest()->get()
         ]);
     }
 

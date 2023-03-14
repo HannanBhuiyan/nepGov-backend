@@ -49,8 +49,9 @@
 
                 <div class="form-group">
                     <input type="checkbox"   name="need_registration" placeholder="">
-                    <label> Need Registration ? <span class="text-danger">*</span></label>
+                    <label> Need Registration ?<span class="text-danger">*</span></label>
                 </div> 
+                 
 
                 {{-- <div class="form-group">
                     <label>Status<span class="text-danger">*</span></label>
@@ -96,8 +97,6 @@
     }) 
 
 </script>
-
-
 
 @endsection
 

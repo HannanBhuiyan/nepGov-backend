@@ -54,7 +54,6 @@ class PollingCategoryApiController extends Controller
             }else{
                 $cat->country = json_encode($request->country);
             }
-    
             $cat->save();
             return response()->json(['status'=>200, 'success'=>'Category Create Success']);
 
@@ -133,7 +132,7 @@ class PollingCategoryApiController extends Controller
 
     public function all_topics()
     {
-        $all_topics = PollingSubCategory::latest()->get();
+        $all_topics = PollingSubCategory::where('is_published' , 'publish')->latest()->get();
 
         return response()->json(['data'=>$all_topics]);
     }

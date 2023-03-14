@@ -12,7 +12,7 @@ class SurvayController extends Controller
 {
     public function index()
     {
-        $survay_questions = SurvayQuestion::all();
+        $survay_questions = SurvayQuestion::latest()->get();
         return view('layouts.backend.survay_question.survay_question-index', compact('survay_questions'));
     }
 

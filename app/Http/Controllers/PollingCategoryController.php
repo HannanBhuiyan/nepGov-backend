@@ -19,8 +19,8 @@ class PollingCategoryController extends Controller
     public function index()
     {
         $countries = Country::all();
-        $users  = User::all();
-        $polling_category = PollingCategory::all();
+        $users  = User::latest()->get();
+        $polling_category = PollingCategory::latest()->get();
         return view('layouts.backend.polling_category.polling_category-index', compact('polling_category','users','countries'));
     }
 

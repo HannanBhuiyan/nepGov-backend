@@ -31,7 +31,7 @@
 
     <!-- BOOTSTRAP CSS -->
     <link id="style" href="{{ asset('backend') }}/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/css/multi-select-tag.css">
     <!-- STYLE CSS -->
     <link href="{{ asset('backend') }}/assets/css/style.css" rel="stylesheet" />
     <link href="{{ asset('backend') }}/assets/css/dark-style.css" rel="stylesheet" />

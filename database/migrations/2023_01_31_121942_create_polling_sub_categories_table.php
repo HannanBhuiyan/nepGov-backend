@@ -19,7 +19,11 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug');
             $table->boolean('need_registration')->default(false);
+            $table->boolean('need_specifi_time')->default(false);
+            $table->string('start_time')->nullable();
+            $table->string('end_time')->nullable();
             $table->string('status')->default('normal');
+            $table->string('is_published')->default('publish'); //publish or pause
             $table->string('country')->default('global');
             $table->timestamps();
         });

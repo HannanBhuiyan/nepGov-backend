@@ -54,6 +54,7 @@ Route::group(['middleware'=>['auth']],function(){
     Route::get('admin/edit/user/{id}', [HomeController::class, 'adminEditUser'])->name('admin_edit_user');
     Route::get('admin/view/user/{id}', [HomeController::class, 'adminViewUser'])->name('admin_view_user');
     Route::put('admin/update/user/{id}', [HomeController::class, 'adminUpdateUser'])->name('admin_user_update');
+
     Route::get('/user/role', [UserRoleController::class, 'user_role_index'])->name('role.index');
     Route::post('/user/role/store', [UserRoleController::class, 'user_role_store'])->name('user_role.store');
     Route::post('/user/role/update/{id}', [UserRoleController::class, 'user_role_update'])->name('user_role.update');
@@ -69,6 +70,7 @@ Route::group(['middleware'=>['auth']],function(){
     Route::post('assign/user/group', [GroupUserController::class, 'assign_users_group'])->name('assign_users_group');
     Route::get('group/users', [GroupUserController::class, 'group_users'])->name('user.group');
     Route::post('create/new/group', [GroupUserController::class, 'create_new_group'])->name('create_new_group');
+    Route::post('delete/group', [GroupUserController::class, 'groupUserDelete'])->name('groupUserDelete');
 
     Route::post('/group/wise/user', [GroupUserController::class, 'groupwiseuser'])->name('groupwiseuser');
     Route::post('/send/Mail/To/Users', [GroupUserController::class, 'sendMailToUsers'])->name('sendMailToUsers');

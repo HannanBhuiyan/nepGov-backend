@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\PollingCategory;
 use App\Models\PollingQuestion;
 use App\Models\PollingSubCategory;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class PollingSubCategoryController extends Controller
@@ -42,6 +43,8 @@ class PollingSubCategoryController extends Controller
      */
     public function store(Request $request)
     {
+        // return $request;
+        
         $request->validate([
             'category_id' => 'required',
             'name' => 'required',
@@ -55,6 +58,36 @@ class PollingSubCategoryController extends Controller
         // $cat->status = $request->status;
         $cat->status = 'live';
         $cat->need_registration = $request->need_registration == 'on' ? 1 : 0;
+        $cat->need_specifi_time = $request->need_specifi_time == 'on' ? 1 : 0;
+
+        // if($request->need_specifi_time == 'on'){
+                
+        // }
+        
+        $today_Date =  Carbon::now()->format('m/d/Y');
+
+        if($request->need_specifi_time == 'on'){
+            if($request->is_published == 'publish'){
+                if($today_Date > $request->end_time){
+                    return back()->with('fail', 'Please Select End Time after Today');
+                }else{
+                    $cat->start_time = $request->start_time;
+                    $cat->end_time = $request->end_time;
+                    $cat->is_published = $request->is_published;
+                }
+            }else{
+                $cat->start_time = $request->start_time;
+                $cat->end_time = $request->end_time;
+                $cat->is_published = 'pause';
+            } 
+        }else{
+            $cat->is_published = $request->is_published;
+        }
+
+
+
+        
+        
         if($request->country == null){
             $cat->country = 'global';
         }else{
@@ -85,7 +118,7 @@ class PollingSubCategoryController extends Controller
      */
     public function edit(PollingSubCategory $pollingSubCategory)
     {
-        //
+        
     }
 
     /**
@@ -107,6 +140,33 @@ class PollingSubCategoryController extends Controller
         $cat->name = $request->name;
         $cat->status = 'live';
         $cat->need_registration = $request->need_registration == 'on' ? 1 : 0;
+        $cat->need_specifi_time = $request->need_specifi_time == 'on' ? 1 : 0;
+        $cat->start_time = $request->start_time;
+        $cat->end_time = $request->end_time;
+
+        
+        
+        $today_Date =  Carbon::now()->format('m/d/Y');
+
+        if($request->need_specifi_time == 'on'){
+            if($request->is_published == 'publish'){
+                if($today_Date > $request->end_time){
+                    return back()->with('fail', 'Please Select End Time after Today');
+                }else{
+                    $cat->start_time = $request->start_time;
+                    $cat->end_time = $request->end_time;
+                    $cat->is_published = $request->is_published;
+                }
+            }else{
+                $cat->start_time = $request->start_time;
+                $cat->end_time = $request->end_time;
+                $cat->is_published = 'pause';
+            } 
+        }else{
+            $cat->is_published = $request->is_published;
+        }
+
+
         
         if($request->country == null){
             $cat->country = 'global';

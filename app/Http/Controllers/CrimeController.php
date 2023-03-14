@@ -16,7 +16,7 @@ class CrimeController extends Controller
      */
     public function index()
     {
-        $crimes = Crime::all();
+        $crimes = Crime::latest()->get();
         return view('layouts.backend.crime.crime-index', compact('crimes'));
     }
 

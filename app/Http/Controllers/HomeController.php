@@ -129,7 +129,7 @@ class HomeController extends Controller
     {
         $roles = Role::all();
         $user_groups = UserGroup::all();
-        $users = User::latest()->paginate(10);
+        $users = User::latest()->get();
         $categories = PollingCategory::all();
         return view('layouts.backend.user_list' ,compact('users','user_groups', 'categories','roles'));
     }

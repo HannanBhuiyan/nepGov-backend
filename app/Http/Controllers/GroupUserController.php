@@ -52,18 +52,13 @@ class GroupUserController extends Controller
                 'category_id' => $request->category_id,
             ]);
         }
-
-        // foreach ($request->check as $user_id) {
-        //     $user_id->assignRole($request->role_name);
-        // }
         
-
         return back()->with('success', 'Group Assigned');
     }
 
     public function group_users()
     {
-        $groups = UserGroup::all(); 
+        $groups = UserGroup::latest()->get(); 
         $assign_users = AssignGroup::all();
         $assign_user = [];
         return view('layouts.backend.user_group', compact('groups', 'assign_users','assign_user'));
@@ -104,9 +99,18 @@ class GroupUserController extends Controller
      * @param  \App\Models\GroupUser  $groupUser
      * @return \Illuminate\Http\Response
      */
-    public function edit(AssignGroup $groupUser)
+    public function groupUserDelete(Request $request)
     {
-        //
+        // return $request->group_id;
+        $user_group = UserGroup::find($request->group_id);
+        $assign_users = AssignGroup::where('group_id',$request->group_id)->get();
+        foreach($assign_users as $assign){
+            $assign->delete();
+        }
+
+        $user_group->delete();
+
+        return response()->json(['status'=>200, 'message'=>'Group Deleted']);
     }
 
     /**

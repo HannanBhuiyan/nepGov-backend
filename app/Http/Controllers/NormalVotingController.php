@@ -17,8 +17,8 @@ class NormalVotingController extends Controller
    
     public function index()
     {
-        $normals  = NormalVoting::all();
-        $polling_category = PollingCategory::all();
+        $normals  = NormalVoting::latest()->get();
+        $polling_category = PollingCategory::latest()->get();
         return view('layouts.backend.normal_voting.normal_voting-index', compact('polling_category','normals'));
     }
 

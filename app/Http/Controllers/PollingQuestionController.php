@@ -68,6 +68,7 @@ class PollingQuestionController extends Controller
      */
     public function store(Request $request)
     {
+        // return $request;
         $request->validate([
             'polling_category_id' => 'required',
             'sub_category_id' => 'required',

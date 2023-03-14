@@ -16,7 +16,7 @@ class UserRoleController extends Controller
     function user_role_index(){
         return view('layouts.role.index',[
             'roles' => Role::all(),
-            'users' => User::all(),
+            'users' => User::latest()->get(),
             'permissions' => Permission::all()
         ]);
     }

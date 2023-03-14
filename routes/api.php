@@ -219,7 +219,6 @@ Route::post('polling_review', [PollingReviewApiController::class, 'store'])->nam
 Route::get('polling_review', [PollingReviewApiController::class, 'index']);
 Route::get('polling_options', [PollingReviewApiController::class, 'polling_options']);
 
-
 // Normal
 //Normal Review Route
 Route::post('normal_review', [NormalReviewApiController::class, 'store'])->name('api_normal_review.store');

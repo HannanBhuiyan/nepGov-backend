@@ -15,7 +15,7 @@ class PageController extends Controller
      */
     public function index()
     {
-        $pages = Page::all();
+        $pages = Page::latest()->get();
         return view('layouts.backend.page.page-index', compact('pages'));
     }
 

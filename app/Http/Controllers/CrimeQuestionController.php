@@ -14,7 +14,7 @@ class CrimeQuestionController extends Controller
      */
     public function index()
     {
-        $questions = CrimeQuestion::all();
+        $questions = CrimeQuestion::latest()->get();
         return view('layouts.backend.crime_question.crime_question-index', compact('questions'));
     }
 
